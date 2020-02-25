@@ -131,7 +131,7 @@
 
                 var loader = new THREE.OBJLoader(manager);
                 loader.load(
-                    "https://s3.amazonaws.com/external-pages/test/birthday.obj",
+                    "https://raw.githubusercontent.com/anmeisel/ana.lol/master/images/birthday.obj",
                     function(object) {
                         object.traverse(function(child) {
                             if (child instanceof THREE.Mesh) {
