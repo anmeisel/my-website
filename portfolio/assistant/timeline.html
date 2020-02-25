@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>timeline</title>
+    <script src="//use.edgefonts.net/source-sans-pro.js"></script> 
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+      <style>
+
+.home img{
+  position: absolute;
+        height: 55px;
+         width: auto;
+         margin-left: -300px;
+         padding-left: -300px;
+         margin-top: 0px;
+         padding-top: 20px;
+      }       
+
+
+html,body,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+margin:0;
+padding:0;
+border:0;
+font-size:100%;
+font:times;
+vertical-align:baseline;
+}
+
+article, aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+display:absolute;
+}
+
+body{
+line-height:1;
+}
+
+ol,ul{
+list-style:none;
+}
+
+blockquote,q{
+quotes:none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after{
+content:'';
+content:none;
+}
+
+table{
+border-collapse:collapse;
+border-spacing:0;
+}
+
+
+body{
+color:#fff;
+margin:0 auto;
+font:1em/1.3em times;
+background-color:#0d0d0d;
+}
+
+.clearfix{
+clear:both;
+}
+
+.container{
+z-index:1;
+position:relative;
+background: 
+        linear-gradient( white, transparent),
+        linear-gradient( 90deg, #0010FF, transparent),
+        linear-gradient( -90deg, #0010FF, transparent);
+        background-attachment: fixed; 
+        background-blend-mode: screen;
+padding-top:120px;
+text-align:center;height:100%;
+}
+
+.container.blue1{
+background-color:#004CFF;
+}
+
+.container.blue2{
+background-color:#0087FF;
+}
+
+.container.blue3{
+background-color:#00BDFF;
+}
+
+.container.blue4{
+background-color:#00F3FF;
+}
+
+.container.green1{
+background-color:#00FF87;
+}
+
+.container.green2{
+background-color:#AFFF00;
+}
+
+.container.green3{
+background-color:#F7FF00;
+}
+
+.container.green4{
+background-color:#FFCB00;
+}
+
+.container.yellow1{
+background-color:#FF9B00;
+}
+
+.container.yellow2{
+background-color:#FF5A00;
+}
+
+.container.yellow3{
+background-color:#FF1E00;
+}
+
+.container.yellow4{
+background-color:#FF00A7;
+}
+
+.container.orange1{
+background-color:#A300FF;
+}
+
+.container.orange2{
+background-color:#6800FF;
+}
+
+.container.orange3{
+background-color:#3E00FF;
+}
+
+.container.orange4{
+background-color:#0070FF;
+}
+
+.container.red1{
+background-color:#00B1FF;
+}
+
+
+h1{
+margin:40px 0;
+font-size:15px;
+line-height:15px;
+color: black;
+}
+
+
+.btn{
+box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;
+position:relative;
+display:inline-block;
+padding:10px 10px;
+height:50px;
+background-color:none;
+border-radius:10px;
+-moz-border-radius:10px;
+-webkit-border-radius:10px;
+line-height:10px;
+font-size:12px;
+}
+
+.btn span.btn{
+position:absolute;
+top:4px;
+left:0;
+z-index:-1;
+width:100%;
+background-color:none;
+}
+
+.btn:active,.btn:active>span.btn{
+top:2px;
+}
+
+.btn.active,.btn.active>span.btn{
+top:2px;
+}
+
+.btn-small{
+height:30px;
+font-size:10px;
+line-height:10px;
+}
+
+.btn-small span.btn{
+height:30px;
+}
+
+.menu{
+width:100%;
+position:fixed;
+height:100px;
+background-color:none;
+top:0;
+left:0;
+z-index:2;
+}
+
+.menu .slider{
+position:relative;
+left:10%;
+width:80%;
+text-align:center;
+}
+
+.menu .slider .bar,.menu .slider .bar .before{
+height:1px;
+transition:.5s;
+-webkit-transition:.5s;
+border-radius:2px;
+-moz-border-radius:2px;
+-webkit-border-radius:2px;
+}
+
+.menu .slider .bar{
+position:relative;
+left:3px;
+width:100%;
+background-color:#2700ff;
+}
+
+.menu .slider .bar .before{
+width:100px;
+float:left;
+position:relative;
+left:-3px;
+}
+
+.menu .slider .bar .knob{
+position:absolute;
+top:-5px;
+left:0;
+margin:0;
+display:block;
+width:6px;
+height:6px;
+background-color:#060606;
+border-radius:4px;
+-moz-border-radius:4px;
+-webkit-border-radius:4px;
+transition:.5s;
+-webkit-transition:.5s;
+}
+
+.menu ul{
+height:100%;
+display:inline-block;
+margin:15px 0 15px 0;
+}
+
+.menu ul li{
+margin:0 15px;
+font-size:0.95vw;
+float:left;
+}
+
+.menu ul li a{
+color:#2700ff;
+margin:0;}
+
+      </style>
+
+	</head>
+
+  <body>
+
+<!--     <div class="home"> 
+        <a href="mainpage.html"><img src="http://i.imgur.com/iwvjD1z.gif?1" width="189" height="52" border="0"></a>
+      </div> -->
+
+    <script>
+
+
+// Slider functionality
+   
+    // slide knob to position function
+    (function( $ ){
+     $.fn.slideToPos = function() {
+       if ($(this).position()) {
+       var left = $(this).position().left + ($(this).width() / 2) - ($(".menu a.knob").width() / 2) - 2;
+       $(".menu a.knob").css("left", left);
+       var before = $(this).parent().parent().parent().children(".bar").first().children(".before").first();
+       before.css("width", left + 20).css("backgroundColor", $($(this).attr("href")).css("backgroundColor"));
+     }
+       return this;
+     }; 
+  })( jQuery );
+       
+    $(".menu ul li.active a").slideToPos();     
+$(".menu ul li a").click(function(e) {
+  e.preventDefault();
+  $(this).slideToPos();
+  $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 400);
+});
+ 
+ 
+// Scroll Spy
+$(window).scroll(function() {
+  var top = $(window).scrollTop() + 100; // Take into account height of fixed menu
+  $(".container").each(function() {
+    var c_top = $(this).offset().top;
+    var c_bot = c_top + $(this).height();
+    var hash = $(this).attr("id");
+    var li_tag = $('a[href$="' + hash + '"]').parent();
+    if ((top > c_top) && (top < c_bot)) {
+       
+      if (li_tag.hasClass("active")) {
+        return false;
+      }
+      else {
+        li_tag.siblings().andSelf().removeClass("active");
+        li_tag.addClass("active");
+        $(".menu ul li.active a").slideToPos();  
+        }
+    }
+  });
+});
+
+    </script>
+
+
+<div class="menu">
+  <div class="slider">
+    <ul>
+      <li class="category active"><a href="#1">2005</a></li>
+      <li class="category"><a href="#2">2006</a></li>
+      <li class="category"><a href="#3">2008</a></li>
+      <li class="category"><a href="#4">2008</a></li>
+      <li class="category"><a href="#5">2010</a></li>
+      <li class="category"><a href="#6">2010</a></li>
+      <li class="category"><a href="#7">2011</a></li>
+      <li class="category"><a href="#8">2011</a></li>
+      <li class="category"><a href="#9">2011</a></li>
+      <li class="category"><a href="#10">2012</a></li>
+      <li class="category"><a href="#11">2014</a></li>
+      <li class="category"><a href="#12">2014</a></li>
+      <li class="category"><a href="#13">2015</a></li>
+      <li class="category"><a href="#14">2015</a></li>
+      <li class="category"><a href="#15">2015</a></li>
+      <li class="category"><a href="#16">2016</a></li>
+      <li class="category"><a href="#17">2016</a></li>
+      <li class="category"><a href="#18">2016</a></li>
+    </ul>
+    <div class="bar">
+      <div class="before"></div>
+      <a class="knob"></a>
+      <div class="after"></div>
+    </div>
+  </div>
+</div>
+<div id="1" class="container"><h1><iframe src="https://player.vimeo.com/video/158493983" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158493983">Sound Hound</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="2" class="container blue1"><h1><iframe src="https://player.vimeo.com/video/158497598" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158497598">Vlingo</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="3" class="container blue2"><h1><iframe src="https://player.vimeo.com/video/158514715" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158514715">Nina</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="4" class="container blue3">
+  <h1><iframe src="https://player.vimeo.com/video/158611439" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158611439">silvia</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="5" class="container blue4">
+  <h1><iframe src="https://player.vimeo.com/video/158613852" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158613852">self-checkout</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="6" class="container green1"><h1><iframe src="https://player.vimeo.com/video/158616726" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158616726">blackberry</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="7" class="container green2"><h1><iframe src="https://player.vimeo.com/video/158620582" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158620582">siri</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="8" class="container green3"><h1><iframe src="https://player.vimeo.com/video/158622911" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158622911">assistente</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="9" class="container green4"><h1><iframe src="https://player.vimeo.com/video/158923687" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158923687">iris</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="10" class="container yellow1"><h1><iframe src="https://player.vimeo.com/video/158623459" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158623459">googlenow</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="11" class="container yellow2"><h1><iframe src="https://player.vimeo.com/video/158624272" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158624272">transport</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="12" class="container yellow3"><h1><iframe src="https://player.vimeo.com/video/158925930" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158925930">pallite</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="13" class="container yellow4"><h1><iframe src="https://player.vimeo.com/video/158918662" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158918662">cortana</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="14" class="container orange1"><h1><iframe src="https://player.vimeo.com/video/158934763" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158934763">eva</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="15" class="container orange2"><h1><iframe src="https://player.vimeo.com/video/158929757" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158929757">jeannie</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="16" class="container orange3"><h1><iframe src="https://player.vimeo.com/video/158935907" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158935907">robin</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="17" class="container orange4"><h1><iframe src="https://player.vimeo.com/video/158939092" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158939092">andy</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+<div id="18" class="container red1"><h1><iframe src="https://player.vimeo.com/video/158941399" width="500" height="283" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/158941399">databot</a> from <a href="https://vimeo.com/user22290178">Ana Meisel</a> on <a href="https://vimeo.com">Vimeo</a>.</p></h1>
+</div>
+
+	</body>
+<html>
