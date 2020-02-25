@@ -1,0 +1,267 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, maximum-scale=0.9, initial-scale=0.9">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>A M | Portfolio | Super Boring</title>
+    <script src="//use.edgefonts.net/source-sans-pro.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<link href="../images/favicon.ico" rel="icon" type="image/x-icon" />
+
+<style>
+
+			script {
+				position: fixed;
+			}
+
+			.floatytrans {
+				position: fixed;
+			}
+
+</style>
+
+<link rel="stylesheet" href="../css/style2.css"/>
+
+</head>
+
+<body>
+
+	<script src="http://brangerbriz.net/labs/threejs_playGnd/js/three.min.js"></script>
+		<script src="http://brangerbriz.net/labs/threejs_playGnd/js/Detector.js"></script>
+				
+
+<a class="backwards2" href="http://anameisel.com/">HOME</a>
+<div class="gifs">
+    <li>{</li>
+<li><a class="backwards" href="http://anameisel.com/websites"><u>websites</u></a></li>
+<li><a class="backwards" href="http://anameisel.com/portfolio.html"><u>portfolio</u></a></li>
+<li><a class="backwards" href="http://anameisel.com/other"><u>cool links</u></a></li>
+<li>}</li>
+<!-- <a href="http://www.anameisel.com/">
+<img class="home" src="https://web.archive.org/web/20091027055013/http://hk.geocities.com/nowar1931/images/home_gif.gif">
+</a> -->
+</div>
+
+
+<label for="toggle">
+<!-- <img class="moreinfo" src="https://web.archive.org/web/20090829162213/http://geocities.com/Athens/Ithaca/8100/infoani.gif" alt="More Info"> -->&#9432;</label>
+<input type="checkbox" id="toggle"/>
+
+<span>
+	<div class="reference">
+<b>Super Boring:</b>
+<br>
+<br>Capturing emotions in 3D animation movements using the three.js library.<br><a href="http://threejsplaygnd.brangerbriz.net/s/?id=579" target="blank_">Click here for code</a>
+</div>
+</span>
+		
+ <script>
+
+// 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+			
+// 			var camera, scene, renderer;
+// 			var geometry, material, mesh;
+
+// 			function setup() {
+
+// 				var W = window.innerWidth, H = window.innerHeight;
+// 				renderer = new THREE.WebGLRenderer();
+// 				renderer.setSize( W, H );
+// 				document.body.appendChild( renderer.domElement );
+
+// 				camera = new THREE.PerspectiveCamera( 50, W/H, 1, 10000 );
+// 				camera.position.z = 500;
+
+// 				scene = new THREE.Scene();
+				
+				
+// 				map = THREE.ImageUtils.loadTexture('../texturez/proxy.php?url=http://image.doc2pdf.net/temp/screen_shot_20131202_at_1.13.51_am.jpg');
+// 				geometry = new THREE.CubeGeometry(98.35, 65.9, 1);
+// 				material = new THREE.MeshBasicMaterial({shading: THREE.FlatShading, color: 0xdcdcdc, map: map});
+// 				mesh = new THREE.Mesh(geometry, material);
+// 				map.wrapS = map.wrapT = THREE.RepeatWrapping;
+// 				map.repeat.set( 1, 1 );
+// 				mesh.scale.x = mesh.scale.y = mesh.scale.z = 1.27;
+// 				scene.add(mesh);
+				
+// 				map = THREE.ImageUtils.loadTexture('../texturez/proxy.php?url=http://image.doc2pdf.net/temp/screen_shot_20131202_at_1.14.18_am.jpg');
+// 				geometry = new THREE.CubeGeometry(195.7, 65.9, 1);
+// 				material = new THREE.MeshBasicMaterial({shading: THREE.FlatShading, color: 0xdcdcdc, map: map});
+// 				mesh_two = new THREE.Mesh(geometry, material);
+// 				map.wrapS = map.wrapT = THREE.RepeatWrapping;
+// 				map.repeat.set( 1, 1 );
+// 				mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
+// 				scene.add(mesh);
+// 				scene.add(mesh_two);
+				
+// 				map = THREE.ImageUtils.loadTexture('../texturez/proxy.php?url=http://image.doc2pdf.net/temp/screen_shot_20131202_at_1.15.29_am.jpg');
+// 				geometry = new THREE.CubeGeometry(238.96, 125.39, 1);
+// 				material = new THREE.MeshBasicMaterial({shading: THREE.FlatShading, color: 0xdcdcdc, map: map});
+// 				mesh_three = new THREE.Mesh(geometry, material);
+// 				map.wrapS = map.wrapT = THREE.RepeatWrapping;
+// 				map.repeat.set( 1, 1 );
+// 				mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
+// 				scene.add(mesh_three);
+
+// 				map = THREE.ImageUtils.loadTexture('../texturez/proxy.php?url=http://image.doc2pdf.net/temp/screen_shot_20131202_at_1.15.37_am.jpg');
+// 				geometry = new THREE.CubeGeometry(368.76, 163.25, 1);
+// 				material = new THREE.MeshBasicMaterial({shading: THREE.FlatShading, color: 0xdcdcdc, map: map});
+// 				mesh_four = new THREE.Mesh(geometry, material);
+// 				map.wrapS = map.wrapT = THREE.RepeatWrapping;
+// 				map.repeat.set( 1, 1 );
+// 				mesh.scale.x = mesh.scale.y = mesh.scale.z = 2;
+// 				scene.add(mesh_four);
+				
+// 			}
+
+// 			function draw() {
+
+// 				requestAnimationFrame( draw );
+				
+// 				var time = Date.now() * 0.0005;
+// 				h = ( 360 * ( 1.0 + time ) % 360 ) / 360;
+// 				mesh.material.color.setHSL(h, 0.5, 0.5 );
+// 				mesh.position.x = Math.sin( Date.now() * 0.001 ) * 50;
+// 				mesh.rotation.z = Date.now() * 0.0005;
+// 				mesh.position.y = Math.sin( Date.now() * 0.002 ) * 300;	
+// 				mesh.rotation.x = Date.now() * 0.0005;	
+// 				mesh.rotation.y = Date.now() * 0.0002;	
+// 				mesh.rotation.z = Date.now() * 0.001;
+				
+// 				mesh_two.material.color.setHSL(h, 0.5, 0.5 );
+// 				mesh_two.position.x = Math.sin( Date.now() * 0.001 ) * 50;
+// 				mesh_two.position.x = Math.sin( Date.now() * 0.001 ) * 300;
+				
+// 				mesh_three.material.color.setHSL(h, 0.5, 0.5 );
+// 				mesh_three.position.x = Math.sin( Date.now() * 0.004 ) * 80;
+// 				mesh_three.rotation.z = Date.now() * 0.0005;
+				
+// 				mesh_four.material.color.setHSL(h, 0.5, 0.5 );
+// 				mesh_four.position.x = Math.sin( Date.now() * 0.001 ) * 80;
+// 				mesh_four.rotation.z = Date.now() * 0.00001;
+				
+// 				renderer.render( scene, camera );
+
+// 			}
+
+// 			setup();
+// 			draw();
+
+// 		</script>
+
+
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/c0a2b3d27f5e2013b266f662331fbb4c/tumblr_mx93ffZhF51su3jc3o4_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/efede4e900ad52d37101e1c9ab5d1b19/tumblr_mx93ffZhF51su3jc3o3_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/e94dcb3258a5dd588aed6799bcc32c14/tumblr_mx93ffZhF51su3jc3o1_400.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/c3cf6d1136057cb55d6e2a35ba967649/tumblr_mx93ffZhF51su3jc3o2_250.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/bf25319e3ea5ae3519e3630bab0cbe02/tumblr_mx93taARPQ1su3jc3o9_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/8fd893d8b5910d603fbbe6b59a9f586b/tumblr_mx93taARPQ1su3jc3o2_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/991a509ae02827f24d709c654bad983c/tumblr_mx93taARPQ1su3jc3o3_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/5e9cfdfe615195e286471b51ac2a5f80/tumblr_mx93taARPQ1su3jc3o5_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/6696dc3c86fabdd3201f555894b378f8/tumblr_mx93taARPQ1su3jc3o4_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/1df90c6f5f76b942056cf5b34ad26bb6/tumblr_mx93taARPQ1su3jc3o6_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/6b8e64c1fdcf3903da12c028e800aa08/tumblr_mx93taARPQ1su3jc3o1_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/85583ea29b50012cb094675c00582dc2/tumblr_mx93taARPQ1su3jc3o7_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/23bde9a00dd4ecaf5ed76f87f21519fe/tumblr_mx93taARPQ1su3jc3o8_1280.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/e0faa1bbb8be3a8550bcc2670bdd23fe/tumblr_mx940kyhfQ1su3jc3o1_540.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/48187e6436774abbb7a1943ec0a04e7c/tumblr_mx940kyhfQ1su3jc3o2_400.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/3d4c2b89cb3b84c522a755966a4a369d/tumblr_mx940kyhfQ1su3jc3o3_500.png" alt="" />
+  </div>
+  </div>
+
+  <div class="container">
+  <div class="box">
+      <img src="http://66.media.tumblr.com/9d944a367fea9da32801fc3179bfc04e/tumblr_mx940kyhfQ1su3jc3o5_1280.png" alt="" />
+  </div>
+  </div>
+
+
+  <div class="container">
+  <div class="box">
+      <img src="http://68.media.tumblr.com/b50fd6675913370fb092f3eeaae00068/tumblr_mx940kyhfQ1su3jc3o4_1280.png" alt="" />
+  </div>
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+    <script src="../js/indextwine.js"></script>
+
+	</body>
+<html>

@@ -1,0 +1,3270 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <link href="../../images/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>tree</title>
+    
+    
+    
+    
+        <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  font-family: serif;
+}
+
+h2 {
+  font-size: 10px;
+  -webkit-column-count: 7; /* Chrome, Safari, Opera */
+    -moz-column-count: 7; /* Firefox */
+    column-count: 7;
+}
+
+.tree {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  mix-blend-mode: darken;
+}
+.tree, .tree * {
+  backface-visibility: hidden;
+}
+.tree .trunk {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 0;
+  background: #7A5230;
+  transition: height 10s;
+}
+:hover .tree .trunk {
+  height: 90vh;
+}
+.tree .trunk:before, .tree .trunk:after {
+  content: '';
+  background: white;
+  height: 200%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  border-radius: 100%;
+}
+.tree .trunk:before {
+  left: 55%;
+}
+.tree .trunk:after {
+  right: 55%;
+}
+.tree .trunk .branch {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  width: 10px;
+  background: #697134;
+  mix-blend-mode: darken;
+  height: 0;
+  transition: transform 2s;
+}
+.tree .trunk .branch:nth-child(odd) {
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(-20deg) scale(0);
+}
+.tree .trunk .branch:nth-child(even) {
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(20deg) scale(0);
+}
+.tree .trunk .branch:nth-child(1) {
+  bottom: 100%;
+  width: 0px;
+  transition-delay: 10s;
+  height: 0%;
+}
+:hover .tree .trunk .branch:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(2) {
+  bottom: 90%;
+  width: 4px;
+  transition-delay: 9s;
+  height: 3%;
+}
+:hover .tree .trunk .branch:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(2) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(2) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 4.5s;
+}
+:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(3) {
+  bottom: 80%;
+  width: 8px;
+  transition-delay: 8s;
+  height: 6%;
+}
+:hover .tree .trunk .branch:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(3) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(3) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 4s;
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(3) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 8s;
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(3) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 12s;
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) {
+  bottom: 70%;
+  width: 12px;
+  transition-delay: 7s;
+  height: 9%;
+}
+:hover .tree .trunk .branch:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 3.5s;
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 7s;
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 10.5s;
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 14s;
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(4) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 17.5s;
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) {
+  bottom: 60%;
+  width: 16px;
+  transition-delay: 6s;
+  height: 12%;
+}
+:hover .tree .trunk .branch:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 3s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 6s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 9s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 12s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 15s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(7) {
+  bottom: 59%;
+  transition-delay: 18s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(7) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(5) .leaf:nth-child(8) {
+  bottom: 55%;
+  transition-delay: 21s;
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(8) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) {
+  bottom: 50%;
+  width: 20px;
+  transition-delay: 5s;
+  height: 15%;
+}
+:hover .tree .trunk .branch:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 2.5s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 5s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 7.5s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 10s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 12.5s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(7) {
+  bottom: 59%;
+  transition-delay: 15s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(7) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(8) {
+  bottom: 55%;
+  transition-delay: 17.5s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(8) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(9) {
+  bottom: 51%;
+  transition-delay: 20s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(9) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(9):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(9):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(6) .leaf:nth-child(10) {
+  bottom: 47%;
+  transition-delay: 22.5s;
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(10) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(10):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(10):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) {
+  bottom: 40%;
+  width: 24px;
+  transition-delay: 4s;
+  height: 18%;
+}
+:hover .tree .trunk .branch:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 2s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 4s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 6s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 8s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 10s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(7) {
+  bottom: 59%;
+  transition-delay: 12s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(7) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(8) {
+  bottom: 55%;
+  transition-delay: 14s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(8) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(9) {
+  bottom: 51%;
+  transition-delay: 16s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(9) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(9):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(9):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(10) {
+  bottom: 47%;
+  transition-delay: 18s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(10) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(10):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(10):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(11) {
+  bottom: 43%;
+  transition-delay: 20s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(11) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(11):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(11):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(7) .leaf:nth-child(12) {
+  bottom: 39%;
+  transition-delay: 22s;
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(12) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(12):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(12):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) {
+  bottom: 30%;
+  width: 28px;
+  transition-delay: 3s;
+  height: 21%;
+}
+:hover .tree .trunk .branch:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 1.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 3s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 4.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 6s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 7.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(7) {
+  bottom: 59%;
+  transition-delay: 9s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(7) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(8) {
+  bottom: 55%;
+  transition-delay: 10.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(8) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(9) {
+  bottom: 51%;
+  transition-delay: 12s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(9) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(9):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(9):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(10) {
+  bottom: 47%;
+  transition-delay: 13.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(10) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(10):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(10):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(11) {
+  bottom: 43%;
+  transition-delay: 15s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(11) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(11):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(11):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(12) {
+  bottom: 39%;
+  transition-delay: 16.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(12) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(12):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(12):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(13) {
+  bottom: 35%;
+  transition-delay: 18s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(13) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(13):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(13):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(8) .leaf:nth-child(14) {
+  bottom: 31%;
+  transition-delay: 19.5s;
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(14) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(14):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(14):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) {
+  bottom: 20%;
+  width: 32px;
+  transition-delay: 2s;
+  height: 24%;
+}
+:hover .tree .trunk .branch:nth-child(9):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 1s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 2s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 3s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 4s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 5s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(7) {
+  bottom: 59%;
+  transition-delay: 6s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(7) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(8) {
+  bottom: 55%;
+  transition-delay: 7s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(8) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(9) {
+  bottom: 51%;
+  transition-delay: 8s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(9) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(9):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(9):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(10) {
+  bottom: 47%;
+  transition-delay: 9s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(10) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(10):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(10):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(11) {
+  bottom: 43%;
+  transition-delay: 10s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(11) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(11):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(11):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(12) {
+  bottom: 39%;
+  transition-delay: 11s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(12) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(12):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(12):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(13) {
+  bottom: 35%;
+  transition-delay: 12s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(13) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(13):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(13):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(14) {
+  bottom: 31%;
+  transition-delay: 13s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(14) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(14):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(14):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(15) {
+  bottom: 27%;
+  transition-delay: 14s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(15) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(15):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(15):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(9) .leaf:nth-child(16) {
+  bottom: 23%;
+  transition-delay: 15s;
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(16) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(16):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(16):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) {
+  bottom: 10%;
+  width: 36px;
+  transition-delay: 1s;
+  height: 27%;
+}
+:hover .tree .trunk .branch:nth-child(10):nth-child(odd) {
+  transform: translateX(-50%) rotate(-70deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(1) {
+  bottom: 83%;
+  transition-delay: 0s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(1) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(1):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(1):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(2) {
+  bottom: 79%;
+  transition-delay: 0.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(2) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(2):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(2):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(3) {
+  bottom: 75%;
+  transition-delay: 1s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(3) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(3):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(3):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(4) {
+  bottom: 71%;
+  transition-delay: 1.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(4) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(4):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(4):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(5) {
+  bottom: 67%;
+  transition-delay: 2s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(5) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(5):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(5):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(6) {
+  bottom: 63%;
+  transition-delay: 2.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(6) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(6):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(6):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(7) {
+  bottom: 59%;
+  transition-delay: 3s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(7) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(7):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(7):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(8) {
+  bottom: 55%;
+  transition-delay: 3.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(8) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(8):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(8):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(9) {
+  bottom: 51%;
+  transition-delay: 4s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(9) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(9):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(9):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(10) {
+  bottom: 47%;
+  transition-delay: 4.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(10) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(10):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(10):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(11) {
+  bottom: 43%;
+  transition-delay: 5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(11) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(11):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(11):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(12) {
+  bottom: 39%;
+  transition-delay: 5.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(12) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(12):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(12):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(13) {
+  bottom: 35%;
+  transition-delay: 6s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(13) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(13):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(13):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(14) {
+  bottom: 31%;
+  transition-delay: 6.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(14) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(14):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(14):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(15) {
+  bottom: 27%;
+  transition-delay: 7s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(15) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(15):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(15):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(16) {
+  bottom: 23%;
+  transition-delay: 7.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(16) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(16):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(16):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(17) {
+  bottom: 19%;
+  transition-delay: 8s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(17) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(17):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(17):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:nth-child(10) .leaf:nth-child(18) {
+  bottom: 15%;
+  transition-delay: 8.5s;
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(18) {
+  transform: scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(18):nth-child(odd) {
+  transform: translateX(-50%) rotate(-170deg) scale(1);
+}
+:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(18):nth-child(even) {
+  transform: translateX(-50%) rotate(70deg) scale(1);
+}
+.tree .trunk .branch:before, .tree .trunk .branch:after {
+  content: '';
+  background: white;
+  height: 200%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  border-radius: 100%;
+  mix-blend-mode: luminosity;
+}
+.tree .trunk .branch:before {
+  left: 55%;
+}
+.tree .trunk .branch:after {
+  right: 55%;
+}
+.tree .trunk .leaf {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  height: 20px;
+  width: 20px;
+  transform: scale(0);
+  background: #198C19;
+  border-radius: 100% 0;
+  transition: transform 1s;
+}
+.tree .trunk .leaf:nth-child(odd) {
+  transform-origin: 50% 0%;
+  transform: translateX(-50%) rotate(-10deg) scale(0);
+}
+.tree .trunk .leaf:nth-child(even) {
+  transform-origin: 50% 0%;
+  transform: translateX(-50%) rotate(10deg) scale(0);
+}
+
+    </style>
+
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+    
+<h1>hover to make the tree grow // screen sorcery - XF version // twine_cræft</h1> 
+<h2><br>
+<br>.tree {
+  <br>position: absolute;
+  <br>left: 50%;
+  <br>bottom: 0;
+  <br>mix-blend-mode: darken;
+<br>}
+<br>.tree, .tree * {
+  <br>backface-visibility: hidden;
+<br>}
+<br>.tree .trunk {
+  <br>position: absolute;
+  <br>bottom: 0;
+  <br>left: 0;
+<br>  width: 30px;
+<br>  height: 0;
+<br>  background: brown;
+<br>  transition: height 10s;
+<br>}
+<br>:hover .tree .trunk {
+<br>  height: 90vh;
+<br>}
+<br>.tree .trunk:before, .tree .trunk:after {
+<br>  content: '';
+ <br> background: white;
+ <br> height: 200%;
+ <br> width: 100%;
+ <br> position: absolute;
+ <br> bottom: 0;
+ <br> border-radius: 100%;
+<br>}
+<br>.tree .trunk:before {
+  <br>left: 55%;
+<br>}
+<br>.tree .trunk:after {
+ <br> right: 55%;
+<br>}
+<br>.tree .trunk .branch {
+ <br> position: absolute;
+ <br> z-index: 2;
+ <br> bottom: 0;
+ <br> left: 50%;
+ <br> width: 10px;
+ <br> background: brown;
+ <br> mix-blend-mode: darken;
+ <br> height: 0;
+ <br> transition: transform 2s;
+<br>}
+<br>.tree .trunk .branch:nth-child(odd) {
+ <br> transform-origin: 50% 100%;
+  <br>transform: translateX(-50%) rotate(-20deg) scale(0);
+<br>}
+<br>.tree .trunk .branch:nth-child(even) {
+ <br> transform-origin: 50% 100%;
+ <br> transform: translateX(-50%) rotate(20deg) scale(0);
+<br>}
+<br>.tree .trunk .branch:nth-child(1) {
+ <br> bottom: 100%;
+ <br> width: 0px;
+ <br> transition-delay: 10s;
+ <br> height: 0%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(2) {
+ <br> bottom: 90%;
+ <br> width: 4px;
+ <br> transition-delay: 9s;
+ <br> height: 3%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(2) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(2) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 4.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(2) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(3) {
+ <br> bottom: 80%;
+ <br> width: 8px;
+ <br> transition-delay: 8s;
+ <br> height: 6%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(3) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(3) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 4s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(3) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 8s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(3) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 12s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(3) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) {
+ <br> bottom: 70%;
+ <br> width: 12px;
+ <br> transition-delay: 7s;
+ <br> height: 9%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 3.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 7s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 10.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 14s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(4) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 17.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(4) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) {
+ <br> bottom: 60%;
+ <br> width: 16px;
+ <br> transition-delay: 6s;
+ <br> height: 12%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 3s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 6s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 9s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 12s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 15s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(7) {
+ <br> bottom: 59%;
+ <br> transition-delay: 18s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(7) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(5) .leaf:nth-child(8) {
+ <br> bottom: 55%;
+ <br> transition-delay: 21s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(8) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(5) .leaf:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) {
+ <br> bottom: 50%;
+ <br> width: 20px;
+ <br> transition-delay: 5s;
+ <br> height: 15%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 2.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 7.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 10s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 12.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(7) {
+ <br> bottom: 59%;
+ <br> transition-delay: 15s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(7) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(8) {
+ <br> bottom: 55%;
+ <br> transition-delay: 17.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(8) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(9) {
+ <br> bottom: 51%;
+ <br> transition-delay: 20s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(9) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(9):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(9):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(6) .leaf:nth-child(10) {
+ <br> bottom: 47%;
+ <br> transition-delay: 22.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(10) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(10):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(6) .leaf:nth-child(10):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) {
+ <br> bottom: 40%;
+ <br> width: 24px;
+ <br> transition-delay: 4s;
+ <br> height: 18%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 2s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 4s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 6s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(4):nth-child(odd) {
+<br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 8s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 10s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(7) {
+ <br> bottom: 59%;
+ <br> transition-delay: 12s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(7) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(8) {
+ <br> bottom: 55%;
+ <br> transition-delay: 14s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(8) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(9) {
+ <br> bottom: 51%;
+ <br> transition-delay: 16s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(9) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(9):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(9):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(10) {
+ <br> bottom: 47%;
+ <br> transition-delay: 18s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(10) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(10):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(10):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(11) {
+ <br> bottom: 43%;
+ <br> transition-delay: 20s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(11) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(11):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(11):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(7) .leaf:nth-child(12) {
+ <br> bottom: 39%;
+ <br> transition-delay: 22s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(12) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(12):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(7) .leaf:nth-child(12):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) {
+ <br> bottom: 30%;
+ <br> width: 28px;
+ <br> transition-delay: 3s;
+ <br> height: 21%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+<br> transition-delay: 1.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 3s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 4.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 6s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 7.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(7) {
+ <br> bottom: 59%;
+ <br> transition-delay: 9s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(7) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(8) {
+ <br> bottom: 55%;
+ <br> transition-delay: 10.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(8) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(9) {
+ <br> bottom: 51%;
+ <br> transition-delay: 12s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(9) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(9):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(9):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(10) {
+ <br> bottom: 47%;
+ <br> transition-delay: 13.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(10) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(10):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(10):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(11) {
+ <br> bottom: 43%;
+ <br> transition-delay: 15s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(11) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(11):nth-child(odd) {
+<br>  transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(11):nth-child(even) {
+<br>  transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(12) {
+ <br> bottom: 39%;
+ <br> transition-delay: 16.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(12) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(12):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(12):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(13) {
+ <br> bottom: 35%;
+ <br> transition-delay: 18s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(13) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(13):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(13):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(8) .leaf:nth-child(14) {
+ <br> bottom: 31%;
+ <br> transition-delay: 19.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(14) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(14):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(8) .leaf:nth-child(14):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) {
+ <br> bottom: 20%;
+ <br> width: 32px;
+ <br> transition-delay: 2s;
+ <br> height: 24%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 1s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 2s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 3s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 4s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(7) {
+ <br> bottom: 59%;
+ <br> transition-delay: 6s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(7) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(8) {
+ <br> bottom: 55%;
+ <br> transition-delay: 7s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(8) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(9) {
+ <br> bottom: 51%;
+ <br> transition-delay: 8s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(9) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(9):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(9):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(10) {
+ <br> bottom: 47%;
+ <br> transition-delay: 9s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(10) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(10):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(10):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(11) {
+ <br> bottom: 43%;
+ <br> transition-delay: 10s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(11) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(11):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(11):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(12) {
+ <br> bottom: 39%;
+ <br> transition-delay: 11s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(12) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(12):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(12):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(13) {
+ <br> bottom: 35%;
+ <br> transition-delay: 12s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(13) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(13):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(13):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(14) {
+ <br> bottom: 31%;
+ <br> transition-delay: 13s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(14) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(14):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(14):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(15) {
+ <br> bottom: 27%;
+ <br> transition-delay: 14s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(15) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(15):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(15):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(9) .leaf:nth-child(16) {
+ <br> bottom: 23%;
+ <br> transition-delay: 15s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(16) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(16):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(9) .leaf:nth-child(16):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) {
+ <br> bottom: 10%;
+ <br> width: 36px;
+ <br> transition-delay: 1s;
+ <br> height: 27%;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-70deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(1) {
+ <br> bottom: 83%;
+ <br> transition-delay: 0s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(1) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(1):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(1):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(2) {
+ <br> bottom: 79%;
+ <br> transition-delay: 0.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(2) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(2):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(2):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(3) {
+ <br> bottom: 75%;
+ <br> transition-delay: 1s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(3) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(3):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(3):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(4) {
+ <br> bottom: 71%;
+ <br> transition-delay: 1.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(4) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(4):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(4):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(5) {
+ <br> bottom: 67%;
+ <br> transition-delay: 2s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(5) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(5):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(5):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(6) {
+ <br> bottom: 63%;
+ <br> transition-delay: 2.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(6) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(6):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(6):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(7) {
+ <br> bottom: 59%;
+ <br> transition-delay: 3s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(7) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(7):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(7):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(8) {
+ <br> bottom: 55%;
+ <br> transition-delay: 3.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(8) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(8):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(8):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(9) {
+ <br> bottom: 51%;
+ <br> transition-delay: 4s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(9) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(9):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(9):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(10) {
+ <br> bottom: 47%;
+ <br> transition-delay: 4.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(10) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(10):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(10):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(11) {
+ <br> bottom: 43%;
+ <br> transition-delay: 5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(11) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(11):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(11):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(12) {
+ <br> bottom: 39%;
+ <br> transition-delay: 5.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(12) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(12):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(12):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(13) {
+ <br> bottom: 35%;
+ <br> transition-delay: 6s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(13) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(13):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(13):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(14) {
+ <br> bottom: 31%;
+ <br> transition-delay: 6.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(14) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(14):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(14):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(15) {
+ <br> bottom: 27%;
+ <br> transition-delay: 7s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(15) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(15):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(15):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(16) {
+ <br> bottom: 23%;
+ <br> transition-delay: 7.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(16) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(16):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(16):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(17) {
+ <br> bottom: 19%;
+ <br> transition-delay: 8s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(17) {
+ <br> transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(17):nth-child(odd) {
+ <br> transform: translateX(-50%) rotate(-170deg) scale(1);
+ <br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(17):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:nth-child(10) .leaf:nth-child(18) {
+ <br> bottom: 15%;
+ <br> transition-delay: 8.5s;
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(18) {
+  <br>transform: scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(18):nth-child(odd) {
+  <br>transform: translateX(-50%) rotate(-170deg) scale(1);
+<br>}
+<br>:hover .tree .trunk .branch:nth-child(10) .leaf:nth-child(18):nth-child(even) {
+ <br> transform: translateX(-50%) rotate(70deg) scale(1);
+<br>}
+<br>.tree .trunk .branch:before, .tree .trunk .branch:after {
+  <br>content: '';
+  <br>background: white;
+  <br>height: 200%;
+  <br>width: 100%;
+  <br>position: absolute;
+  <br>z-index: 0;
+  <br>bottom: 0;
+  <br>border-radius: 100%;
+  <br>mix-blend-mode: luminosity;
+<br>}
+<br>.tree .trunk .branch:before {
+  <br>left: 55%;
+<br>}
+<br>.tree .trunk .branch:after {
+  <br>right: 55%;
+<br>}
+<br>.tree .trunk .leaf {
+  <br>position: absolute;
+  <br>z-index: 9;
+  <br>left: 50%;
+  <br>height: 20px;
+  <br>width: 20px;
+  <br>transform: scale(0);
+  <br>background: green;
+  <br>border-radius: 100% 0;
+  <br>transition: transform 1s;
+<br>}
+<br>.tree .trunk .leaf:nth-child(odd) {
+  <br>transform-origin: 50% 0%;
+  <br>transform: translateX(-50%) rotate(-10deg) scale(0);
+<br>}
+<br>.tree .trunk .leaf:nth-child(even) {
+  <br>transform-origin: 50% 0%;
+  <br>transform: translateX(-50%) rotate(10deg) scale(0);
+</h2>
+<div class="tree">
+  <div class="trunk">
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="branch">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+  </div>
+</div>
+    
+    
+    
+    
+    
+  </body>
+</html>
