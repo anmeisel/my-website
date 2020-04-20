@@ -44,9 +44,6 @@
 			init()
 			animate()
 
-			var windowHalfX = window.innerWidth / 2
-			var windowHalfY = window.innerHeight / 2
-
 			function init() {
 				// scene
 
@@ -223,9 +220,6 @@
 			}
 
 			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2
-				windowHalfY = window.innerHeight / 2
-
 				camera.aspect = window.innerWidth / window.innerHeight
 				camera.updateProjectionMatrix()
 			}
@@ -291,10 +285,10 @@
 			}
 
 			function render() {
-				camera.position.x += (mouseX - camera.position.x) * 0.003
-				camera.position.y += (-mouseY - camera.position.y) * 0.003
+				camera.position.x += (mouseX - camera.position.x) * 0.003;
+                camera.position.y += (-mouseY - camera.position.y) * 0.003;
 
-				camera.lookAt(scene.position)
+                camera.lookAt(scene.position);
 
 				renderer.render(scene, camera)
 			}
