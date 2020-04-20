@@ -49,10 +49,6 @@
 
 				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000)
 				camera.position.z = 850
-				camera.position.x += (mouseX - camera.position.x) * 0.003;
-                camera.position.y += (-mouseY - camera.position.y) * 0.003;
-
-                camera.lookAt(scene.position);
 
 				scene = new THREE.Scene()
 				scene.background = new THREE.Color(0xff0000)
