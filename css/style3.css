@@ -1,4 +1,4 @@
-.content { 
+.content {
     top: 0px;
     margin-top: 0px;
     padding-top: 0px;
@@ -13,7 +13,7 @@ button:active.blue-a {
     -webkit-transition: none !important;
     -moz-transition: none !important;
     -o-transition: none !important;
-    transition: none !important; 
+    transition: none !important;
 }
 
 /*.glass {
@@ -38,14 +38,10 @@ button:active.blue-a {
 
 button:hover.blue-a {
     color: rgba(230, 240, 255, 0.99);
-    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 
-                 0px 0px 4px rgba(200, 230, 255, 0.99);
+    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
     border-color: rgba(120, 200, 255, 0.4);
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
-                0 2px 6px rgba(0, 0, 0, 0.5),
-                /*0 10px rgba(0, 0, 0, 0.05) inset,*/
-                0 0px 5px 2px rgba(120, 200, 255, 0.75),
-                0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5),
+        /*0 10px rgba(0, 0, 0, 0.05) inset,*/ 0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
 }
 
 a#home {
@@ -63,13 +59,13 @@ button:hover.blue-a {
 }
 
 button.blue-a {
-width: 160px;
-cursor: default;
-padding-top: 10px;
-text-align: left;
-padding-bottom: 10px;
-background-color: transparent;
-/*background: linear-gradient(to top,
+    width: 160px;
+    cursor: default;
+    padding-top: 10px;
+    text-align: left;
+    padding-bottom: 10px;
+    background-color: transparent;
+    /*background: linear-gradient(to top,
                 #D8D8D8 10%,
                 #D8D8D8 20%,
                 #CECECE 30%,
@@ -84,12 +80,7 @@ background-color: transparent;
     border-radius: 2.5px;
     border: 1px solid /*#8D8D8D*/ rgba(87, 188, 255, 1);
     background-color: none;
-    box-shadow: inset 6px 0px 6px 0px 
-                rgba(0,0,0,0.13), 
-                inset -6px 0px 6px 0px 
-                rgba(0,0,0,0.13), 3px 0px 15px 0px 
-                rgba(87, 188, 255, 0.75);
-
+    box-shadow: inset 6px 0px 6px 0px rgba(0, 0, 0, 0.13), inset -6px 0px 6px 0px rgba(0, 0, 0, 0.13), 3px 0px 15px 0px rgba(87, 188, 255, 0.75);
 }
 
 /*.blue-a {
@@ -105,11 +96,7 @@ background-color: transparent;
     padding-top: 20px;
     padding-bottom: 20px;
     z-index: 4;
-    box-shadow: inset 6px 0px 6px 0px 
-                rgba(0,0,0,0.13), 
-                inset -6px 0px 6px 0px 
-                rgba(0,0,0,0.13), 3px 0px 15px 0px 
-                rgba(25,218,47,0.55);
+    box-shadow: inset 6px 0px 6px 0px rgba(0, 0, 0, 0.13), inset -6px 0px 6px 0px rgba(0, 0, 0, 0.13), 3px 0px 15px 0px rgba(25, 218, 47, 0.55);
     /*background: linear-gradient(to top,
                 #D8D8D8 10%,
                 #D8D8D8 20%,
@@ -123,13 +110,13 @@ background-color: transparent;
                 #F2F2F2 100%
     );*/
     border-radius: 2.5px;
-    border: 1px solid /*#8D8D8D*/ rgba(25,218,47,1);
+    border: 1px solid /*#8D8D8D*/ rgba(25, 218, 47, 1);
 }
 
 ul.menu1 {
 }
 
-.content2 { 
+.content2 {
     top: auto;
     bottom: 0px;
     margin-bottom: 0px;
@@ -140,8 +127,8 @@ ul.menu1 {
     z-index: 3;
 }
 
-
-ul.menu3, ul.menu2 {
+ul.menu3,
+ul.menu2 {
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -150,28 +137,29 @@ ul.menu3, ul.menu2 {
     margin-top: 10px;
 }
 
-.biginside1, .biginside2 {
+.biginside1,
+.biginside2 {
     display: none;
 }
 
-.biginside1 span, .biginside2 p {
+.biginside1 span,
+.biginside2 p {
     display: block;
     margin-top: 10px;
 }
 
 li {
-        list-style: none;
+    list-style: none;
 }
 
 a {
-        text-decoration: none;
-        color: black
+    text-decoration: none;
+    color: black;
 }
 
 a:hover {
-        color: rgba(230, 240, 255, 0.99);
-    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 
-                 0px 0px 4px rgba(120, 200, 255, 0.75);
+    color: rgba(230, 240, 255, 0.99);
+    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(120, 200, 255, 0.75);
     border-color: rgba(120, 200, 255, 0.75);
 }
 
@@ -185,6 +173,19 @@ a:hover {
     top: 0;
     left: -400px;
     right: auto;
+}
+
+#ThreeJS2 {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+#ThreeJS2 iframe {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 * {
@@ -202,19 +203,21 @@ body {
 p {
     /*font: 12px/normal "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
     font-family: "Lucida Grande";*/
-    font: 11px/normal Verdana,sans-serif;
+    font: 11px / normal Verdana, sans-serif;
     font-family: Verdana;
     background-image: none !important;
 }
 
 p.smaller {
-    font: 10px/normal Verdana,sans-serif;
+    font: 10px / normal Verdana, sans-serif;
     font-family: Verdana;
     background-image: none !important;
     margin: 20px;
 }
 
-div, menu, dir {
+div,
+menu,
+dir {
     display: block;
     list-style: none;
 }
@@ -226,14 +229,18 @@ div, menu, dir {
     margin-left: 20px;
 }
 
-.logo #title , .menu #title1, .menu #title2 {
+.logo #title,
+.menu #title1,
+.menu #title2 {
     font-size: 11px;
     font-weight: bold;
     color: darkgray;
     text-transform: uppercase;
 }
 
-.logo #title a, .menu #title1 a, .menu #title2 a{
+.logo #title a,
+.menu #title1 a,
+.menu #title2 a {
     font-size: 11px;
     font-weight: bold;
     text-transform: uppercase;
@@ -241,7 +248,8 @@ div, menu, dir {
     font-family: Verdana;
 }
 
-.menu #title1, .menu #title2 {
+.menu #title1,
+.menu #title2 {
     cursor: pointer;
 }
 
@@ -336,38 +344,36 @@ div, menu, dir {
 a.page {
     padding: 5px;
     position: relative;
-
 }
 
 .biginside1 a:hover {
     color: black;
-    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 
-                 0px 0px 4px rgba(120, 200, 255, 0.75);
+    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(120, 200, 255, 0.75);
     border-color: rgba(120, 200, 255, 0.75);
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
-                0 2px 6px rgba(0, 0, 0, 0.5),
-                0 10px rgba(0, 0, 0, 0.05) inset,
-                0 0px 5px 2px rgba(120, 200, 255, 0.75),
-                0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
-    background: linear-gradient(to bottom,  
-                rgba(96,103,104,0.1) 0%,
-                rgba(187,187,187,0.1) 3%,
-                rgba(187,187,187,0.1) 27%,
-                rgba(0,0,0,0.1) 28%,
-                rgba(0,0,0,0.1) 60%,
-                rgba(0,0,0,0.1) 73%,
-                rgba(75,80,81,0.1) 88%,
-                rgba(0,0,0,0.1) 97%,
-                rgba(0,0,0,0.1) 100%);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5), 0 10px rgba(0, 0, 0, 0.05) inset,
+        0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
+    background: linear-gradient(
+        to bottom,
+        rgba(96, 103, 104, 0.1) 0%,
+        rgba(187, 187, 187, 0.1) 3%,
+        rgba(187, 187, 187, 0.1) 27%,
+        rgba(0, 0, 0, 0.1) 28%,
+        rgba(0, 0, 0, 0.1) 60%,
+        rgba(0, 0, 0, 0.1) 73%,
+        rgba(75, 80, 81, 0.1) 88%,
+        rgba(0, 0, 0, 0.1) 97%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
     border-radius: 2.5px;
 }
 
-
-.menu ul li a, .logo ul li a {
+.menu ul li a,
+.logo ul li a {
     background-size: 18px;
 }
 
-.menu ul li a, .logo ul li a {
+.menu ul li a,
+.logo ul li a {
     display: block;
     font-size: 11px;
     padding: 4px 0px 2px 40px;
@@ -386,52 +392,50 @@ li.list {
 }
 
 @media (max-width: 1020px) {
-
-.window {
-    left: initial;
-    margin-right: initial;
-    transform: initial;
-    width: 60vw;
-    height: 70vh;
-    position: absolute;
-    overflow: scroll;
-    /*left: none;
+    .window {
+        left: initial;
+        margin-right: initial;
+        transform: initial;
+        width: 60vw;
+        height: 70vh;
+        position: absolute;
+        overflow: scroll;
+        /*left: none;
     margin-right: none;
     transform: none;*/
-    top: 60px;
-    right: 20px;
-    z-index: 5;
-    background-color: white;
-}
+        top: 60px;
+        right: 20px;
+        z-index: 5;
+        background-color: white;
+    }
 
-.menu, button.blue-a {
-    background-color: rgba(255,255,255, 0.9);
-}
-
+    .menu,
+    button.blue-a {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
 }
 
 @media (max-width: 575px) {
+    .content {
+        position: relative;
+        display: block;
+        height: auto;
+        background-color: transparent;
+    }
 
-.content { 
-    position: relative;
-    display: block;
-    height: auto;
-    background-color: transparent;
-}
+    .content2 {
+        top: 0;
+        margin-bottom: 0px;
+        padding-bottom: 50px;
+        left: 0px;
+        display: block;
+        background-color: transparent;
+        position: relative;
+        z-index: 3;
+        height: auto;
+    }
 
-.content2 { 
-    top: 0;
-    margin-bottom: 0px;
-    padding-bottom: 50px;
-    left: 0px;
-    display: block;
-    background-color: transparent;
-    position: relative;
-    z-index: 3;
-    height: auto;
-}
-
-/*.window {
+    /*.window {
     left: 0;
     margin-right: 50%;
     transform: translate(0);
@@ -445,140 +449,138 @@ li.list {
     top: 10px;
 }*/
 
-iframe.window {
-    display: none;
-}
+    iframe.window {
+        display: none;
+    }
 
-iframe#ifr1,
-iframe#ifr2,
-iframe#ifr3, 
-iframe#ifr4, 
-iframe#ifr5, 
-iframe#ifr6,
-iframe#ifr7,
-iframe#ifr8,
-iframe#ifr9,
-iframe#ifr10,
-iframe#ifr11,
-iframe#ifr12,
-iframe#ifr13,
-iframe#ifr14,
-iframe#ifr15,
-iframe#ifr16,
-iframe#ifr17 {
-    display: none;
-}
+    iframe#ifr1,
+    iframe#ifr2,
+    iframe#ifr3,
+    iframe#ifr4,
+    iframe#ifr5,
+    iframe#ifr6,
+    iframe#ifr7,
+    iframe#ifr8,
+    iframe#ifr9,
+    iframe#ifr10,
+    iframe#ifr11,
+    iframe#ifr12,
+    iframe#ifr13,
+    iframe#ifr14,
+    iframe#ifr15,
+    iframe#ifr16,
+    iframe#ifr17 {
+        display: none;
+    }
 
-.panel1 iframe,
-.panel2 iframe,
-.panel3 iframe,
-.panel4 iframe,
-.panel5 iframe,
-.panel6 iframe,
-.panel7 iframe,
-.panel8 iframe,
-.panel9 iframe,
-.panel10 iframe,
-.panel11 iframe,
-.panel12 iframe,
-.panel13 iframe,
-.panel14 iframe,
-.panel15 iframe,
-.panel16 iframe {
-    display: none;
-}
+    .panel1 iframe,
+    .panel2 iframe,
+    .panel3 iframe,
+    .panel4 iframe,
+    .panel5 iframe,
+    .panel6 iframe,
+    .panel7 iframe,
+    .panel8 iframe,
+    .panel9 iframe,
+    .panel10 iframe,
+    .panel11 iframe,
+    .panel12 iframe,
+    .panel13 iframe,
+    .panel14 iframe,
+    .panel15 iframe,
+    .panel16 iframe {
+        display: none;
+    }
 
-.panel1,
-.panel2,
-.panel3,
-.panel4,
-.panel5,
-.panel6,
-.panel7,
-.panel8,
-.panel9,
-.panel10,
-.panel11,
-.panel12,
-.panel13,
-.panel14,
-.panel15,
-.panel16 {
-    left: 0px;
-    top:0px;
-    z-index: 999;
-    position: relative;
-    margin-left: 10px;
-    height: auto;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-}
+    .panel1,
+    .panel2,
+    .panel3,
+    .panel4,
+    .panel5,
+    .panel6,
+    .panel7,
+    .panel8,
+    .panel9,
+    .panel10,
+    .panel11,
+    .panel12,
+    .panel13,
+    .panel14,
+    .panel15,
+    .panel16 {
+        left: 0px;
+        top: 0px;
+        z-index: 999;
+        position: relative;
+        margin-left: 10px;
+        height: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
 
-.panel1 a,
-.panel2 a,
-.panel3 a,
-.panel4 a,
-.panel5 a,
-.panel6 a,
-.panel7 a,
-.panel8 a,
-.panel9 a,
-.panel10 a,
-.panel11 a,
-.panel12 a,
-.panel13 a,
-.panel14 a,
-.panel15 a,
-.panel16 a {
-    width: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-    top: 0px;
-}
+    .panel1 a,
+    .panel2 a,
+    .panel3 a,
+    .panel4 a,
+    .panel5 a,
+    .panel6 a,
+    .panel7 a,
+    .panel8 a,
+    .panel9 a,
+    .panel10 a,
+    .panel11 a,
+    .panel12 a,
+    .panel13 a,
+    .panel14 a,
+    .panel15 a,
+    .panel16 a {
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 0px;
+        top: 0px;
+    }
 
-.panel1 p,
-.panel2 p,
-.panel3 p,
-.panel4 p,
-.panel5 p,
-.panel6 p,
-.panel7 p,
-.panel8 p,
-.panel9 p,
-.panel10 p,
-.panel11 p,
-.panel12 p,
-.panel13 p,
-.panel14 p,
-.panel15 p,
-.panel16 p {
-    width: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-    top: 0px;
-}
+    .panel1 p,
+    .panel2 p,
+    .panel3 p,
+    .panel4 p,
+    .panel5 p,
+    .panel6 p,
+    .panel7 p,
+    .panel8 p,
+    .panel9 p,
+    .panel10 p,
+    .panel11 p,
+    .panel12 p,
+    .panel13 p,
+    .panel14 p,
+    .panel15 p,
+    .panel16 p {
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 0px;
+        top: 0px;
+    }
 
-.desc {
-    display: block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    position: relative;
-}
+    .desc {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position: relative;
+    }
 
-.list {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0px;
-}
+    .list {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 0px;
+    }
 
-#ThreeJS iframe {
-    height: 100%;
-    overflow: visible;
+    #ThreeJS iframe {
+        height: 100%;
+        overflow: visible;
+    }
 }
-
-}
-
