@@ -51,7 +51,7 @@
 				camera.position.z = 850
 
 				scene = new THREE.Scene()
-				scene.background = new THREE.Color(0xff0000)
+				scene.background = null // transparent
 
 				var ambient = new THREE.AmbientLight(0x101030)
 				scene.add(ambient)
@@ -116,10 +116,9 @@
 
 				renderer = new THREE.WebGLRenderer({ alpha: true })
 				renderer.setClearColor(0x000000, 0)
-				renderer.setPixelRatio(window.devicePixelRatio)
+				renderer.setPixelRatio(2)
 
-				renderer.setSize(window.innerWidth, window.innerHeight)
-				renderer.setSize(window.innerWidth, window.innerHeight)
+				renderer.setSize(innerWidth, innerHeight)
 				container = document.getElementById("ThreeJS")
 				container.appendChild(renderer.domElement)
 				document.addEventListener("mousedown", onDocumentMouseDown, false)
@@ -167,7 +166,7 @@
 					case 0:
 						camera.add(object)
 						object.userData = {
-							URL: "https://www.youtube.com/watch?v=DeWrneNglJY"
+							URL: "https://laboriacuboniks.net/wp-content/uploads/2019/11/qx8bq.txt"
 						}
 						object.position.set(-195, 220, -10) //x, y, z
 						var spriteFeatures = makeTextSprite("")
@@ -177,7 +176,7 @@
 						break
 					case 1:
 						object.userData = {
-							URL: "https://www.youtube.com/watch?v=fYjq9IZEL2Q"
+							URL: "http://externalpages.org/legacy-russell/black-meme"
 						}
 						object.position.set(197, 170, -150)
 						var spriteContact = makeTextSprite("")
@@ -187,7 +186,7 @@
 						break
 					case 2:
 						object.userData = {
-							URL: "https://www.youtube.com/watch?v=QcwLiDCENfA"
+							URL: "https://www.random.org/"
 						}
 						object.position.set(-205, -15, -130)
 						var spritesignup = makeTextSprite("")
@@ -197,7 +196,7 @@
 						break
 					case 3:
 						object.userData = {
-							URL: "https://www.youtube.com/watch?v=B6hM6iwHEbA"
+							URL: "https://the-right-lube.now.sh/"
 						}
 						object.position.set(65, 70, 93)
 						var spriteAbout = makeTextSprite("")
@@ -207,7 +206,7 @@
 						break
 					case 4:
 						object.userData = {
-							URL: "https://www.youtube.com/watch?v=g6DRlyxi8hc"
+							URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
 						}
 						object.position.set(175, -185, -100)
 						var spriteAbout = makeTextSprite("")
