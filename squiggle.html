@@ -166,8 +166,8 @@
 
                 renderer = new THREE.WebGLRenderer({ alpha: true });
                 renderer.setClearColor(0x000000, 0);
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(2)
+                renderer.setSize(innerWidth, innerHeight)
                 container.appendChild(renderer.domElement);
 
                 // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
