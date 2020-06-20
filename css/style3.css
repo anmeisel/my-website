@@ -427,6 +427,7 @@ li.list {
 
 @media (max-width: 575px) {
     .content {
+        margin-top: 5vh;
         position: relative;
         display: block;
         height: auto;
