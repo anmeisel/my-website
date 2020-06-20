@@ -207,20 +207,17 @@ a:hover {
 
 body {
     font-family: Verdana;
+    font-size: 0.78rem;
     overflow-x: hidden;
     background-image: none !important;
 }
 
 p {
-    /*font: 12px/normal "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
-    font-family: "Lucida Grande";*/
-    font: 11px / normal Verdana, sans-serif;
     font-family: Verdana;
     background-image: none !important;
 }
 
 p.smaller {
-    font: 10px / normal Verdana, sans-serif;
     font-family: Verdana;
     background-image: none !important;
     margin: 20px;
@@ -243,7 +240,7 @@ dir {
 .logo #title,
 .menu #title1,
 .menu #title2 {
-    font-size: 11px;
+    font-size: 0.78rem;
     font-weight: bold;
     color: darkgray;
     text-transform: uppercase;
@@ -252,7 +249,7 @@ dir {
 .logo #title a,
 .menu #title1 a,
 .menu #title2 a {
-    font-size: 11px;
+    font-size: 0.78rem;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
