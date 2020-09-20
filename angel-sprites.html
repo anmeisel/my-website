@@ -78,9 +78,9 @@
 
 						object.position.y = 0
 						object.position.x = 0
-						object.scale.x = 300
-						object.scale.y = 300
-						object.scale.z = 300
+						object.scale.x = 250
+						object.scale.y = 250
+						object.scale.z = 250
 						scene.add(object)
 					},
 					onProgress,
@@ -133,7 +133,7 @@
 
 			// labels
 
-			var geometry = new THREE.SphereGeometry(4, 100, 100)
+			var geometry = new THREE.SphereGeometry(10, 100, 100)
 			for (var i = 0; i < 5; i++) {
 				var object = new THREE.Mesh(
 					geometry,
@@ -224,7 +224,7 @@
 			function makeTextSprite(message, parameters) {
 				if (parameters === undefined) parameters = {}
 				var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Arial"
-				var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 50
+				var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 40
 				var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
 				var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
 				var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
@@ -250,7 +250,7 @@
 					useScreenCoordinates: false
 				})
 				var sprite = new THREE.Sprite(spriteMaterial)
-				sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
+				sprite.scale.set(5 * fontsize, 2 * fontsize, 5 * fontsize)
 				return sprite
 			}
 
