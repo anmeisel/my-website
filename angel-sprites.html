@@ -133,7 +133,7 @@
 
 			// labels
 
-			var geometry = new THREE.SphereGeometry(4, 32, 32)
+			var geometry = new THREE.SphereGeometry(4, 100, 100)
 			for (var i = 0; i < 5; i++) {
 				var object = new THREE.Mesh(
 					geometry,
@@ -150,7 +150,7 @@
 						object.userData = {
 							URL: "https://github.com/external-pages"
 						}
-						object.position.set(40, 220, -10) //x, y, z
+						object.position.set(-195, 220, -10) //x, y, z
 						var spriteFeatures = makeTextSprite("external pages code")
 						spriteFeatures.position.set(-195, 220, -10)
 						scene.add(spriteFeatures)
@@ -170,7 +170,7 @@
 						object.userData = {
 							URL: "https://userrights.contemporary-home-computing.org/"
 						}
-						object.position.set(-105, -15, -130)
+						object.position.set(-205, -15, -130)
 						var spritesignup = makeTextSprite("surprise link")
 						spritesignup.position.set(-205, -15, -130)
 						scene.add(spritesignup)
@@ -224,7 +224,7 @@
 			function makeTextSprite(message, parameters) {
 				if (parameters === undefined) parameters = {}
 				var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Arial"
-				var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 32
+				var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 50
 				var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
 				var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
 				var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
