@@ -67,7 +67,7 @@
 
 				var loader = new THREE.OBJLoader(manager)
 				loader.load(
-					"images/angel.obj",
+					"images/gentle.obj",
 					function(object) {
 						object.traverse(function(child) {
 							if (child instanceof THREE.Mesh) {
@@ -250,7 +250,8 @@
 					useScreenCoordinates: false
 				})
 				var sprite = new THREE.Sprite(spriteMaterial)
-				sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
+				sprite.scale.set(600, 200, 1)
+				// sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
 				return sprite
 			}
 
