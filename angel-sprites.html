@@ -151,7 +151,7 @@
 							URL: "https://github.com/external-pages"
 						}
 						object.position.set(-195, 220, -10) //x, y, z
-						var spriteFeatures = makeTextSprite("external pages src code")
+						var spriteFeatures = makeTextSprite("external pages code")
 						spriteFeatures.position.set(-195, 220, -10)
 						scene.add(spriteFeatures)
 
@@ -161,7 +161,7 @@
 							URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
 						}
 						object.position.set(197, 170, -150)
-						var spriteContact = makeTextSprite("external pages research")
+						var spriteContact = makeTextSprite("external pages txts")
 						spriteContact.position.set(197, 170, -150)
 						scene.add(spriteContact)
 
@@ -171,7 +171,7 @@
 							URL: "https://userrights.contemporary-home-computing.org/"
 						}
 						object.position.set(-205, -15, -130)
-						var spritesignup = makeTextSprite("contemp. home computing")
+						var spritesignup = makeTextSprite("surprise link")
 						spritesignup.position.set(-205, -15, -130)
 						scene.add(spritesignup)
 
@@ -181,7 +181,7 @@
 							URL: "https://ana.lol/blm-resources-embed.html"
 						}
 						object.position.set(65, 70, 93)
-						var spriteAbout = makeTextSprite("blm resources embed")
+						var spriteAbout = makeTextSprite("blm resources")
 						spriteAbout.position.set(65, 70, 93)
 						scene.add(spriteAbout)
 
@@ -214,7 +214,7 @@
 				var intersects = raycaster.intersectObjects(objects)
 				if (intersects.length > 0) {
 					window.open(intersects[0].object.userData.URL, "_target")
-					intersects[0].object.material.color = new THREE.Color(0x551abb)
+					intersects[0].object.material.color = new THREE.Color(0x57bcff)
 					intersects[0].object.material.needsUpdate = true
 				}
 			}
