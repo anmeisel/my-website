@@ -2,22 +2,73 @@ html {
     background-color: grey;
 }
 
-.content {
-    top: auto;
-    top: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    right: 0px;
-    height: auto;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana;
+    font-size: 0.78rem;
+    overflow-x: hidden;
+    background-image: none !important;
+}
+
+p {
+    font-family: Verdana;
+    background-image: none !important;
+}
+
+p.smaller {
+    font-family: Verdana;
+    background-image: none !important;
+    margin: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgba(230, 240, 255, 0.99);
+    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(120, 200, 255, 0.75);
+    border-color: rgba(120, 200, 255, 0.75);
+}
+
+/*div,
+menu,
+dir {
+    display: block;
+    list-style: none;
+}*/
+
+.threejs iframe {
+    display: inline-block;
+    width: calc(50% - 5px);
+    height: calc(50% - 5px);
+    border: none;
+    /*border: 1px solid black;*/
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.content-wrap {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
     z-index: 3;
 }
 
-.content3 {
-    position: absolute;
-    height: 100vh;
+.content {
     z-index: 3;
-    display: block;
 }
 
 button:active.blue-a {
@@ -127,17 +178,6 @@ button.blue-a {
 ul.menu1 {
 }
 
-.content2 {
-    top: auto;
-    bottom: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    right: 0px;
-    height: auto;
-    position: absolute;
-    z-index: 3;
-}
-
 ul.menu3,
 ul.menu2 {
     margin-left: 20px;
@@ -159,22 +199,37 @@ ul.menu2 {
     margin-top: 10px;
 }
 
-li {
-    list-style: none;
+.biginside1 a {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 90px;
+    margin-top: 15px;
+    text-align: center;
 }
 
-a {
-    text-decoration: none;
+.biginside1 a:hover {
     color: black;
-}
-
-a:hover {
-    color: rgba(230, 240, 255, 0.99);
     text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(120, 200, 255, 0.75);
     border-color: rgba(120, 200, 255, 0.75);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5), 0 10px rgba(0, 0, 0, 0.05) inset,
+        0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
+    background: linear-gradient(
+        to bottom,
+        rgba(96, 103, 104, 0.1) 0%,
+        rgba(187, 187, 187, 0.1) 3%,
+        rgba(187, 187, 187, 0.1) 27%,
+        rgba(0, 0, 0, 0.1) 28%,
+        rgba(0, 0, 0, 0.1) 60%,
+        rgba(0, 0, 0, 0.1) 73%,
+        rgba(75, 80, 81, 0.1) 88%,
+        rgba(0, 0, 0, 0.1) 97%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    border-radius: 2.5px;
 }
 
-#ThreeJS iframe {
+/*#ThreeJS iframe {
     margin-right: auto;
     margin-left: auto;
     width: calc(100% + 400px);
@@ -198,37 +253,7 @@ a:hover {
     z-index: 1;
     width: 100%;
     height: 100%;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Verdana;
-    font-size: 0.78rem;
-    overflow-x: hidden;
-    background-image: none !important;
-}
-
-p {
-    font-family: Verdana;
-    background-image: none !important;
-}
-
-p.smaller {
-    font-family: Verdana;
-    background-image: none !important;
-    margin: 20px;
-}
-
-div,
-menu,
-dir {
-    display: block;
-    list-style: none;
-}
+}*/
 
 .logo {
     margin-top: 20px;
@@ -261,118 +286,9 @@ dir {
     cursor: pointer;
 }
 
-#titleframe1:hover,
-#titleframe2:hover,
-#titleframe3:hover,
-#titleframe4:hover,
-#titleframe5:hover,
-#titleframe6:hover,
-#titleframe7:hover,
-#titleframe8:hover,
-#titleframe9:hover,
-#titleframe10:hover,
-#titleframe11:hover,
-#titleframe12:hover,
-#titleframe13:hover,
-#titleframe14:hover,
-#titleframe15:hover,
-#titleframe16:hover {
-    cursor: pointer;
-}
-
-.window {
-    width: 60vw;
-    height: 80vh;
-    position: absolute;
-    overflow: scroll;
-    top: 60px;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%);
-    z-index: 5;
-    background-color: white;
-}
-
-.panel1,
-.panel2,
-.panel3,
-.panel4,
-.panel5,
-.panel6,
-.panel7,
-.panel8,
-.panel9,
-.panel10,
-.panel11,
-.panel12,
-.panel13,
-.panel14,
-.panel15,
-.panel16 {
-    top: 0px;
-    margin-top: 0px;
-    padding-top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.panel1 p,
-.panel2 p,
-.panel3 p,
-.panel4 p,
-.panel5 p,
-.panel6 p,
-.panel7 p,
-.panel8 p,
-.panel9 p,
-.panel10 p,
-.panel11 p,
-.panel12 p,
-.panel13 p,
-.panel14 p,
-.panel15 p,
-.panel16 p {
-    display: block;
-    text-align: center;
-}
-
-.biginside1 a {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 90px;
-    margin-top: 15px;
-    text-align: center;
-}
-
 a.page {
     padding: 5px;
     position: relative;
-}
-
-.biginside1 a:hover {
-    color: black;
-    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(120, 200, 255, 0.75);
-    border-color: rgba(120, 200, 255, 0.75);
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5), 0 10px rgba(0, 0, 0, 0.05) inset,
-        0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
-    background: linear-gradient(
-        to bottom,
-        rgba(96, 103, 104, 0.1) 0%,
-        rgba(187, 187, 187, 0.1) 3%,
-        rgba(187, 187, 187, 0.1) 27%,
-        rgba(0, 0, 0, 0.1) 28%,
-        rgba(0, 0, 0, 0.1) 60%,
-        rgba(0, 0, 0, 0.1) 73%,
-        rgba(75, 80, 81, 0.1) 88%,
-        rgba(0, 0, 0, 0.1) 97%,
-        rgba(0, 0, 0, 0.1) 100%
-    );
-    border-radius: 2.5px;
 }
 
 .menu ul li a,
@@ -460,119 +376,6 @@ li.list {
         display: none;
     }
 
-    iframe#ifr1,
-    iframe#ifr2,
-    iframe#ifr3,
-    iframe#ifr4,
-    iframe#ifr5,
-    iframe#ifr6,
-    iframe#ifr7,
-    iframe#ifr8,
-    iframe#ifr9,
-    iframe#ifr10,
-    iframe#ifr11,
-    iframe#ifr12,
-    iframe#ifr13,
-    iframe#ifr14,
-    iframe#ifr15,
-    iframe#ifr16,
-    iframe#ifr17 {
-        display: none;
-    }
-
-    .panel1 iframe,
-    .panel2 iframe,
-    .panel3 iframe,
-    .panel4 iframe,
-    .panel5 iframe,
-    .panel6 iframe,
-    .panel7 iframe,
-    .panel8 iframe,
-    .panel9 iframe,
-    .panel10 iframe,
-    .panel11 iframe,
-    .panel12 iframe,
-    .panel13 iframe,
-    .panel14 iframe,
-    .panel15 iframe,
-    .panel16 iframe {
-        display: none;
-    }
-
-    .panel1,
-    .panel2,
-    .panel3,
-    .panel4,
-    .panel5,
-    .panel6,
-    .panel7,
-    .panel8,
-    .panel9,
-    .panel10,
-    .panel11,
-    .panel12,
-    .panel13,
-    .panel14,
-    .panel15,
-    .panel16 {
-        left: 0px;
-        top: 0px;
-        z-index: 999;
-        position: relative;
-        margin-left: 10px;
-        height: auto;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-        padding-top: 0px;
-    }
-
-    .panel1 a,
-    .panel2 a,
-    .panel3 a,
-    .panel4 a,
-    .panel5 a,
-    .panel6 a,
-    .panel7 a,
-    .panel8 a,
-    .panel9 a,
-    .panel10 a,
-    .panel11 a,
-    .panel12 a,
-    .panel13 a,
-    .panel14 a,
-    .panel15 a,
-    .panel16 a {
-        width: 100%;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding: 0px;
-        top: 0px;
-    }
-
-    .panel1 p,
-    .panel2 p,
-    .panel3 p,
-    .panel4 p,
-    .panel5 p,
-    .panel6 p,
-    .panel7 p,
-    .panel8 p,
-    .panel9 p,
-    .panel10 p,
-    .panel11 p,
-    .panel12 p,
-    .panel13 p,
-    .panel14 p,
-    .panel15 p,
-    .panel16 p {
-        width: 100%;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        padding: 0px;
-        top: 0px;
-    }
-
     .desc {
         display: block;
         margin-top: 5px;
@@ -586,7 +389,7 @@ li.list {
         padding: 0px;
     }
 
-    #ThreeJS iframe {
+    /*    #ThreeJS iframe {
         margin-top: 100vh;
         overflow: visible;
         z-index: 1;
@@ -602,5 +405,5 @@ li.list {
         height: 100%;
         overflow: visible;
         z-index: 1;
-    }
+    }*/
 }
