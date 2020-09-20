@@ -29,7 +29,7 @@
 				// scene
 
 				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000)
-				camera.position.z = 400
+				camera.position.z = 800
 
 				scene = new THREE.Scene()
 				scene.background = null // transparent
@@ -78,9 +78,9 @@
 
 						object.position.y = 0
 						object.position.x = 0
-						object.scale.x = 100
-						object.scale.y = 100
-						object.scale.z = 100
+						object.scale.x = 300
+						object.scale.y = 300
+						object.scale.z = 300
 						scene.add(object)
 					},
 					onProgress,
@@ -150,7 +150,7 @@
 						object.userData = {
 							URL: "https://github.com/external-pages"
 						}
-						object.position.set(-195, 220, -10) //x, y, z
+						object.position.set(40, 220, -10) //x, y, z
 						var spriteFeatures = makeTextSprite("external pages code")
 						spriteFeatures.position.set(-195, 220, -10)
 						scene.add(spriteFeatures)
@@ -170,7 +170,7 @@
 						object.userData = {
 							URL: "https://userrights.contemporary-home-computing.org/"
 						}
-						object.position.set(-205, -15, -130)
+						object.position.set(-105, -15, -130)
 						var spritesignup = makeTextSprite("surprise link")
 						spritesignup.position.set(-205, -15, -130)
 						scene.add(spritesignup)
