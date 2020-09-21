@@ -78,7 +78,6 @@ a:hover {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    font-size: 9px;
     font-family: times;
     font-style: italic;
 }
@@ -332,7 +331,7 @@ li.list {
         background-color: transparent;
     }
 
-    a {
+    .menu a {
         /*font-size: 9px;*/
         font-family: times;
         font-style: italic;
