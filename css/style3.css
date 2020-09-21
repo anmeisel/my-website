@@ -314,6 +314,10 @@ li.list {
         background-color: transparent;
     }
 
+    .noemoji {
+        display: none;
+    }
+
     .threejs {
         height: 100%;
     }
