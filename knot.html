@@ -1,9 +1,9 @@
 <html lang="en">
     <head>
-        <title>ana</title>
+        <title>☁</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style3.css" />
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -51,6 +51,11 @@
                 var directionalLight = new THREE.DirectionalLight(0xffeedd)
                 directionalLight.position.set(0, 0, 1)
                 scene.add(directionalLight)
+
+                var light2 = new THREE.PointLight(0xffffff, 1, 0)
+				light2.position.set(0, 0, -900)
+				var ambientLight2 = new THREE.AmbientLight(0x101030)
+				scene.add(light2)
 
                 // texture
 
