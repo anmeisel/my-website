@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>babe~ * ~~*</title>
+		<title>number one babe * ~ ~~* ~</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 		<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 		<style>
-			body {
-				background-image: url(/images/IMG_20200928_152320.jpg);
-			}
 			p {
 				position: absolute;
 				top: 50%;
@@ -29,9 +26,7 @@
 	</head>
 
 	<body>
-		<script src="../lib/jquery-3.4.1.min.js"></script>
 		<script src="../build/three.js"></script>
-		<script src="../js/onEvent.js"></script>
 		<script src="../js/OBJLoader.js"></script>
 		<script src="../js/Detector.js"></script>
 		<script src="../js/OrbitControls.js"></script>
@@ -145,100 +140,72 @@
 				stats.domElement.style.zIndex = 100
 				container.appendChild(stats.domElement)
 
-				// var imagePrefix = "../images/"
-				// var directions = ["IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320"]
-				// var imageSuffix = ".jpg"
-				// var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
+				var imagePrefix = "../images/"
+				var directions = ["IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320"]
+				var imageSuffix = ".jpg"
+				var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
 
-				// var imagePrefix = "../images/"
-				// var directions = ["IMG_20200928_152320"]
-				// var imageSuffix = ".jpg"
-				// var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
-
-				// var materialArray = []
-				// for (var i = 0; i < 6; i++)
-				// 	materialArray.push(
-				// 		new THREE.MeshBasicMaterial({
-				// 			map: THREE.ImageUtils.loadTexture(imagePrefix + directions[i] + imageSuffix),
-				// 			side: THREE.BackSide
-				// 		})
-				// 	)
-				// var skyMaterial = new THREE.MeshFaceMaterial(materialArray)
-				// var skyBox = new THREE.Mesh(skyGeometry, skyMaterial)
-				// scene.add(skyBox)
+				var materialArray = []
+				for (var i = 0; i < 6; i++)
+					materialArray.push(
+						new THREE.MeshBasicMaterial({
+							map: THREE.ImageUtils.loadTexture(imagePrefix + directions[i] + imageSuffix),
+							side: THREE.BackSide
+						})
+					)
+				var skyMaterial = new THREE.MeshFaceMaterial(materialArray)
+				var skyBox = new THREE.Mesh(skyGeometry, skyMaterial)
+				scene.add(skyBox)
 
 				////////////
 				// CUSTOM //
 				////////////
 
-				// var sphereGeom = new THREE.SphereGeometry(100, 32, 16)
+				var sphereGeom = new THREE.SphereGeometry(100, 32, 16)
 
-				// var moonTexture = THREE.ImageUtils.loadTexture("../images/moon.jpg")
-				// var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture })
-				// for (var i = 0; i < 1; i++) {
-				// 	var moon = new THREE.Mesh(sphereGeom, moonMaterial)
+				var moonTexture = THREE.ImageUtils.loadTexture("../images/IMG_20200813_173835.jpg")
+				var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture })
+				for (var i = 0; i < 1; i++) {
+					var moon = new THREE.Mesh(sphereGeom, moonMaterial)
 
-				// 	console.log(moon)
-				// 	switch (i) {
-				// 		case 0:
-				// 			camera.add(moon)
-				// 			moon.userData = {
-				// 				URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
-				// 			}
-				// 			moon.position.set(-195, 220, -10) //x, y, z
+					console.log(moon)
+					switch (i) {
+						case 0:
+							camera.add(moon)
+							moon.userData = {
+								URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+							}
+							moon.position.set(-195, 220, -10) //x, y, z
+							var spriteFeatures = makeTextSprite("luv u lua!!!")
+							spriteFeatures.position.set(-195, 220, -10)
+							scene.add(spriteFeatures)
 
-				// 			break
-				// 		case 1:
-				// 	}
-
-				// scene.add(object)
-				// objects.push(moon)
-
-				// moon.position.set(-300, -50, -150)
-
-				// scene.add(moon)
-				// objects.push(moon)
-
-				var spriteFeatures = makeTextSprite("lots of luv lua x")
-				spriteFeatures.position.set(-195, 220, -10)
-				scene.add(spriteFeatures)
-
-				var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
-
-				var moonTexture1 = THREE.ImageUtils.loadTexture("../images/IMG_20200813_173835.jpg")
-				var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
-
-				var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
-
-				sun.position.set(150, 50, 250)
-				// sun.userData = {
-				// 	URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
-				// }
-
-				sun.userData = {
-					URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
-				}
-
-				// sun.window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
-				scene.add(sun)
-				objects.push(sun)
-				// }
-
-				sun.on(
-					"hover",
-					function(obj) {
-						spriteHoverIn()
-						$(`#hover-${obj.userData.id}`).show()
-					},
-					function(obj) {
-						spriteHoverOut()
-						$(`#hover-${obj.userData.id}`).hide()
+							break
+						case 1:
 					}
-				)
-				sun.on("click", function(obj) {
-					// window.location = obj.userData.url
-					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
-				})
+
+					// scene.add(object)
+					// objects.push(moon)
+
+					// moon.position.set(-300, -50, -150)
+
+					// scene.add(moon)
+					// objects.push(moon)
+
+					// var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
+
+					// var moonTexture1 = THREE.ImageUtils.loadTexture("../images/moon.jpg")
+					// var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
+
+					// var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
+
+					// sun.position.set(150, 50, 250)
+					// sun.userData = {
+					// 	URL: "new-sun.saver.zip"
+					// }
+					// scene.add(sun)
+					// objects.push(sun)
+				}
 
 				// create custom material from the shader code above
 				//   that is within specially labeled script tags
