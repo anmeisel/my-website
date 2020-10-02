@@ -138,6 +138,7 @@
 				stats.domElement.style.position = "relative"
 				stats.domElement.style.bottom = "0px"
 				stats.domElement.style.zIndex = 100
+				stats.domElement.style.display = "none"
 				container.appendChild(stats.domElement)
 
 				var imagePrefix = "../images/"
@@ -267,7 +268,8 @@
 				var intersects = raycaster.intersectObjects(objects)
 				if (intersects.length > 0) {
 					// window.open(intersects[0].object.userData.URL, "_target")
-					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
+					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4","winName","location=0,width=300,height=214").focus();
+
 					// intersects[0].object.material.color = new THREE.Color(0x551abb)
 					// intersects[0].object.material.needsUpdate = true
 				}
