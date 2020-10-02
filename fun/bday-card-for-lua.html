@@ -204,10 +204,31 @@
 				// sun.userData = {
 				// 	URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
 				// }
-				sun.window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
+
+				sun.userData = {
+						URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+					}
+
+				// sun.window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
 				scene.add(sun)
 				objects.push(sun)
 				// }
+
+				sun.on(
+			        "hover",
+			        function (obj) {
+			            spriteHoverIn()
+			            $(`#hover-${obj.userData.id}`).show()
+			        },
+			        function (obj) {
+			            spriteHoverOut()
+			            $(`#hover-${obj.userData.id}`).hide()
+			        }
+			    )
+			    sun.on("click", function (obj) {
+			        // window.location = obj.userData.url
+			        window.open("Lindsay-Lohan-says-Happy-Birthday.mp4");
+			    })
 
 				// create custom material from the shader code above
 				//   that is within specially labeled script tags
