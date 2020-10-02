@@ -175,8 +175,8 @@
 							moon.userData = {
 								URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
 							}
-							moon.position.set(-195, 220, -10) //x, y, z
-							var spriteFeatures = makeTextSprite("luv u lua!!!")
+							// moon.position.set(-195, 220, -10) //x, y, z
+							var spriteFeatures = makeTextSprite("luv u lua!!! happy birthday!")
 							spriteFeatures.position.set(-195, 220, -10)
 							scene.add(spriteFeatures)
 
@@ -213,7 +213,7 @@
 					uniforms: {
 						c: { type: "f", value: 1.0 },
 						p: { type: "f", value: 1.4 },
-						glowColor: { type: "c", value: new THREE.Color(0xffff00) },
+						glowColor: { type: "c", value: new THREE.Color(0xd273c6) },
 						viewVector: { type: "v3", value: camera.position }
 					},
 					vertexShader: document.getElementById("vertexShader").textContent,
@@ -236,7 +236,7 @@
 						geometry,
 						new THREE.MeshBasicMaterial({
 							shading: THREE.FlatShading,
-							color: 0xffff00
+							color: 0xff00ff
 						})
 					)
 				}
