@@ -6,6 +6,9 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 		<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 		<style>
+			body {
+				background-image: url(/images/IMG_20200928_152320.jpg);
+			}
 			p {
 				position: absolute;
 				top: 50%;
@@ -26,7 +29,9 @@
 	</head>
 
 	<body>
+		<script src="../lib/jquery-3.4.1.min.js"></script>
 		<script src="../build/three.js"></script>
+		<script src="../js/onEvent.js"></script>
 		<script src="../js/OBJLoader.js"></script>
 		<script src="../js/Detector.js"></script>
 		<script src="../js/OrbitControls.js"></script>
@@ -140,22 +145,27 @@
 				stats.domElement.style.zIndex = 100
 				container.appendChild(stats.domElement)
 
-				var imagePrefix = "../images/"
-				var directions = ["IMG_20200928_152320"]
-				var imageSuffix = ".jpg"
-				var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
+				// var imagePrefix = "../images/"
+				// var directions = ["IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320"]
+				// var imageSuffix = ".jpg"
+				// var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
 
-				var materialArray = []
-				for (var i = 0; i < 6; i++)
-					materialArray.push(
-						new THREE.MeshBasicMaterial({
-							map: THREE.ImageUtils.loadTexture(imagePrefix + directions[i] + imageSuffix),
-							side: THREE.BackSide
-						})
-					)
-				var skyMaterial = new THREE.MeshFaceMaterial(materialArray)
-				var skyBox = new THREE.Mesh(skyGeometry, skyMaterial)
-				scene.add(skyBox)
+				// var imagePrefix = "../images/"
+				// var directions = ["IMG_20200928_152320"]
+				// var imageSuffix = ".jpg"
+				// var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
+
+				// var materialArray = []
+				// for (var i = 0; i < 6; i++)
+				// 	materialArray.push(
+				// 		new THREE.MeshBasicMaterial({
+				// 			map: THREE.ImageUtils.loadTexture(imagePrefix + directions[i] + imageSuffix),
+				// 			side: THREE.BackSide
+				// 		})
+				// 	)
+				// var skyMaterial = new THREE.MeshFaceMaterial(materialArray)
+				// var skyBox = new THREE.Mesh(skyGeometry, skyMaterial)
+				// scene.add(skyBox)
 
 				////////////
 				// CUSTOM //
@@ -206,8 +216,8 @@
 				// }
 
 				sun.userData = {
-						URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
-					}
+					URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+				}
 
 				// sun.window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
 				scene.add(sun)
@@ -215,20 +225,20 @@
 				// }
 
 				sun.on(
-			        "hover",
-			        function (obj) {
-			            spriteHoverIn()
-			            $(`#hover-${obj.userData.id}`).show()
-			        },
-			        function (obj) {
-			            spriteHoverOut()
-			            $(`#hover-${obj.userData.id}`).hide()
-			        }
-			    )
-			    sun.on("click", function (obj) {
-			        // window.location = obj.userData.url
-			        window.open("Lindsay-Lohan-says-Happy-Birthday.mp4");
-			    })
+					"hover",
+					function(obj) {
+						spriteHoverIn()
+						$(`#hover-${obj.userData.id}`).show()
+					},
+					function(obj) {
+						spriteHoverOut()
+						$(`#hover-${obj.userData.id}`).hide()
+					}
+				)
+				sun.on("click", function(obj) {
+					// window.location = obj.userData.url
+					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
+				})
 
 				// create custom material from the shader code above
 				//   that is within specially labeled script tags
