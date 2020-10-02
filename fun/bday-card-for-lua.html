@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>number one babe * ~ ~~* ~</title>
+		<title>number one babe</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 		<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
@@ -168,7 +168,7 @@
 				// CUSTOM //
 				////////////
 
-				var sphereGeom = new THREE.SphereGeometry(100, 32, 16)
+				var sphereGeom = new THREE.SphereGeometry(200, 32, 16)
 
 				var moonTexture = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.jpg")
 				var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture })
@@ -198,24 +198,24 @@
 					scene.add(object)
 					objects.push(moon)
 
-					moon.position.set(-300, -50, -150)
+					moon.position.set(1, 1, 1)
 
 					scene.add(moon)
 					objects.push(moon)
 
-					var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
+					// var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
 
-					var moonTexture1 = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.jpg.jpg")
-					var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
+					// var moonTexture1 = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.jpg.jpg")
+					// var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
 
-					var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
+					// var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
 
-					sun.position.set(150, 50, 250)
-					sun.userData = {
-						URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
-					}
-					scene.add(sun)
-					objects.push(sun)
+					// sun.position.set(150, 50, 250)
+					// sun.userData = {
+					// 	URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+					// }
+					// scene.add(sun)
+					// objects.push(sun)
 				}
 
 				// create custom material from the shader code above
@@ -266,9 +266,10 @@
 				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
 				var intersects = raycaster.intersectObjects(objects)
 				if (intersects.length > 0) {
-					window.open(intersects[0].object.userData.URL, "_target")
-					intersects[0].object.material.color = new THREE.Color(0x551abb)
-					intersects[0].object.material.needsUpdate = true
+					// window.open(intersects[0].object.userData.URL, "_target")
+					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4")
+					// intersects[0].object.material.color = new THREE.Color(0x551abb)
+					// intersects[0].object.material.needsUpdate = true
 				}
 			}
 
@@ -315,6 +316,7 @@
 
 			function update() {
 				controls.update()
+				controls.enableZoom = false;
 				stats.update()
 				moonGlow.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, moonGlow.position)
 				crateGlow.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, crateGlow.position)
