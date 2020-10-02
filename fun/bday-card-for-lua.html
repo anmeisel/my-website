@@ -239,6 +239,48 @@
 				moonGlow.scale.multiplyScalar(1.2)
 				scene.add(moonGlow)
 
+				//
+
+				this.moonGlow2 = new THREE.Mesh(sphereGeom.clone(), customMaterial.clone())
+				for (var i = 0; i < 5; i++) {
+					var moonGlow2 = new THREE.Mesh(sphereGeom, customMaterial)
+					console.log(moonGlow2)
+					switch (i) {
+						case 0:
+							camera.add(moonGlow2)
+							moonGlow2.userData = {
+								URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+							}
+							break
+						case 1:
+						camera.add(moonGlow2)
+							moonGlow2.userData = {
+								URL: "scales_2696.png"
+							}
+							break
+						case 2:
+						camera.add(moonGlow2)
+							moonGlow2.userData = {
+								URL: "seedling_1f331.png"
+							}
+							break
+						case 3:
+						camera.add(moonGlow2)
+							moonGlow2.userData = {
+								URL: "ant_1f41c.png"
+							}
+							break
+						case 4:
+						camera.add(moonGlow2)
+							moonGlow2.userData = {
+								URL: "cat_1f408.png"
+							}
+							break
+					}
+				moonGlow2.position.set(200, 20, 20)
+				moonGlow2.scale.multiplyScalar(1.2)
+				scene.add(moonGlow2)
+
 				// labels
 
 				var geometry = new THREE.SphereGeometry(4, 32, 32)
@@ -267,20 +309,21 @@
 				var intersects = raycaster.intersectObjects(objects)
 				if (intersects.length > 0) {
 					// window.open(intersects[0].object.userData.URL, "_target")
-					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4", "winName", "location=0,width=256,height=400").focus()
+					window.open(intersects[0].object.userData.URL, , "winName", "location=0,width=256,height=400").focus()
+					// window.open("Lindsay-Lohan-says-Happy-Birthday.mp4", "winName", "location=0,width=256,height=400").focus()
 				}
-				if (intersects.length > 0) {
-					window.open("scales_2696.png", "winName", "location=0,width=120,height=120").focus()
-				}
-				if (intersects.length > 0) {
-					window.open("seedling_1f331.png", "winName", "location=0,width=120,height=120").focus()
-				}
-				if (intersects.length > 0) {
-					window.open("ant_1f41c.png", "winName", "location=0,width=120,height=120").focus()
-				}
-				if (intersects.length > 0) {
-					window.open("cat_1f408.png", "winName", "location=0,width=120,height=120").focus()
-				}
+				// if (intersects.length > 0) {
+				// 	window.open("scales_2696.png", "winName", "location=0,width=120,height=120").focus()
+				// }
+				// if (intersects.length > 0) {
+				// 	window.open("seedling_1f331.png", "winName", "location=0,width=120,height=120").focus()
+				// }
+				// if (intersects.length > 0) {
+				// 	window.open("ant_1f41c.png", "winName", "location=0,width=120,height=120").focus()
+				// }
+				// if (intersects.length > 0) {
+				// 	window.open("cat_1f408.png", "winName", "location=0,width=120,height=120").focus()
+				// }
 			}
 
 			// sprite styling
