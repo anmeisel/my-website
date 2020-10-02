@@ -27,13 +27,6 @@
 
 	<body>
 
-<!-- 		<a href="JavaScript:a1('scales_2696.png');">focus 1</a>
-<a href="JavaScript:a2('seedling_1f331.png');">focus 2</a>
-<a href="JavaScript:a3('ant_1f41c.png');">focus 3</a>
-<a href="JavaScript:a4('cat_1f408.png');">focus 4</a> -->
-
-				
-
 		<script src="../build/three.js"></script>
 		<script src="../js/OBJLoader.js"></script>
 		<script src="../js/Detector.js"></script>
@@ -74,27 +67,6 @@
 		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 
 		<script>
-
-			function a1(url) { 
-popupWindow1 = window.open(
-                    url, 'popUpWindow1', 'height=120,width=120,left=0,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no')
-            }
-
-            function a2(url) { 
-popupWindow2 = window.open(
-                    url, 'popUpWindow2', 'height=120,width=120,right=0,top=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no')
-            }
-
-            function a3(url) { 
-popupWindow3 = window.open(
-                    url, 'popUpWindow3', 'height=120,width=120,left=0,bottom=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no')
-            }
-
-            function a4(url) { 
-popupWindow4 = window.open(
-                    url, 'popUpWindow3', 'height=120,width=120,right=0,bottom=0,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no')
-            }
-            
 
 			// custom global variables
 
@@ -199,10 +171,10 @@ popupWindow4 = window.open(
 				// CUSTOM //
 				////////////
 
-				var sphereGeom = new THREE.PlaneGeometry(200, 350, 16)
+				var sphereGeom = new THREE.SphereGeometry(200, 32, 16)
 
-				var moonTexture = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.png")
-				var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture,, side: THREE.DoubleSide })
+				var moonTexture = THREE.ImageUtils.loadTexture("../images/FrameLua1.png")
+				var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture })
 				for (var i = 0; i < 1; i++) {
 					var moon = new THREE.Mesh(sphereGeom, moonMaterial)
 
@@ -234,19 +206,6 @@ popupWindow4 = window.open(
 					scene.add(moon)
 					objects.push(moon)
 
-					// var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
-
-					// var moonTexture1 = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.jpg.jpg")
-					// var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
-
-					// var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
-
-					// sun.position.set(150, 50, 250)
-					// sun.userData = {
-					// 	URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
-					// }
-					// scene.add(sun)
-					// objects.push(sun)
 				}
 
 				// create custom material from the shader code above
@@ -272,14 +231,13 @@ popupWindow4 = window.open(
 
 				// labels
 
-				var geometry = new THREE.PlaneGeometry(4, 32, 32)
+				var geometry = new THREE.SphereGeometry(4, 32, 32)
 				for (var i = 0; i < 2; i++) {
 					var object = new THREE.Mesh(
 						geometry,
 						new THREE.MeshBasicMaterial({
 							shading: THREE.FlatShading,
-							color: 0xff00ff,
-							side: THREE.DoubleSide
+							color: 0xff00ff
 						})
 					)
 				}
@@ -299,7 +257,13 @@ popupWindow4 = window.open(
 				var intersects = raycaster.intersectObjects(objects)
 				if (intersects.length > 0) {
 					// window.open(intersects[0].object.userData.URL, "_target")
-					window.open("Lindsay-Lohan-says-Happy-Birthday.mp4", "winName", "location=0,width=256,height=400,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no").focus()
+					window
+						.open(
+							"Lindsay-Lohan-says-Happy-Birthday.mp4",
+							"winName",
+							"location=0,width=256,height=400,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=no"
+						)
+						.focus()
 				}
 			}
 
