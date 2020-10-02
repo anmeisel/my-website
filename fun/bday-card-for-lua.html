@@ -141,7 +141,14 @@
 				container.appendChild(stats.domElement)
 
 				var imagePrefix = "../images/"
-				var directions = ["IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320", "IMG_20200928_152320"]
+				var directions = [
+					"IMG_20200928_152320",
+					"IMG_20200928_152320",
+					"IMG_20200928_152320",
+					"IMG_20200928_152320",
+					"IMG_20200928_152320",
+					"IMG_20200928_152320"
+				]
 				var imageSuffix = ".jpg"
 				var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000)
 
@@ -163,7 +170,7 @@
 
 				var sphereGeom = new THREE.SphereGeometry(100, 32, 16)
 
-				var moonTexture = THREE.ImageUtils.loadTexture("../images/IMG_20200813_173835.jpg")
+				var moonTexture = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.jpg")
 				var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture })
 				for (var i = 0; i < 1; i++) {
 					var moon = new THREE.Mesh(sphereGeom, moonMaterial)
@@ -176,35 +183,39 @@
 								URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
 							}
 							// moon.position.set(-195, 220, -10) //x, y, z
-							var spriteFeatures = makeTextSprite("luv u lua!!! happy birthday!")
-							spriteFeatures.position.set(-195, 220, -10)
-							scene.add(spriteFeatures)
+							var sprite1 = makeTextSprite("luv u lua!!!")
+							sprite1.position.set(-195, 220, -10)
+							scene.add(sprite1)
+
+							var sprite2 = makeTextSprite("happy birthday!")
+							sprite2.position.set(-195, 200, -10)
+							scene.add(sprite2)
 
 							break
 						case 1:
 					}
 
-					// scene.add(object)
-					// objects.push(moon)
+					scene.add(object)
+					objects.push(moon)
 
-					// moon.position.set(-300, -50, -150)
+					moon.position.set(-300, -50, -150)
 
-					// scene.add(moon)
-					// objects.push(moon)
+					scene.add(moon)
+					objects.push(moon)
 
-					// var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
+					var sphereGeom1 = new THREE.SphereGeometry(100, 32, 16)
 
-					// var moonTexture1 = THREE.ImageUtils.loadTexture("../images/moon.jpg")
-					// var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
+					var moonTexture1 = THREE.ImageUtils.loadTexture("../images/Screenshot_20200828-224859.jpg.jpg")
+					var moonMaterial1 = new THREE.MeshBasicMaterial({ map: moonTexture1 })
 
-					// var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
+					var sun = new THREE.Mesh(sphereGeom1, moonMaterial1)
 
-					// sun.position.set(150, 50, 250)
-					// sun.userData = {
-					// 	URL: "new-sun.saver.zip"
-					// }
-					// scene.add(sun)
-					// objects.push(sun)
+					sun.position.set(150, 50, 250)
+					sun.userData = {
+						URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+					}
+					scene.add(sun)
+					objects.push(sun)
 				}
 
 				// create custom material from the shader code above
