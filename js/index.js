@@ -206,7 +206,7 @@ $('div#title1').click(function() {
     $('.biginside1').slideToggle(200);
 });
 
-$('div#title2').click(function() {
+$('.menu:last-child').click(function() {
     $('.biginside2').slideToggle(200);
 });
 

@@ -165,8 +165,8 @@ button.blue-a {
 .menu {
     margin: 20px;
     width: 175px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     z-index: 4;
     box-shadow: inset 6px 0px 6px 0px rgba(0, 0, 0, 0.13), inset -6px 0px 6px 0px rgba(0, 0, 0, 0.13), 3px 0px 15px 0px rgba(25, 218, 47, 0.55);
     /*background: linear-gradient(to top,
@@ -185,7 +185,8 @@ button.blue-a {
     border: 1px solid /*#8D8D8D*/ rgba(25, 218, 47, 1);
 }
 
-ul.menu1 {
+.menu:last-child {
+    cursor: pointer;
 }
 
 ul.menu3,
