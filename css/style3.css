@@ -44,13 +44,17 @@ p {
     right: 0;
 }
 
-.bckg img{
-    height: 100%;
+.bckg img {
+    height: 50vh;
     display: inline-block;
     top: 0px;
     height: auto;
     z-index: -1;
     margin-bottom: -5px;
+}
+
+.bckg-right img, .bckg-left img {
+    height: 100vh;
 }
 
 .mini {
