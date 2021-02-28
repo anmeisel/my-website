@@ -34,6 +34,8 @@ p {
     width: 50%;
     display: inline-block;
     position: absolute;
+    height: 100%;
+    overflow: hidden;
 }
 
 .bckg-left {
@@ -54,7 +56,8 @@ p {
 }
 
 .bckg-right img, .bckg-left img {
-    height: 100vh;
+    width: 100%;
+    min-height: 100%;
 }
 
 .mini {
