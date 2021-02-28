@@ -366,6 +366,17 @@ li.list {
 
 @media (max-width: 575px) {
 
+    .bckg {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .bckg img {
+        height: 105vh;
+        width: auto;
+    }
+
     .phone-none {
         display: none;
     }
