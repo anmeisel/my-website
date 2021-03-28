@@ -190,8 +190,12 @@ button.blue-a {
                 #F2F2F2 100%
     );*/
     border-radius: 2.5px;
-    border: 1px solid /*#8D8D8D*/ rgba(87, 188, 255, 1);
-    box-shadow: inset 6px 0px 6px 0px rgba(0, 0, 0, 0.13), inset -6px 0px 6px 0px rgba(0, 0, 0, 0.13), 3px 0px 15px 0px rgba(87, 188, 255, 0.75);
+    /*border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: inset 6px 0px 6px 0px rgba(0, 0, 0, 0.13), 
+    inset -6px 0px 6px 0px rgba(0, 0, 0, 0.13), 
+    3px 0px 15px 0px rgba(0, 0, 0, 0.75);*/
+    box-shadow: inset 6px 0px 6px 0px rgba(0, 0, 0, 0.13), inset -6px 0px 6px 0px rgba(0, 0, 0, 0.13), 3px 0px 15px 0px rgba(0, 0, 0, 0.55);
+    border: 1px solid /*#8D8D8D*/ rgba(0, 0, 0, 0.5);
 }
 
 /*.blue-a {
@@ -340,6 +344,12 @@ li.list {
     display: none;
 }
 
+iframe.gentle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 @media (max-width: 1020px) {
     .window {
         left: initial;
@@ -418,7 +428,7 @@ li.list {
 
     iframe.gentle,
     iframe.facemorph {
-        display: none;
+        /*display: none;*/
     }
 
     .desc {
