@@ -415,7 +415,7 @@ iframe.gentle {
     iframe.knot {
         position: absolute;
         height: 50%;
-        bottom: 0;
+        /*bottom: 0;*/
         left: 0;
     }
 
