@@ -49,8 +49,8 @@
 			var mouseX = 0,
 				mouseY = 0
 
-			var windowHalfX = window.innerWidth / 2
-			var windowHalfY = window.innerHeight / 2
+			// var windowHalfX = window.innerWidth / 2
+			// var windowHalfY = window.innerHeight / 2
 
 			init()
 			animate()
@@ -163,8 +163,8 @@
 			}
 
 			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2
-				windowHalfY = window.innerHeight / 2
+				// windowHalfX = window.innerWidth / 2
+				// windowHalfY = window.innerHeight / 2
 
 				camera.aspect = window.innerWidth / window.innerHeight
 				camera.updateProjectionMatrix()
@@ -173,8 +173,8 @@
 			}
 
 			function onDocumentMouseMove(event) {
-				mouseX = (event.clientX - windowHalfX) / 2
-				mouseY = (event.clientY - windowHalfY) / 2
+				// mouseX = (event.clientX - windowHalfX) / 2
+				// mouseY = (event.clientY - windowHalfY) / 2
 			}
 
 			function animate() {
