@@ -73,6 +73,18 @@
 				directionalLight.position.set(0, 0, 1)
 				scene.add(directionalLight)
 
+				var directionalLight1 = new THREE.DirectionalLight(0xffeedd)
+				directionalLight1.position.set(1, 1, -1)
+				scene.add(directionalLight1)
+
+				var directionalLight2 = new THREE.DirectionalLight(0xffeedd)
+				directionalLight2.position.set(1, 1, 1)
+				scene.add(directionalLight2)
+
+				var directionalLight3 = new THREE.DirectionalLight(0xffeedd)
+				directionalLight3.position.set(-1, -1, 1)
+				scene.add(directionalLight3)
+
 				// texture
 
 				var manager = new THREE.LoadingManager()
@@ -136,7 +148,7 @@
 				controls.enableRotate = true
 
 				// to disable pan
-				controls.enablePan = false
+				controls.enablePan = true
 
 				renderer = new THREE.WebGLRenderer({ alpha: true })
 				renderer.setClearColor(0x000000, 0)
