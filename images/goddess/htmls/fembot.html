@@ -1,0 +1,408 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>fembot</title>
+        <script src="//use.edgefonts.net/source-sans-pro.js"></script> 
+        <script type="text/javascript"
+src="http://codysherman.com/tools/infinite-scrolling/code" ></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/threejs/r69/three.min.js"></script> 
+     <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <style>
+.home {
+       margin-left: 170px;
+       padding-left: 170px;
+       border-left: 170px;
+       position: fixed;
+       top: 0px;
+       right: 0px
+      }
+
+body {
+        margin-top: 10;
+        margin-bottom: 100;
+        font-family: Verdana;
+        font-size: 11px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        background: linear-gradient( white, transparent),
+        linear-gradient( 90deg, #0030ff, transparent),
+        linear-gradient( -90deg, #0030ff, transparent);
+        background-attachment: fixed; 
+        background-blend-mode: screen;
+        top: 0px; 
+        left: 0px; 
+        right: 0px;
+        }    
+
+h3 {
+  color: white;
+        text-decoration: none;
+        font-family: Verdana;
+        font-size: 15px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        padding-top: 100px;
+        margin-top: 100px;
+        border-top: 100px;
+        padding-left: -30px;
+        width: 70%;
+}      
+
+#hello {
+  color: white;
+        text-decoration: none;
+        font-family: Verdana;
+        font-size: 20px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        padding-top: 100px;
+        margin-top: 100px;
+        border-top: 100px;
+        padding-left: -30px;
+        width: 90%;
+}
+
+.firstblob {
+  margin-top: -300px;
+}
+
+button {
+
+}
+
+  </style>
+<script>
+  var sentences = [
+  "The fastest way to a girl’s heart is through reblogging her selfie<br><br><br><em>By lameborghini, 23,705 notes</em>",
+  "looking healthy does not mean:<br>petite, curvy, small, large,muscular, slim, pretty, well dressed, sweating from the gym…etc<br>looking healthy means:<br>eyes sparkling, real smiling and laughter, skin that glows, a functioning alert body and radiating contentment and positivity about yourself.<br><br><br><em>By brightandblossom, 3,936,490 notes</em>",
+  "<strong>Lewis’s law </strong> is an observation she made in 2012 that states “<strong>the comments on any article about feminism justify feminism</strong>.” Lewis has written frequently about misogynist hate directed at women online.<br><br>Can we just repeat that a few more times,<br>“The comments on any article about feminism justify feminism.”<br><strong>“The comments on any article about feminism justify feminism.”</strong><br><br><br><em>By queensassyofthefatties, 228,006 notes</em>",
+  "shout out to girls with harsh voices and boys with fat thighs and to people who dont like a tv show but will still watch it with a good attitude if their friend wants to watch it and shout out to people who only rarely talk to their pets in baby voices and also to people who laugh at their own jokes and people who draw angry eyebrows on billboards i love you all<br><br><br><em>By snakesfucking, 148,031 notes</em>",
+  "gender is dumb<br>sexuality is dumb<br>be who you want<br>date who you want<br>sleep with who you want<br>why do we need labels for all this just like<br>do what you want man<br><br><br><em>By johnkatsprites, 108,109 notes</em>",
+  "Gotta love those videos of children breaking down when their soldier fathers come home as a surprise. Love separating children from their parents for the sake of violence. Love depressed children.<br><br><strong>apoligicianisticDeactivated</strong><br>Gotta love those childrens’ parents who are making the sacrifice to protect those they love and serve their country<br><br><strong>bwwwssssshhhhhhhhh</strong><br>American culture is mindlessly regurgitating this same phrase over and over again until the day you die<br><br><br><em>By bwwwssssshhhhhhhhh, 9,797 notes</em>",
+  "if you want my legs to be shaved every day then you can do it for me and ill see how long it takes for you to not care anymore<br><br><br><em>By geeses, 254,836 notes</em>",
+  "IT REALLY ANNOYS ME HOW ONLY GIRLS GET CALLED OUT FOR SWEARING TOO MUCH BECAUSE “ITS NOT LADYLIKE” FUCK YOU IM NOT HERE TO BE “LADYLIKE” IM HERE TO KICK ASS<br><br><br><em>By thsmiths, 334,730 notes</em>",
+  "The older I get the more I realise there are no grown ups and nobody knows what the fuck they’re doing.<br><br><br><em>By bon-bon, 401,243 notes</em>",
+  "“are you feminist?”<br>“no, i believe in equality for everyone”<br>?????????????<br>?????????????????????<br>????????????????<br>??????<br><br><br><em>By gracerofl, 227 notes</em>",
+  "America: Where two teenage rapists get one year and two years, respectively, in jail, while the Anonymous hacker that brought the rape to light faces five times their sentences.<br>What a fucked-up country we live in.<br><br><br><em>By poltlfreakshow, 4,003 notes</em>",
+  "<strong>just-shower-thoughts</strong><br>It is amazing to think that nighttime is actually the natural state of the universe, and the only reason we have daytime is because Earth just so happens to be facing a giant star illuminating it.<br><br><strong>mushroomnixies</strong><br>This fucked me up omg<br><br><br><em>By just-shower-thoughts, 475,649 notes</em>",
+  "“Political correctness” is a concept invented by the privileged to transform basic respect into something political and therefore controversial.<br><br><strong>waterbearsDeactivated</strong><br>“politically correct” was a term invented by Toni Cade in her 1970 anthology The Black Woman: “A man cannot be politically correct and a chauvinist too.” this is a fairly well known fact and to dismiss the origins and initial intent of the phrase is to dismiss once again work by black women. just because the phrase has been reappropriated into a snarky type of cultural capital doesn’t have anything to do with the invention of it<br><br><br><em>By fistarnius, 47,021 notes</em>",
+  "i need meninism because:<br>you always hear everyone say “mama mia” but you never hear anyone say “papa pia”<br><br><br><em>By utentagen, 224,317</em>",
+  "Like when women hate men it’s frustrating at worst, maybe it hurts someone’s feelings, but when men hate women they are shamed, abused, patronized, demeaned, objectified, raped, and murdered, ya feel me, so even if I WAS a raging misandrist like worst case scenario I’d be a bummer at parties, meanwhile a girl somewhere literally can’t leave her house because it’s dark outside.<br><br><br><em>By orgyborgy, 42,453 notes</em>",
+  "i’m so sick of the government reading but never liking my statuses<br><br><br><em>By azaadi, 113,484 notes</em>",
+  "people get angrier about their tax money going towards helping people than it going towards killing people<br><br><br><em>By theanti90smovement, 26,537 notes</em>",
+  "Every day for me is an adventure in seeing how strangers gender me and I’m increasingly comfortable with that and enjoy being illegible. Funny thing- men tend to either be upset by me and visibly flustered that they have no code for how to interact with me (how do I talk to a woman I don’t want to fuck who is reading in a way that tells me she doesn’t want me either???) or just solve the contradiction by seeing me as a man, no matter how long I’ve been talking to them (my voice is not actually THAT low), whether I’m binding, whether they know my name (can’t tell you how many men have called me Julian after asking my name) and so on. Goes to show that gendering is as much about current desires and a need to keep a stable worldview as it is about reading visual cues according to a code. That code moves to suit the needs of the viewer a million times per day.<br><br><br><em>By butchcommunist, 96 notes</em>",
+  "reblog if youre sick of gender roles and want to be abducted by aliens<br><br><br><em>By ghoul-king, 99,684 notes</em>",
+  "I believe that we should find the precise right words that are big enough to contain all the multitudes of us, and not sacrifice our selves to fit into labels which constrict. I believe the identity should conform to us, that we shouldn’t conform to it. And I believe that labels and identities and words that describe ourselves should always be the starting place, not the ending place, of the conversation—a place of opportunity to know more and ask questions and listen, not a place to fill in our own assumptions and determine the truths of others.<br>- The Exact Right Word: National Coming Out Day and Chosen Identities | Sugarbutch<br><br><br><em>By brutereason, 83 notes</em>",
+  "do you ever go through your own blog and just smile because even though as a blog it is objectively terrible it’s, like, the only space in the world that is 100% tailored to you and your interests<br><br><br><em>By firelordazula, 203,686 notes</em>",
+  "One thing that’s remarkable about linguistic change is how large-scale changes in the structure of a language can sometimes be attributed to generalization from a single exception. A nice example of this is found in the history of the gender system of the Northeast Caucasian language Lak. Lak has four genders, which are conventionally labelled by Roman numerals I-IV. Roughly, class I is for male humans, class II is for female humans, class III is for non-human animates and class IV is for liquids and abstract nouns; concrete inanimates are spread irregularly over classes III and IV, although the majority are in class III, and some non-human animates and liquids are found unexpectedly in classes III or IV.<br>However, in the modern language, nouns referring to female humans are often found in class III rather than class II. Already in the earliest description of the language, Uslar (1890), it is recorded that nouns referring to young women behaved as class III nouns. A woman would only start being referred to and referring to herself using class II nouns at some time between marriage and the birth of her first child; if she did this too early, or kept doing it too late, it would be seen as a ridiculous affectation of an inappropriate age status, and if others did it too early or too late it was considered an insult. (The distinction between classes II and III is thus comparable to the distinction between the Mrs and Miss titles in English, although the line is drawn slightly differently.) The use of class II has become more and more restricted since then; Khaidakov (1963) found that it tended to be restricted to immediate family members of an older generation, and it would be impolite to address even an old woman using a class II term if she was not a relative. In one dialect, that of Arakul’, it has gone so far that class II has been eliminated entirely.<br>Why did class III—a class originally reserved for non-humans—expand so as to include most women?<br>When we put it like that, it seems odd that women would be offended by not being included in class III rather than the other way around. The probable explanation is that it is a generalization of a single exception which already existed in the language involving the word duš ‘girl’. This word might have always been in class III, rather than class II. Cf. German Mädchen ‘girl’, which is famously neuter rather than feminine; in the case of this word it’s because it’s a dimunitive, and a morphological rule that dimunitives are neuter takes precedence over the semantic rule that female humans are feminine. I don’t know if there is a similar morphological explanation in the case of duš, but there’s also a semantic reason why words for ‘girl’ are not prototypical feminine gender words: children tend to be seen as having a neutral gender. And if the idea that ‘girl’ would be assigned feminine gender still seems implausible, consider the fact that the sense of ‘girl’ can be a specialization of an older sense of ‘child’, in general. In fact, the English word girl was originally gender-neutral. And we know that the whole development has taken place in the Indo-Aryan language Konkani. Konkani has the traditional three Indo-European genders: masculine, feminine and neuter. The word čeḍũ is neuter, and originally meant ‘child’, but came to mean specifically ‘girl’ in recent times, and the neuter gender has been extended to other words such as bayl ‘woman’ when they refer to young women, as opposed to old women. The feminine gender has not been eliminated yet in Konkani, although it’s conceivable that it might be, eventually. So the change which has been happening in Lak is not just a one-off oddity, but something which seems to be encouraged by a combination of morphological, semantic and sociolinguistic circumstances which tend to co-occur across different cultures and languages.<br>All this is from Corbett’s Gender (1991) (which I was having a look through again recently).<br><br><br><em>By house-carpenter, 100 notes</em>",
+  "Also I think it’s super cool that Yahoo is run by a woman<br><br><br><em>By dddddfffeest, 4 notes</em>",
+  "i only type in lowercase because i hate capitalism<br><br><br><em>By edwad, 65,870 notes</em>",
+  "i love wearing makeup i smells so nice and it feels good on my face and makes me feel good and i give 0 hecks if anyone else thinks i look good or not cause i feel super fresh<br><br><br><em>By thomples, 2 notes</em>",
+  "kinda weird that u can think about someone as much as u want and they have no idea<br><br><br><em>By edating, 1,044,216 notes</em>",
+  "other women are not my competition. i stand with them, not against them.<br><br><br><em>By molhouse, 7,632 notes</em>",
+  "I'm here for the non binary kids:<br> - who are told that their gender isn't valid<br> - who are uncomfortable in their body<br> - those who have friends that they've told and they understand<br>- who have had their identity used against them in an argument<br> - who have been told that there are only two genders<br> - 'You can't be neither! if you have a dick u r a guy and if u have a vagina u r a girl!!!11!!!!'<br> - 'Only girls have boobs!!!' 'only girls have periods!!1!!'<br> - who can't afford a binder and are extremely uncomfortable and resort to binding with tensor bandages. (please don't do this! it will harm you. it's not comfortable, I do it too. It hurts after a while, especially your breathing)<br> - or if your parents don't know that you identify as what you do and you want a binder, but don't want them knowing.<br> - who are forced to identify as a binary gender by their families.<br> - who's correct pronouns are NEVER used<br> - who can't decide what they identify as.<br> you are human you are valid  you matter!!!!<br> (feel free to add more)<br><br><br><em>By artful-ending, 379 notes</em>",
+  "You’re not obligated to shave your body hair but nobody is obligated to find body hair attractive<br><br><br><em>By basedsasori, 40,914 notes</em>",
+  "<strong>thetapunk asked:</strong><br>Can we not us the the term “biologically female”?<br><br>My apologies!<br>I wish there was a better way to say “these organs that do the baby carrying thing” without saying “biologically female.” Because in the science world there’s ‘male’ and ‘female’ reproductive organs, and while that’s all well and good to identify a person’s organs, it’s also used for binary genders.<br>Scientists use “female” for those in that species who have the eggs. “Male” is those who give the sperm. There’s not much for terms outside those two. So how does one separate the word “female” from female-designated genitals (ovaries, fallopian tubes, uterus, cervix, all that shabam) and “male” from male-designated genitals (testes, penis, scrotum, that jazz)? IS there a different term from “male” and “female” I can use to refer to the BIOLOGICAL organs, not the gender?<br>For now I don’t know any. Otherwise I’d use those words, not ‘male’ and ‘female’ since those are genders.<br>So, to say “biologically female” I really mean “those organs that do that thing” and not to CALL them “female.”<br>(I’m terrible at explaining my struggle.)<br>~ Jensen<br><br><br><em>By nonbinaryresource, 17 notes</em>",
+  "i have more followers than my high school has students. i could make a text post saying nothing but “hot gay throbbing cocks” and reach a wider audience than my principal does when he gets on the P.A. system<br><br><br><em>By sexhaver, 89,781 notes</em>",
+  "Twitter post (screenshot): Amber Eeeeeee @rare_basement<br>why do i always see critiques of misogyny in rap but never critiques of misogyny in indie rock. just kidding i know exactly why<br><br><br><em>By dddddfffeesr, 32,602 notes</em>",
+  "(GIF series of Caroline Heldman at TEDxYouth@SanDiego “The Sexy Lie”:)<br><br>So, self-objectification, 10 years of research, mostly done by psychologists, we know that it has some pretty severe affects.<br>The more we think of ourselves and internalize this idea of being sex objects the higher our rates of depression.<br>We also engage in habitual body monitoring when we view ourselves as sex objects. What is habitual body monitoring? For the men in the audience, this might be news to you. It is not news to the women in the audience.<br>We think about the positioning of our legs, the position of our hair, where the light if falling, who’s looking at us, who’s not looking at us. In fact, in the 5 minutes that I’ve been giving this talk, on average the women in this audience have engaged in habitual body monitoring 10 times. That is every 30 seconds.<br>Eating disorders are much more prevalent with those who view themselves as sex objects, as well as body shame and depressed cognitive functioning. If we’re engaging in habitual body monitoring it simply takes up more mental space that can be better used completing math tests, completing your homework. It just sucks our cognitive functioning.<br>Also, sexual dysfunction. So, this idea that ‘sex sells’, isn’t it strange that if you think of yourself as a sex object and we’re raised in a society that raises little girls to view their bodies as projects to work on and be sex objects, that it actually gets in the way of good sex?<br>So, what tends to happen is the women who are high self-objectifiers actually engage in what’s called, ‘spectatoring’ during sex acts. So instead of being involved and engaged in the pleasure of what’s happening, you tend to view yourself from a third party perspective, a spectator’s perspective. Where you’re worried about rolls of fat hanging out, what that leg looks like… so again, it gets in the way of sexual pleasure.<br>[Self-objectification] lowers your ability to get along with other women. We engage in female competition. We see male attention as the holy grail of our existence by-and-large and so we compete with other women for our own self-esteem because we see it as this finite resource. This cherished finite resource. So we go into parties and we know where we are in the pretty girl pecking order and when another woman is valued for being a sex object, it actually makes us feel bad about ourselves.<br><br><br><em>By exgynocraticgirl, 117,542 notes</em>",
+  "You Know You’re Trans* When: #2501 You get ticked off when forms ask for your gender, but only give you options for your sex. <br> #genderisnotsex <br><br><br><em>By genderisnotsex, 236 notes</em>",
+  "Remember that movie in which Jack Black was a teacher and building a rock band and when a little black chubby girl asked to be a singer he only said “sure! let me hear you” and the moment she started using her beautiful voice his lit up like all of his dreams came true, PLUS the same little girl was scared that people would make fun of her because she was fat and he started listing awesome singers with some weight on and included himself and told her that people wouldn’t laugh because she is awesome at what she does and that is all that matters PLUS that it’s ok to enjoy food?<br>Also, when a little boy asked to be the band’s stylist he just said “sure, go ahead fancy pants” like, there wasn’t a single second of questioning it, he went into “ok, that will be your position then” right away<br><br>That fucking movie is an hour and a half of Jack Black teaching kids to love themselves disregarding all of the stereotypes<br><br><br><em>By spellcaster-queen-selenem, 624,319 notes</em>",
+  "how do you get a nice body without moving<br><br><strong>boyirlDeactivated</strong><br>by learning to love yourself<br><br><strong>nachtfunken</strong><br>wow<br><br><strong>laurenbria</strong><br>Damn<br><br><br><em>By 2treehill, 1,266,378 notes</em>",
+  "The neoliberal promises of gay marriage<br><br><em>Inspired by National Party MP Maurice Williamson’s speech assuring conservatives that their lives won’t change, hence why the Marriage Equality Bill passed in New Zealand Parliament under a neoliberal right-wing government.</em><br><br>I promise you today<br>Gay marriage will not change business as usual<br>The sun will still rise tomorrow<br>The prisons industrial complex will still exist<br>Transwomen are still being held in men’s prisons and offered solitary confinement as protection from rape and violence<br>Intersex children will still be forced to have surgery<br>It will still be expensive and hard for most trans people to access life saving medical care<br>Homeless queer and trans youth will still be homeless<br>High rates of queer and trans youth will still struggle with mental health<br>Queer and trans people of colour will still be targets of state and interpersonal violence<br>Unemployed queers and trans people will still face humiliation from WINZ (Work and Income NZ)<br>State housing will still be sold off and queer tenants will still get evicted<br>This land will still be stolen<br>Palestine will still be under settler colonial occupation<br>Poor people will still be poor<br>Rich white people will still accumulate wealth from exploitation of workers, genocide and war<br>White supremacists and the police will still murder black people in the US<br>The immigration system will still violently entrench settler colonialism, detain and deport refugees and immigrants of colour<br>The Abbott government will still force closures of Aboriginal communities<br>Climate change will still be happening<br>University fees will still rise every year<br>America will still be an imperialist country<br>The world will still just carry on<br>#NeoliberalismWins<br>#GayMarriedToCapitalism<br> <br> <br> <em>By everythingisnothingbyitslef, 17 notes</em>",
+  "Oxford English Dictionary Adds 15 new Transgender and Nonbinary Terms to its Online Dictionary! <br> Oxford Dictionary has just added a slew of important trans and nonbinary terminology to its online dictionary, OxfordDictionaries.com. The following terms are now officially defined in US English: <br> Agender, Bi-gender, Cisgender, Cissexism, FTM, Gender Dysphoria, Gender Identity, Gender-fluid, Genderqueer, Misgender, MTF, Mx, Nonbinary, Transman, Transperson, Transphobia, and Transwoman! <br> Life Outside The Binary does not necessarily endorse the particular definitions nor the wording therein. Many of these definitions may be overly simplistic or use outdated terminology. It is certainly more important to understand each individual’s understanding and relationship to a given term, and to understand their history and social context, rather than to differ to a broad general definition. There are also many other important words (such as transmisogyny, binarism and other identities such as neutrois and androgyne) that definitely deserve inclusion in dictionaries. <br> However, this is still a huge win for transgender and non-binary people! Especially words such as “cissexism,” “transphobia,” and “misgender,” (as well as several common transgender identities) being defined in a reputable online language resource may represent a huge step toward developing common understanding and acceptance of trans and nonbinary people and issues. <br> -Lane <br> now people can stop saying “those aren’t real words” <br> <br> <br> <em>By lifeoutsidethebinary, 59,541 notes</em>",
+  "Honey Boo Boo and her family are happy, she isn’t doing anything more embarrassing than your standard blush-inducing family photo album stuff and her parents are literally putting every single dollar they make from the show into a college savings for their children and all the gifts she gets from fans get donated to LGBT youth shelters what possible bone could you have to pick with these people other than the fact that you find them slightly abrasive<br> <br> <br> <em>By confusedtree, 148,357 notes</em>",
+  "’Slut’ is attacking women for their right to say yes. ‘Friend Zone’ is attacking women for their right to say no. <br> - And “bitch” is attacking women for their right to call you on it (via tier-dropp) <br> <br> <br> <em>By emilys-nostalgia, 1,378,583 notes</em>",
+  "whenever “strong female characters” insult men by calling them girls  my eyes roll so far back in my head i can see my brain cells die <br> <br> <br> <em>By yennranmma, 363,884 notes</em>",
+  "(image of person holding a sign, stating:) <br> Men get raped. <br> Kids get raped. <br> Were their tits showing too? <br> <br> <br> <em>By grrls, 280,138 notes</em>",
+  "women arent complicated youre just dumb <br> <br> <br> <em>By radioheade-moved, 159,246 notes</em>",
+  "I’m just a girl who wants to be loved. But I was told, on more than one occasion, by a man who told me that he loved me, that he could not be seen in public with me. Could not introduce me to friends and family because I am trans. And not only because I am trans but because people can tell that I am trans, I am not ‘passable’ enough by certain standards. Some days, I wake up and I don’t feel good enough, because I’ve heard that over and over again.<br>- Laverne Cox<br><br><br><em>By jessicascapshaw, 245, 642 notes</em>",
+  "Feminist Theory Masterpost<br><br><strong>Amazon feminism:</strong> Female physical prowess is the primary means of gaining gender equality.<br><strong>Anarcha-feminism:</strong> All relations of power must be opposed and challenged, including the patriarchy.<br><strong>Atheist feminism:</strong> Religion should be identified as a main source of women's oppression.<br><strong>Black feminism:</strong> The liberation of black women would equal the liberation of everyone, since it would require full erasure of racist, sexist and classist oppression.<br><strong>Christian feminism:</strong> God does not discriminate on race and gender. Women should be recognized for their equal moral and spiritual abilities within Christianity.<br><strong>Cyberfeminism:</strong> The digital realm and technology are means for the dissolution of sex and gender.<br><strong>Difference feminism:</strong> While women should receive equal status, we must recognize the inherent differences between women and men.<br><strong>Ecofeminism:</strong> Women are inherently connected with nature. Therefore women and nature must together be liberated from the patriarchy.<br><strong>Equality feminition:</strong> There is no difference between women and men. Not only must full equality therefore be possible, our worldview must become androgynous.<br><strong>Fat feminism:</strong> There must be acceptance of women of all sizes. It is important to recognize how misogyny and sexism intersect with sizism and anti-fat bias.<br><strong>Islamic feminism:</strong> The patriarchal interpretation of the Qu'ran must be questioned. The deeply rooted teachings of equality in islam must be highlighted so that full equality for all muslims regardless of gender can be achieved.<br><strong>Jewish feminism:</strong> Jewish women should have equal legal, societal and religious status as Jewish men.<br><strong>Lesbian feminism:</strong> The assumption that everyone is straight must be renounced and society should not be structured around it. Lesbian women should have a voice in the discourse around gender equality.<br><strong>Liberal feminism:</strong> Women are personally and individually responsible for achieving their own equality in our society. Customary and legal restraints that block women's equal access into society must be removed.<br><strong>Lipstick feminism:</strong> Traditionally feminine objects and attributes should be reclaimed and actively embraced. This includes the sexual power of women.<br>Material feminism: Capitalism and the patriarchy are the primary means of maintaining inequality of the sexes, races and economic classes.<br><strong>New feminism:</strong> Women and men have inherently different strenghts and weaknesses, which serve to compliment each other.<br><strong>Postcolonial feminism:</strong> Women in non-Western countries are misrepresented by the mainstream 'global' feminist movement. A closer look should be cast upon the lasting effects of racism and colonialism in the current positions of these women.<br><strong>Post-structural feminism:</strong> In battling inequality, it is important to recognize that there are no universal, singular categories that define 'men' and 'women'.<br><strong>Radical feminism:</strong> Male supremacy is the main cause of women's oppression. Women should oppose standard gender roles and eventually society should be radically reordered. [Warning: transphobic beliefs coming up. OP of this post strongly opposes this belief.] Transgender women retain male privilege and reinforce restrictive and damaging gender norms in their presentation.<br><strong>Seperatist feminism:</strong> Women and girls should be the main focus of the feminist movement. Men cannot contribute meaningfully to it, and even their well-meaning participation replicates the dynamics of the patriarchy.<br><strong>Sex-positive feminism:</strong> Sexual freedom is an essential component in the full liberation of women.<br><strong>Transfeminism:</strong> The liberation of trans women is tied intrinsically to the liberation of all women and beyond.<br><br><br><em>By teamrocketing, 3,092 notes</em>",
+  "'who? oh, an internet friend?' yea and they're a better fuckin friend than you've ever been mate so get that disapproval out of your voice and up your goddamn game you should be ashamed of urself<br><br><br><em>By szyn, 89,387 notes</em>",
+  "I like how on Tumblr we all have lots of sass but in real life we can’t say hi without fucking up.<br><br><br><em>By shady-brain-farm, 910,226 notes</em>",
+  "why the fuck does vagina=weak and dick=strong<br>have u ever kicked someone in the dick? they fall to the floor and cry kick someone in the vagina and i can guarantee u they'll just punch u in the face<br>vagina not weak<br>vagina strong<br><br><br><em>By lorassed, 284,345 notes</em>",
+  "“Female-assigned intersex kids’ vaginal canal size is also assessed by doctors, to ensure that it’s long enough to fit a penis inside of it. Doctors might surgically construct or re-construct vaginas, which can result in a host of health problems and necessitate multiple, multiple surgeries. This is especially the case since most intersex kids have these surgeries very young, and when their bodies grow into their adult forms, more surgeries are necessary to keep their vagina size in proportion. Non-surgical methods are also used to increase or maintain vaginal length by regularly using medical dildos to stretch the vagina over months and years. (It’s kind of like braces for your vagina, but much, much worse.) Just like there are no standards for how long a clitoris “can” be before it’s classified as a penis, there aren’t absolute standards as to how long a vagina is for it to be of “normal” length.<br>I had a dilation procedure performed for almost every exam I had with intersex doctors from the time I was 8 until I was 16, so that they could check how long my vagina was as I grew. I absolutely hated these procedures. I mean, imagine a man as old as your father or your grandfather, who you don’t know, inserting a medical dildo into you each time you saw him, knowing that you can’t question the doctor’s orders and just accept that you have to undergo these uncomfortable procedures for your health. Imagine a decade or so later, realizing that these procedures did nothing to track your health, and had everything to do with grown men feeling good about the fact that you could fuck some dude someday like a “normal girl”. That all those traumatizing procedures weren’t actually medically relevant at all, and it actually was within my right to refuse those examinations.<br>I didn’t know any of that at the time.<br>I also had no idea that I wouldn’t want to ultimately have the kind of sex they assumed I’d be having, adding yet another layer of this-was-totally-unnecessary/messed-up to my history.<br>Other kids shouldn’t have to go through this. Other adults shouldn’t have revelations some day far into the future that what was happening to them WASN’T okay, and their traumatic feelings ARE valid, and the whole system of how intersex people are conceptualized and “treated” IS entirely fucked.<br>And it’s gotta change. We’ve gotta change it.”<br>- Claudia at Autostraddle<br><br><br><em>By bossybussy, notes 61,454 notes</em>",
+  "do you guys realize we can change our lives any time we want like you can just go ahead and delete your blog, stop eating meat, shave your head, start running, tell that person you hate why you hate them so much, confess your love to someone and kiss them unexpectedly like why don’t we do that<br><br><br><em>By uoa, 816,010 notes</em>",
+  "Caitlyn Jenner just showed the world how to use privilege for good<br>During her ESPYs speech, Jenner went out of her way not only to talk about the struggling, bullied transgender youth every where but the challenges facing transgender women of color specifically. She mentioned advocates like Laverne Cox and Janet Mock, but also those whose lives we’ve lost like Mercedes Williamson.<br><br><br><em>By micdotcom, 144,684 notes</em>",
+  "'no one can love you until you love yourself'<br>that is complete bullshit<br>don’t let anyone tell you that you don’t deserve love from other people because you struggle with loving yourself<br><br><br><em>By neoliberalismkills, 370,439 notes</em>",
+  "<strong>stacydamnit</strong><br>Hello.<br>Leelah Alcorn’s mom is planning on taking her suicide note off Tumblr, I thought it would be nice to have everything in one. Please reblog this, or screenshot, or reblog it from her Tumblr. I hope your help by showing everyone within a screenshot or reblog shows and reads them Leelah’s message that she has left us to realize.<br><br><strong>watchingthedetective</strong><br>RIP<br>LEELAH ALCORN.<br><br><strong>tillytroylertylertroye</strong><br>Update: Her Tumblr has been taken down.<br><br><strong>watchingthedetective</strong><br>Save this as a draft and get it circulating again later, when it starts to ‘die down’ and threatens to be forgotten. <br><br><strong>amazingemmaisonfire</strong><br>It’s been months since I’ve seen this btw<br>adriftinthereverie:<br>always reblog. always. i wish she were alive today.<br><br><br><em>By im-not-throwing-away-my-shot, 205,306 notes</em>",
+  "<strong>We seem to love attributing the ‘differences’ between men and women to fundamental biological truths.</strong> The ‘men give love for sex, women give sex for love’ dichotomy is something we leap on with our bountiful hosts of biological facts at the ready- a man brings up a story of his clingy girlfriend and suddenly everyone’s a scientist. Men want sex because: testosterone- we retort expertly- women don’t want sex, unless it comes with cuddles, and love, and rainbow coloured puppies, because: oxytocin. It’s every woman’s dream to shoot out babies from her cooch like a human t-shirt gun, right? Well that’s her estrogen talking. Oh and men want to fuck everything- from girls, to donuts, to their left sock, in order to- evolutionarily speaking- ‘spread their seed’, right…? We roll these ‘facts of life’ off our tongues with such confidence, treating them as ‘common sense’ because we’ve seen enough Hollywood flicks to have these biological stereotypes reiterated to us, time and time again. <strong>We nod knowingly when people fit into rigid sexual stereotypes- oh, she’s just being a girl- and pathologize anyone who deviates from the ‘norm’ as sexual outliers, instead of accepting the infinite forms that sexual wanting can take, across all genders and sexualities.</strong> Many people don’t identify with their socially assigned sexual archetype- there are asexual men and hyper-sexual women, for instance, who would rather approach themselves as authentic sexual people rather than hormonal reactions personified, or a slave to their biological predispositions.The problem with identifying all men as ’more sexual than all women’ is that it disempowers female sexual agency, contributes to the pathologization of sexual women,  and most frightening of all, paints sex as a male activity; something that men enjoy and women endure, something that men are entitled to ‘collect’ from women- his wife refuses to have sex with him, how could she do that to a man?- being somehow more needy of it than their female counterparts.<br>‘The hormone argument’ reduces the actions, desires and capabilities of men and women to a series of hormonal reactions. Social perceptions of the ‘overwhelming and inescapable grip of testosterone over decent men’s minds’ are often misused to justify rape or violence as part of some kind of natural and inevitable human process. Catcalling, rape, domestic violence, public masturbation and workplace sexual harassment are grouped together under the umbrella of male ‘primal’ behavior; understood as a biological reality as unchangeable as our DNA, as deeply rooted in our ‘animal identities’ as our ape ancestors. <strong>Female menstruation is pathologized as a hormone induced sickness of the mind; symptoms of which include irrationality, hysteria and uncontrollable or unjustifiable bursts of emotion.</strong> Notions of the ‘mental deficiencies’ of women during menstruation are often used as reasoning as to why corporate leaders, political representatives, surgeons, judges or other positions of power that require ‘rational decision making’ should all belong to men, who are immune to such ‘estrogen-related hysteria’. Women themselves reinforce this most oppressive stereotype by speaking about their emotions as unquestionably linked to their menstrual cycles- I’m sorry I got angry before, it’s just my time of month. Hormonal stereotyping also assumes that, by nature, every woman’s ultimate goal in life is to have children, and a means of stability for those children, which not only pathologizes women who don’t identify with motherhood for any number of reasons, but also paints childless women as either ’trying and failing’ -she’s 35 and childless, the poor thing must be desperate by now- or, if childlessness is perceived as an obvious lifestyle choice for her, she may invite the ‘selfish’ or ’wasteful’ label, for not fulfilling her assigned biological destiny. When a woman is lectured this way about what women’s bodies ‘are for’, she is taught that any agency she harbours comes second to her ‘function’, and that her body is not her own to make decisions for. This can be very dehumanising.<br>Acknowledging how studies have shown that certain hormones are linked to or even held accountable for certain human behaviours is recognising and appreciating science. <strong>Assuming that a person’s hormones determines or should determine their character, their physical, mental or emotional capabilities, the nature of their sexual wanting (including sexual orientation), or the shape of their preferred lifestyle, is not science; it’s discrimination.</strong><br>If the situation would have allowed me, I would have told that female customer I was serving that yes, it’s true that men and women are biologically different, but if we were really living out our ‘biological destinies’, if our hormones were really dictating our every sexual move the way we give them credit to, there would only really be two types of people in the world- two sexualities, two lifestyles, two ways of fucking. We know that’s not true- sexuality is fluid, complex and authentic, and every person experiences sex and sexual feeling differently. Our needs, desires and reactions to different stimuli are not given to us at birth in a handbook; they develop alongside our personal and cultural experiences, our tastes, our religious, intellectual or political convictions- eventually blooming into unlimited variations of sexual authenticity, many of which may diverge from what hormonal stereotyping might have us expect.<br><br><br><em>By pinchblog, 638 notes</em>",
+  "im not your little dad anymore, girl<br><br><br><em>By sluttyoliveoil, 199,421 notes</em>",
+  "man her boyfriend is WHIPPED!!!!!! like she expects him to treat her with total respect & everything !!!! crazy<br><br><br><em>By flowury, 185,779 notes</em>",
+  "“Women are afraid of meeting a serial killer.<br>Men are afraid of meeting someone fat.”<br>- When Strangers Click, a 2011 documentary about online dating<br><br><br><em>By sonyaellenmann, 227,369 notes</em>",
+  "oh my god i’m fucking sick of this generation’s mentality that your sadness is beautiful and somebody will fix you and all this fucking john green shit nobody will find you in a bookstore reading bukowski and want to lie with you and nobody will kiss your scars and you will not be like effie and freddie you’ve got to be your own fucking hero and surround yourself with positivity<br><br><br><em>By beauxbatons, 844,635 notes</em>",
+  "“I’m not ashamed to dress ‘like a woman’ because I don’t think it’s shameful to be a woman.” – Iggy Pop<br>Iggy Pop is such a bad ass. There’s an interview I watched where his manager talked about having to bail him out of jail. The manager shows up and Iggy is drunk, disorderly, and wearing a dress. His manager asked “Ig, why are you wearing a womans dress?” and Iggy replied “I beg to differ, this is a mans dress.”<br>It’s like Eddie Izzard says - ‘They’re not women’s clothes. They’re my clothes. I bought them.’<br><br><br><em>By 961221og, 39,884 notes</em>",
+  "alternative energy source fuelled by Those Looks you get when bringing up feminism in almost any context<br><br><br><em>By floorboreds, 229 notes</em>",
+  "the reason oppressed groups say “___ are awful” instead of “some ___ are awful” is because including the word “some” allows individuals of that group to detach themselves from the problem and shuck the blame off and say “well they arent really talking about me so i can ignore their opinions”, whereas stating that an entire group of oppressors is awful makes the individual think whether or not theyre included in the awfulness of that group and makes them consider their actions so thats why people say “men are awful” or “white people are awful” and if you take it personally you’re getting angry at the wrong people<br><br><br><em>By tarabun, 143,841 notes</em>",
+  "<strong>letshakeitoffDeactivated</strong><br>so tired of people talking about feminists as if they were weird, disgusting, gross and obsessive lesbians who want to kill all men<br><br><strong>fandomsandfeminism</strong><br>I’m really tired of straight feminists listing “lesbians” as one of those gross, undesirable stereotypes that they want to distance themselves from.<br><br><br><em>By justsshakeitoff, 28,453 notes</em>",
+  "vagina feminism is a specific brand of liberal feminism common on tumblr but also everywhere. they talk about dismantling the patriarchy using their boobs or vaginas or whatever. about half of them have no clue what a trans person even is. none of them know any. they just sit there and talk about how awesome tina fey is.<br><br><br><em>By ot4s, 3,550 notes</em>",
+  "“So three Black women in maybe two thousand pages of women’s magazines and all of them biracial or racially ambiguous, so they could be Indian or Puerto Rican or something. Not one of them is dark. Not one of them looks like me, so I can’t get clues for makeup from these magazines. Look, this article tells you to pinch your cheeks for color because all their readers are supposed to have cheeks you can pinch for color. This tells you about different hair products for everyone—and everyone means blondes, brunettes, and redheads. I am none of those. And this tells you about the best conditioners—for straight, wavy and curly. No kinky. See what they mean by curly? My hair could never do that. This tells you about matching your eye color and eye shadow—blue, green, and hazel eyes. But my eyes are black so I can’t know what shadow works for me. This says that this pink lipstick is universal, but they mean universal if you are white because I would look like a golliwog if I tried that shade of pink. Oh look, here is some progress. An advertisement for foundation. There are seven different shades for white skin and one generic chocolate shade, but that is progress. Now let’s talk about what is racially skewed. Do you see why a magazine like Essence exists?”<br>An excerpt from Chimamanda Ngozi Adichie’s ‘Americanah’ (2013)<br><br><br><em>By bxtchplease, 27,353 notes</em>",
+  "tumblr’s weird because sometimes it stops you from being lonely but sometimes it /makes/ you super lonely.<br><br><br><em>By spnwhore, 27,761 notes</em>",
+  "the social construction of masculinity is so weird to me like… it causes people to not wanna use certain kinds of soaps bc these products… smell too good.<br><br><br><em>By natnova, 248,954</em>",
+  "Twitter post (screenshot): Kenna @Yungkenya<br>Nudity empowers some. Modesty empowers some. Different things empower different women and its not your place to tell her which one it is<br>1,287 retweets, 1,102 favorites<br><br><br><em>By spooky-wraith, 301,557 notes</em>",
+  "“Through a career that has included crotch-grabbing, nudity, BDSM, Marilyn Monroe fetishizing, and a 1992 book devoted to sex, Madonna has been viewed as a feminist provocateur, pushing the boundaries of acceptable femininity.<br>But Beyoncé’s use of her body is criticized as thoughtless and without value beyond male titillation, providing a modern example of the age-old racist juxtaposition of animalistic black sexuality vs. controlled, intentional, and civilized white sexuality.”<br>All Hail the Queen? (http://bitchmagazine.org/article/all-hail-the-queen-beyonce-feminism#.UZvUyP56MrU.facebook)<br><br><br><em>By glam-alien, 4,424 notes</em>",
+  "<strong>dankestrnemesDeactivated</strong><br>do animals think in english or in the sounds they make<br><br><strong>selfdoubtandsyphilisDeactivated</strong><br>this is what yahoo paid $1.1 billion for<br><br><br><em>By asleehp, 257,845 notes</em>",
+  "(Image of person holding a protest sign, stating:)<br>It’s easier to BUY a GUN than my EDUCATION.<br><br><br><em>By lifeinthemargin, 495,056 notes</em>",
+  "Aaron Clarey isn’t really a Mad Max fan.<br>This is pretty clear already given that his viral rant about Fury Road doesn’t betray much knowledge of the franchise at all—he doesn’t seem aware that “the director of Fury Road” he reviles is, in fact, George Miller, the director of the entire Mad Max franchise. He calls one of the most iconic Australian cultural exports of all time a “piece of American culture.” He boldly states “No one barks orders to Max!” when, in fact, all three previous Mad Max films feature Max taking orders from someone (Roger Ward’s Captain Fifi in Mad Max, Michael Preston’s Papagallo in The Road Warrior, Tina Turner’s Auntie Entity in Beyond Thunderdome).<br>But the single biggest sign Clarey doesn’t know the first damn thing about what George Miller or Mad Max is his triumphalist line: “When the shit hits the fan, it will be men like Mad Max who will be in charge.”<br>Mad Max isn’t in charge of anything throughout the Mad Max film franchise. Max is emphatically not the archetype of the badass hero who gets the girl, gets the crown, and rules as a patriarch over society as is his due. He’s a fucked-up loner who isn’t fit to live among civilized people; who begins each film alone, wounded, broken, and who ends each film in the same state or worse.<br>[…]<br>All the Mad Max films have had tragic endings, and if you don’t grasp that this is the tragedy at the heart of Mad Max (and the gritty Westerns and samurai films Mad Max emulates) then you don’t get Mad Max. If you think Max has an awesome life and we’re supposed to wish we were him, you really don’t get Mad Max.”<br>- Arthur Chu, ‘Mad Max’: How Men’s Rights Activists Killed the World<br><br><br><em>By kanye---asada, 19,571 notes</em>",
+  "Frida Kahlo was a Mexican disabled queer communist woman who survived an accident in the 20s, a time when it should have killed her. She was a fire, a catalyst, a hurricane, a phenomenon of a woman who fought with every inch of her self for what she believed in and what she loved and I think she would have rather died in obscurity than be remembered as the kind of pretty woman with a monobrow making a statement on an American apparel shirt.<br><br><br><em>By clitor1s, 187,446</em>",
+  "casual reminder that just because your idea of a good time is curling up with a book and hers is doing tequila shots does not make you a better person than her (◡‿◡✿)<br><br><br><em>By queendoms, 390,113 notes</em>",
+  "ALSO FEMINISM ISNT JUST ABOUT WOMEN BEING EQUAL ITS LITERALLY ABOUT DESTROYING THE PATRIARCHY WHICH ALSO EXERTS NEGATIVE THINGS ON MEN (I.E. REPRESENTING THEM AS ANIMALS SO RAPE IS JUSTIFIED AND FORCING THEM TO BE THE BREADWINNERS AND THROWING SHADE ON MEN WHO CHOOSE TO TAKE A DIFFERENT PATH IN LIFE AND DICTATING WHAT “A MAN” SHOULD BE, ETC.) SO NO NOT ALL FEMINISTS ARE CRAZY MAN HATERS AND MEN HAVE A PLACE IN FEMINISM TOO!!!!!!!!!!! WOW PLEASE<br><br><br><em>By thethrillofit, 19,163 notes</em>",
+  "gender?? at THIS Hour??? no,, thank s<br><br><br><em>By crystalqueerkid, 19,437 notes</em>",
+  "Black women’s contributions go unrecognized. The report notes that 26% of black women feel their talents aren’t recognized by their superiors, compared to 17% of white women. “During editorial meetings in the ‘90s, I noticed that sometimes if I were to say, ‘Let’s do A,’ the room would continue in its discussion. I’d hear that idea of mine coming out of someone else’s mouth. And then the room would hear it, understand it, and get behind it,” Yvette Miley, senior vice president and executive editor of MSNBC, said. In a world where one aptly timed game-changing idea can be the catalyst for promotion, being rendered invisible can severely truncate black women’s career opportunities.<br>- Valerie Purdie-Vaughns | Why so few black women are senior managers in 2015 -https://fortune.com/2015/04/22/black-women-leadership-study/<br><br><br><em>By evolvingesence, 251 notes</em>",
+  "(Image of person holding a protest sign, stating:)<br>“Telling me that I’m obsessed with talking about racism in America is like telling me I’m obsessed with swimming when I’m drowning.”<br>#EricGarner<br>– Hari Kondabolu<br><br><br><em>By pixelatedboobs, 45,744 notes</em>",
+  "“Too many young girls don’t know how to act when someone’s being inappropriate with them. They giggle or they try to brush it off. Don’t do that. Tell them to go fuck themselves - be a bitch. If someone’s being disrespectful to you, be disrespectful right back. Show them the same amount of respect that they show you.”<br>- Wise words from my mom (via nl-ossomed)<br><br><br><em>By smallfreelancer, 963,223 notes</em>",
+  "it’s truly amazing how short whites range of vision is when it comes to oppression. because they really think this situation is because of one person dying. they really don’t seem to understand that history dictates how society reacts to things. it’s amazing how self centered they are because amidst black people being slaughtered and angry about it the first thing they say is “not all white people.” it’s truly telling when your immediate reaction to this is to try and save your reputation instead of trying to make a progressive change.<br><br><strong>cactipunkDeactivated</strong><br>or how abt you realize that just because someone’s great-great-great-great-great-greatetc-grandfather owned slaves that doesn’t automatically make THEM oppressive and racist ;)<br><br><strong>rococobutter</strong><br>Exhibit A everyone<br><br><strong>tryingtoarttDeactivated</strong><br>I do support the change, and i am trying to fight for change. I think saying a whole group is bad, is not helping the issue. It’s similar to saying all men are rapists. If we want change, we shouldnt be hostile<br><br><strong>priestmahadDeactivated</strong><br>Exhibit B.<br><br><strong>latticearchiveDeactivated</strong><br>OK but you’re worried about people who want to dissociate themselves from racism while a bunch of opportunists are burning their own community to the ground, because turning your own home into a shithole will sure show whitey! :^)<br><br><strong>priestmahadDeactivated</strong><br>Exhibit C<br><br><br><em>By trapcard, 6,415 notes</em>",
+"according to society if you’re confident you’re self-obsessed but if you’re insecure you’re weak so that is why i am a simple giraffe<br><br><br><em>By macarena-of-time, 156,196 notes</em>",
+  "“I didn’t prepare a speech but I’m glad that I didn’t because I’m not going to do this like everybody else. Um, because everybody that I should be thanking I have to use this time — Maya Angelou said, <strong>“we as human beings at our best can only create opportunities”</strong> and I’m going to use this opportunity the way I want to use it. So, I want to say to everyone who is watching, this world is bullshit. You shouldn’t model your life on what you think we think is cool, what we’re wearing, and what we are saying. Go with yourself. Go with yourself. It’s stupid that I am in this world but you’re all very cool to me. Thank you very much.”<br>- Fiona Apple accepting the award for Best New Artist at the VMAs, 1997<br><br><br><em>By fionasiouxsiebender, 3,832 notes</em>",   
+"Here’s why you should give a fuck, Miley. Because you grew up steeped in white privilege; with your father’s name, you’ve been wealthy your entire life. Because your simultaneous appropriation and stereotypying of black culture is harmful and oppressive. You can twerk and pretend to be “ratchet” but it only lasts for the three minutes and 34 seconds that you’re on screen, and then you can take it all off and live life as the privileged white girl that you are. Other people of color can’t do that. They have to deal with the awful stereotypes, the racism, the discrimination that comes attached to their non-whiteness.<br>- Jay-Z And Azealia Banks Call Out Miley Cyrus On Cultural Appropriation; She Doesn’t Get It <br><br><br><em>By andzrc, 22,980 notes</em>",
+  "CAN WE STOP SLUT SHAMING MILEY CYRUS AND FOCUS ON THE FACT THAT SHE’S USING BLACK GIRLS AS PROPS<br>PRIORITIES<br><br><br><em>By colieolie, 47,657 notes</em>",
+ "guys: uh why do girls care so much about being skinny? it's so annoying<br>guys: ew fat chicks<br>guys: why do girls care so much about shopping and romance and nail polish lol so annoying<br>guys: ew crazy butch lesbian manly feminazis why can't they act more feminine lol<br>guys: why do girls wear makeup they look so much better without it<br>guys: oh i'm so sorry are you sick? tired? dying?<br>guys: haha girls suck at math/science/sports<br>guys: a girl who does math/science/sports? well? get back in the kitchen that stuffs not gonna get you a husband<br>guys: why are girls so sensitive when we look at their boobs or something c'mon with that top you're asking for it<br>guys: oh my god a gay guy just hit on me how disgusting what a creeper doesn't he have any boundaries?<br><br><br><em>By 0h-darling, 667,846 notes</em>",
+  "(GIF series of Louis CK on gay marriage:)<br><br>You don’t have to go to the wedding. You don’t have to buy them anything. It doesn’t matter.<br>Some people go well then a guy will marry his dog. Good. Fuck it, I hope he blows his dog. Who gives a shit?<br>It doesn’t matter. It doesn’t have any affect on your life. Why the fuck do you care?<br>Or people that talk about it like it’s a social issue. Like, When you see someone stand up in a talk show and go “How am I supposed to explain to my child that two men are getting married?”<br>I don’t know. It’s your shitty kid. You fucking tell him. Why is that anyone else’s problem?<br>Two guys are in love and they can’t get married because you don’t want to talk to your ugly child for fucking five minutes?<br><br><br><em>By theunknown-abyss, 520,841 notes</em>",
+  "I don’t understand why finding thin people attractive is “normal” but finding fat people attractive is “a fetish”<br><br><br><em>By dividedconsciousness, 6,256 notes</em>",
+  "i dont think i’ll ever get over the fact that i’ll never know what its like to have a boner<br><br><br><em>By gayn, 109,710 notes</em>",
+  "no kissing emoticon before marriage<br><br><br><em>By prostitoutettes, 281,394 notes</em>",
+  "I hate how the phrase ‘have some self respect’ is used to shame women who are comfortable with their sex lives. ‘Have some self respect’? I do respect myself, that’s why I wanna have a fucking orgasm tonight, thank you very much.<br><br><br><em>By desperateconversations, 141,383 notes</em>",
+  "Racism is not in your intent. Your intent is immaterial in how racist your actions are. This isn’t about you BEING a racist. It’s about you DOING A THING that is racist. Your intent doesn’t change it. Your ignorance of its meaning doesn’t change it. It’s got nothing to do with you as a person and everything to do with the meaning of your action in the context of sociocultural history.<br>Moniquill (on red face & cultural appropriation)<br><br><br><em>By nishwari, 50,847 notes</em>",
+  "(Image excerpt of From Lily Edelstein’s ‘Girl Talk’, in Jane Caro’s ‘Destroying the Joint’, pp. 54.55. Featuring Sarah Grrrlfever)<br><br>TEENAGE GIRL MANIFESTO<br>We are teenage girls and our emotions are valid.<br>We are teenage girls and we cry and feel pain and joy and anger and have complex emotions; we are not ‘drama queen’ or ‘crazy’ or ‘just looking for attention’.<br>We are teenage girls and we have our won interests, hopes and dreams. We’re not your two-dimensional stereotype.<br>We are teenage girls and society teeches us to hate ourselves and each other.<br>We are teenage girls and we’re sick of being treated like a joke.<br>We are teenage girls, and sexism hurts us.<br>We are teenage girls and we’re angry and we fight back.<br><br><br><em>By writeroost, 1,132 notes</em>",
+
+  
+
+
+  ]
+
+
+  var counter = 0
+  function playsentence () {
+    responsiveVoice.speak(sentences[counter].replace(/<[^>]*>/g, ''), "UK English Female"); 
+  }
+
+function updatetext () {
+  $("#hello").html(sentences[counter])
+}
+
+$(document).ready(function(){
+  $("#play").click(function(){
+    playsentence() ;
+  })
+    $("#next").click(function(){
+      if(counter == sentences.length-1) {
+        counter=0;
+      } else {
+        counter++;
+      }
+
+    updatetext() ;
+  })
+updatetext()
+});
+</script>
+
+  </head>
+  <body>
+
+<button id="next">Next</button>
+
+<button id="play">Play</button>
+
+<div id="hello"> 
+</div>
+
+		<script type="text/javascript">
+// <![CDATA[
+var colour="#ff00f0";
+var sparkles=120;
+
+/****************************
+*  Tinkerbell Magic Sparkle *
+* (c) 2005 mf2fm web-design *
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+****************************/
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var i, rats, rlef, rdow;
+  for (var i=0; i<sparkles; i++) {
+    var rats=createDiv(3, 3);
+    rats.style.visibility="hidden";
+    document.body.appendChild(tiny[i]=rats);
+    starv[i]=0;
+    tinyv[i]=0;
+    var rats=createDiv(5, 5);
+    rats.style.backgroundColor="transparent";
+    rats.style.visibility="hidden";
+    var rlef=createDiv(1, 5);
+    var rdow=createDiv(5, 1);
+    rats.appendChild(rlef);
+    rats.appendChild(rdow);
+    rlef.style.top="2px";
+    rlef.style.left="0px";
+    rdow.style.top="0px";
+    rdow.style.left="2px";
+    document.body.appendChild(star[i]=rats);
+  }
+  set_width();
+  sparkle();
+}}
+
+function sparkle() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y)+"px";
+      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout("sparkle()", 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      starx[i]+=(i%5-2)/5;
+      star[i].style.left=starx[i]+"px";
+    }
+    else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  }
+  else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px";
+    tiny[i].style.height="2px";
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible"
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px";
+    tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tinyx[i]+=(i%5-2)/5;
+      tiny[i].style.left=tinyx[i]+"px";
+    }
+    else {
+      tiny[i].style.visibility="hidden";
+      tinyv[i]=0;
+      return;
+    }
+  }
+  else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+window.onresize=set_width;
+function set_width() {
+  if (typeof(self.innerWidth)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  div.style.backgroundColor=colour;
+  return (div);
+}
+// ]]>
+
+        </script>  
+        </head>
+     
+	<body>
+
+
+    
+    <header>
+      
+<!--       <div class="home"> 
+        <a href="mainpage.html"><img src="http://i.imgur.com/iwvjD1z.gif?1" width="189" height="52" border="0"></a>
+      </div> -->
+
+<h3><a href="http://www.fvckthemedia.com/issue61/intro">"Many feminists, particularly in the Italian Marxist tradition, have long considered the domestic sphere as a place of immaterial labor, a discussion that is constantly being revived. This includes the discussion of how women are disproportionately demanded to perform an overabundance of affective labor - a type of immaterial labor meaning work that requires the laborer to take on or project an affective or emotional experience. 
+On one level, the conversations we must have about immaterial digital labor are personal: the materiality of information, affect, libido, and violence are unquestionable. Digital labor manifests in physical syndromes, aches and pains, carpal tunnel, the related ailments of stress. Anyone who has used a laptop at night has experienced not being able to sleep because of the way a screen’s light affects circadian rhythms. 
+On another level, these conversations also engage with the systemic: wealth inequality, poverty, and the state surveillance of marginalized bodies must remain at the forefront of any worthwhile discussion of digital labor, otherwise the conversation will risk marginalizing the technological have-nots. Digital labor is as much or more about the growing problem of electronic waste and pollution, and the second-tier click-farm market paying workers to click “Like” buttons all day under sweatshop conditions, as it is about the conditions of using Facebook, which involve micro-tasks: “liking” posts, commenting on friends’ events, endlessly trying to divide work and play."</a></h3>
+
+<h3><a href="https://thesocietypages.org/cyborgology/2011/10/24/siri-intersections-of-gender-economy-and-technology/">Siri: Intersections of Gender, Economy, and Technology » Cyborgology?</a></h3>
+
+		</body>
+  </header>
+<html>
+
