@@ -15,12 +15,8 @@
 				font-family: times;
 				font-size: 12px;
 			}
-			a.code {
-				position: fixed;
-				bottom: 10px;
-				right: 10px;
-				font-family: Arial;
-				font-size: 12px;
+			img {
+				z-index: -1;
 			}
 			body {
 				margin: 0;
@@ -35,6 +31,23 @@
 			}
 			img:nth-child(3) {
 				margin-top: 60vh;
+			}
+			.threejs iframe {
+				border: 0;
+				position: absolute;
+				width: 60vw;
+				height: 60vh;
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+				z-index: 1;
+			}
+			.threejs {
+				height: 100%;
+			}
+			iframe.knot {
+				position: absolute;
 			}
 		</style>
 	</head>
