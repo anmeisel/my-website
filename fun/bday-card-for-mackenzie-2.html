@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>special birthday</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+		<style>
+			p {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+				font-family: times;
+				font-size: 12px;
+			}
+			a.code {
+				position: fixed;
+				bottom: 10px;
+				right: 10px;
+				font-family: Arial;
+				font-size: 12px;
+			}
+			body {
+				margin: 0;
+			}
+			img:nth-child(1) {
+				width: 70%;
+			}
+			img:nth-child(2),
+			img:nth-child(3) {
+				position: absolute;
+				right: 0;
+			}
+			img:nth-child(3) {
+				margin-top: 60vh;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="images/066a0fb1b0fe3a587d174c69189e7e5a.jpg" />
+		<img src="images/956d6cd15427b9b65a4571d32368735d.jpg" />
+		<img src="images/91V2YaPNOrL._AC_SX355_.jpg" />
+
+		<script src="../build/three.js"></script>
+		<script src="../js/OBJLoader.js"></script>
+		<script src="../js/Detector.js"></script>
+		<script src="../js/OrbitControls.js"></script>
+		<script src="../js/stats.min.js"></script>
+		<script src="../js/THREEx.FullScreen.js"></script>
+		<script src="../js/THREEx.WindowResize.js"></script>
+		<script src="../js/SubdivisionModifier.js"></script>
+
+		<!-- ---------------- Custom Shader Code ------------------------ -->
+		<script id="vertexShader" type="x-shader/x-vertex">
+			uniform vec3 viewVector;
+			uniform float c;
+			uniform float p;
+			varying float intensity;
+			void main()
+			{
+			    vec3 vNormal = normalize( normalMatrix * normal );
+				vec3 vNormel = normalize( normalMatrix * viewVector );
+				intensity = pow( c - dot(vNormal, vNormel), p );
+
+			    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+		</script>
+
+		<!-- fragment shader a.k.a. pixel shader -->
+		<script id="fragmentShader" type="x-shader/x-vertex">
+			uniform vec3 glowColor;
+			varying float intensity;
+			void main()
+			{
+				vec3 glow = glowColor * intensity;
+			    gl_FragColor = vec4( glow, 1.0 );
+			}
+		</script>
+		<!-- ----------------------------------------------------------- -->
+
+		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+
+		<script>
+			// custom global variables
+
+			var objects = []
+
+			init()
+			animate()
+
+			function init() {
+				// scene
+
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000)
+				camera.position.z = 850
+
+				scene = new THREE.Scene()
+				scene.background = new THREE.Color(0xff0000)
+
+				var ambient = new THREE.AmbientLight(0x101030)
+				scene.add(ambient)
+
+				// model
+
+				var manager = new THREE.LoadingManager()
+				manager.onProgress = function(item, loaded, total) {
+					console.log(item, loaded, total)
+				}
+
+				var onProgress = function(xhr) {
+					if (xhr.lengthComputable) {
+						var percentComplete = (xhr.loaded / xhr.total) * 100
+						if (percentComplete < 100) {
+							var downloaded = "Loading: " + Math.round(percentComplete, 2) + "%"
+						} else {
+							var downloaded = " "
+						}
+						document.getElementById("Loader").innerHTML = downloaded
+					}
+				}
+
+				// render model
+
+				if (Detector.webgl) renderer = new THREE.WebGLRenderer({ antialias: true })
+				else renderer = new THREE.CanvasRenderer()
+				projector = new THREE.Projector()
+				renderer.shadowMap.enabled = true
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
+				renderer = new THREE.WebGLRenderer({ alpha: true })
+				renderer.setClearColor(0x000000, 0)
+				renderer.setPixelRatio(window.devicePixelRatio)
+
+				renderer.setSize(window.innerWidth, window.innerHeight)
+				renderer.setSize(window.innerWidth, window.innerHeight)
+				container = document.getElementById("ThreeJS")
+				container.appendChild(renderer.domElement)
+				document.addEventListener("mousedown", onDocumentMouseDown, false)
+				window.addEventListener("resize", onWindowResize, false)
+
+				// events
+
+				THREEx.WindowResize(renderer, camera)
+				THREEx.FullScreen.bindKey({ charCode: "m".charCodeAt(0) })
+
+				// controls
+
+				controls = new THREE.OrbitControls(camera, renderer.domElement)
+
+				// stats
+
+				stats = new Stats()
+				stats.domElement.style.position = "relative"
+				stats.domElement.style.bottom = "0px"
+				stats.domElement.style.zIndex = 100
+				stats.domElement.style.display = "none"
+				container.appendChild(stats.domElement)
+
+				////////////
+				// CUSTOM //
+				////////////
+
+				var sphereGeom = new THREE.OBJLoader(manager)
+				sphereGeom.load(
+					"../images/birthday2.obj",
+					function(object) {
+						object.traverse(function(child) {
+							if (child instanceof THREE.Mesh) {
+								child.material.map = texture
+								child.material.side = THREE.DoubleSide
+							}
+						})
+
+						object.position.y = 0
+						object.position.x = 0
+						object.scale.x = 100
+						object.scale.y = 100
+						object.scale.z = 100
+						scene.add(object)
+					},
+					onProgress,
+					onError
+				)
+
+				var moonTexture = THREE.ImageUtils.loadTexture("images/cadburry.png")
+				var moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture })
+				for (var i = 0; i < 1; i++) {
+					var moon = new THREE.Mesh(sphereGeom, moonMaterial)
+
+					console.log(moon)
+					switch (i) {
+						case 0:
+							camera.add(moon)
+							moon.userData = {
+								URL: "Lindsay-Lohan-says-Happy-Birthday.mp4"
+							}
+
+							// var sprite1 = makeTextSprite("luv u lua!!!")
+							// sprite1.position.set(-195, 220, -10)
+							// scene.add(sprite1)
+
+							// var sprite2 = makeTextSprite("happy birthday!")
+							// sprite2.position.set(-195, 200, -10)
+							// scene.add(sprite2)
+
+							break
+						case 1:
+					}
+
+					scene.add(object)
+					objects.push(moon)
+
+					moon.position.set(1, 1, 1)
+
+					scene.add(moon)
+					objects.push(moon)
+				}
+
+				// create custom material from the shader code above
+				//   that is within specially labeled script tags
+				var customMaterial = new THREE.ShaderMaterial({
+					uniforms: {
+						c: { type: "f", value: 1.0 },
+						p: { type: "f", value: 1.4 },
+						glowColor: { type: "c", value: new THREE.Color(0xd273c6) },
+						viewVector: { type: "v3", value: camera.position }
+					},
+					vertexShader: document.getElementById("vertexShader").textContent,
+					fragmentShader: document.getElementById("fragmentShader").textContent,
+					side: THREE.FrontSide,
+					blending: THREE.AdditiveBlending,
+					transparent: true
+				})
+
+				this.moonGlow = new THREE.Mesh(sphereGeom.clone(), customMaterial.clone())
+				moonGlow.position = moon.position
+				moonGlow.scale.multiplyScalar(1.2)
+				scene.add(moonGlow)
+
+				// labels
+
+				var geometry = new THREE.SphereGeometry(4, 32, 32)
+				for (var i = 0; i < 2; i++) {
+					var object = new THREE.Mesh(
+						geometry,
+						new THREE.MeshBasicMaterial({
+							shading: THREE.FlatShading,
+							color: 0xff00ff
+						})
+					)
+				}
+			}
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight
+				camera.updateProjectionMatrix()
+			}
+
+			function onDocumentMouseDown(event) {
+				event.preventDefault()
+				var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
+				projector.unprojectVector(vector, camera)
+
+				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
+				var intersects = raycaster.intersectObjects(objects)
+				if (intersects.length > 0) {
+					// window.open(intersects[0].object.userData.URL, "_target")
+					window
+						.open(
+							"Lindsay-Lohan-says-Happy-Birthday.mp4",
+							"winName",
+							"location=0,width=256,height=400,resizable=no,toolbar=no,menubar=no,location=no,directories=no,status=no"
+						)
+						.focus()
+				}
+			}
+
+			// sprite styling
+
+			function makeTextSprite(message, parameters) {
+				if (parameters === undefined) parameters = {}
+				var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Arial"
+				var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 32
+				var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
+				var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
+				var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
+				var textColor = parameters.hasOwnProperty("textColor") ? parameters["textColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
+
+				var canvas = document.createElement("canvas")
+				var context = canvas.getContext("2d")
+				context.font = fontsize + "px " + fontface
+				var metrics = context.measureText(message)
+				var textWidth = metrics.width
+
+				context.fillStyle = "rgba(" + backgroundColor.r + "," + backgroundColor.g + "," + backgroundColor.b + "," + backgroundColor.a + ")"
+				context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + "," + borderColor.b + "," + borderColor.a + ")"
+				context.lineWidth = borderThickness
+				context.fillStyle = "rgba(" + textColor.r + ", " + textColor.g + ", " + textColor.b + ", 1.0)"
+				context.fillText(message, borderThickness, fontsize + borderThickness)
+
+				var texture = new THREE.Texture(canvas)
+				texture.needsUpdate = true
+
+				var spriteMaterial = new THREE.SpriteMaterial({
+					map: texture,
+					useScreenCoordinates: false
+				})
+				var sprite = new THREE.Sprite(spriteMaterial)
+				sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
+				return sprite
+			}
+
+			function animate() {
+				requestAnimationFrame(animate)
+				render()
+				update()
+			}
+
+			function update() {
+				controls.update()
+				controls.enableZoom = false
+				stats.update()
+				moonGlow.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, moonGlow.position)
+				crateGlow.material.uniforms.viewVector.value = new THREE.Vector3().subVectors(camera.position, crateGlow.position)
+			}
+
+			function render() {
+				renderer.render(scene, camera)
+			}
+		</script>
+
+		<p><span id="Loader"></span></p>
+	</body>
+</html>
