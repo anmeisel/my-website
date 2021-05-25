@@ -39,7 +39,7 @@
 				scene = new THREE.Scene()
 				scene.background = null // transparent
 
-				var ambient = new THREE.AmbientLight(0xffffff)
+				var ambient = new THREE.AmbientLight(0xffffff, 0.8)
 				scene.add(ambient)
 
 				// model
@@ -83,9 +83,9 @@
 
 						object.position.y = 0
 						object.position.x = 0
-						object.scale.x = 80
-						object.scale.y = 80
-						object.scale.z = 80
+						object.scale.x = 100
+						object.scale.y = 100
+						object.scale.z = 100
 						scene.add(object)
 					},
 					onProgress,
@@ -119,6 +119,7 @@
 
 				controls = new THREE.OrbitControls(camera, renderer.domElement)
 				controls.enableZoom = false
+				controls.autoRotateSpeed = -0.25
 
 				// stats
 
@@ -146,55 +147,7 @@
 				camera.updateProjectionMatrix()
 			}
 
-			function onDocumentMouseDown(event) {
-				// event.preventDefault()
-				// var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
-				// projector.unprojectVector(vector, camera)
-				// var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
-				// var intersects = raycaster.intersectObjects(objects)
-				// if (intersects.length > 0) {
-				// 	window.open(intersects[0].object.userData.URL, "_target")
-				// 	intersects[0].object.material.color = new THREE.Color(0x57bcff)
-				// 	intersects[0].object.material.needsUpdate = true
-				// }
-			}
-
-			// sprite styling
-
-			// function makeTextSprite(message, parameters) {
-			// 	if (parameters === undefined) parameters = {}
-			// 	var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Verdana"
-			// 	var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 38
-			// 	var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
-			// 	var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
-			// 	var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
-			// 	var textColor = parameters.hasOwnProperty("textColor") ? parameters["textColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
-
-			// 	var canvas = document.createElement("canvas")
-			// 	var context = canvas.getContext("2d")
-			// 	context.font = fontsize + "px " + fontface
-			// 	var metrics = context.measureText(message)
-			// 	var textWidth = metrics.width
-
-			// 	context.fillStyle = "rgba(" + backgroundColor.r + "," + backgroundColor.g + "," + backgroundColor.b + "," + backgroundColor.a + ")"
-			// 	context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + "," + borderColor.b + "," + borderColor.a + ")"
-			// 	context.lineWidth = borderThickness
-			// 	context.fillStyle = "rgba(" + textColor.r + ", " + textColor.g + ", " + textColor.b + ", 1.0)"
-			// 	context.fillText(message, borderThickness, fontsize + borderThickness)
-
-			// 	var texture = new THREE.Texture(canvas)
-			// 	texture.needsUpdate = true
-
-			// 	var spriteMaterial = new THREE.SpriteMaterial({
-			// 		map: texture,
-			// 		useScreenCoordinates: false
-			// 	})
-			// 	var sprite = new THREE.Sprite(spriteMaterial)
-			// 	// sprite.scale.set(600, 200, 1)
-			// 	// sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
-			// 	sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
-			// 	return sprite
-			// }
+			function onDocumentMouseDown(event) {}
 
 			function animate() {
 				requestAnimationFrame(animate)
@@ -203,14 +156,6 @@
 			}
 
 			function update() {
-				camera.position.x += (mouseX - camera.position.x) * 0.05
-				camera.position.y += (-mouseY - camera.position.y) * 0.05
-				camera.lookAt(scene.position)
-
-				object.rotation.y -= 0.005
-
-				renderer.render(scene, camera)
-
 				controls.update()
 				stats.update()
 			}
