@@ -39,7 +39,7 @@
 				scene = new THREE.Scene()
 				scene.background = null // transparent
 
-				var ambient = new THREE.AmbientLight(0x101030)
+				var ambient = new THREE.AmbientLight(0xffffff)
 				scene.add(ambient)
 
 				// model
@@ -83,9 +83,9 @@
 
 						object.position.y = 0
 						object.position.x = 0
-						object.scale.x = 50
-						object.scale.y = 50
-						object.scale.z = 50
+						object.scale.x = 80
+						object.scale.y = 80
+						object.scale.z = 80
 						scene.add(object)
 					},
 					onProgress,
@@ -130,12 +130,12 @@
 
 				// light
 
-				var light = new THREE.PointLight(0xffffff, 1, 0)
+				var light = new THREE.PointLight(0xffffff, 0.5, 0)
 				light.position.set(0, 0, 900)
 				var ambientLight = new THREE.AmbientLight(0x101030)
 				scene.add(light)
 
-				var light2 = new THREE.PointLight(0xffffff, 1, 0)
+				var light2 = new THREE.PointLight(0xffffff, 0.5, 0)
 				light2.position.set(0, 0, -900)
 				var ambientLight2 = new THREE.AmbientLight(0x101030)
 				scene.add(light2)
@@ -147,55 +147,54 @@
 			}
 
 			function onDocumentMouseDown(event) {
-				event.preventDefault()
-				var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
-				projector.unprojectVector(vector, camera)
-
-				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
-				var intersects = raycaster.intersectObjects(objects)
-				if (intersects.length > 0) {
-					window.open(intersects[0].object.userData.URL, "_target")
-					intersects[0].object.material.color = new THREE.Color(0x57bcff)
-					intersects[0].object.material.needsUpdate = true
-				}
+				// event.preventDefault()
+				// var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
+				// projector.unprojectVector(vector, camera)
+				// var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
+				// var intersects = raycaster.intersectObjects(objects)
+				// if (intersects.length > 0) {
+				// 	window.open(intersects[0].object.userData.URL, "_target")
+				// 	intersects[0].object.material.color = new THREE.Color(0x57bcff)
+				// 	intersects[0].object.material.needsUpdate = true
+				// }
 			}
 
 			// sprite styling
 
-			function makeTextSprite(message, parameters) {
-				if (parameters === undefined) parameters = {}
-				var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Verdana"
-				var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 38
-				var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
-				var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
-				var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
-				var textColor = parameters.hasOwnProperty("textColor") ? parameters["textColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
+			// function makeTextSprite(message, parameters) {
+			// 	if (parameters === undefined) parameters = {}
+			// 	var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Verdana"
+			// 	var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 38
+			// 	var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
+			// 	var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
+			// 	var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
+			// 	var textColor = parameters.hasOwnProperty("textColor") ? parameters["textColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
 
-				var canvas = document.createElement("canvas")
-				var context = canvas.getContext("2d")
-				context.font = fontsize + "px " + fontface
-				var metrics = context.measureText(message)
-				var textWidth = metrics.width
+			// 	var canvas = document.createElement("canvas")
+			// 	var context = canvas.getContext("2d")
+			// 	context.font = fontsize + "px " + fontface
+			// 	var metrics = context.measureText(message)
+			// 	var textWidth = metrics.width
 
-				context.fillStyle = "rgba(" + backgroundColor.r + "," + backgroundColor.g + "," + backgroundColor.b + "," + backgroundColor.a + ")"
-				context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + "," + borderColor.b + "," + borderColor.a + ")"
-				context.lineWidth = borderThickness
-				context.fillStyle = "rgba(" + textColor.r + ", " + textColor.g + ", " + textColor.b + ", 1.0)"
-				context.fillText(message, borderThickness, fontsize + borderThickness)
+			// 	context.fillStyle = "rgba(" + backgroundColor.r + "," + backgroundColor.g + "," + backgroundColor.b + "," + backgroundColor.a + ")"
+			// 	context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + "," + borderColor.b + "," + borderColor.a + ")"
+			// 	context.lineWidth = borderThickness
+			// 	context.fillStyle = "rgba(" + textColor.r + ", " + textColor.g + ", " + textColor.b + ", 1.0)"
+			// 	context.fillText(message, borderThickness, fontsize + borderThickness)
 
-				var texture = new THREE.Texture(canvas)
-				texture.needsUpdate = true
+			// 	var texture = new THREE.Texture(canvas)
+			// 	texture.needsUpdate = true
 
-				var spriteMaterial = new THREE.SpriteMaterial({
-					map: texture,
-					useScreenCoordinates: false
-				})
-				var sprite = new THREE.Sprite(spriteMaterial)
-				// sprite.scale.set(600, 200, 1)
-				// sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
-				sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
-				return sprite
-			}
+			// 	var spriteMaterial = new THREE.SpriteMaterial({
+			// 		map: texture,
+			// 		useScreenCoordinates: false
+			// 	})
+			// 	var sprite = new THREE.Sprite(spriteMaterial)
+			// 	// sprite.scale.set(600, 200, 1)
+			// 	// sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
+			// 	sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
+			// 	return sprite
+			// }
 
 			function animate() {
 				requestAnimationFrame(animate)
@@ -204,6 +203,14 @@
 			}
 
 			function update() {
+				camera.position.x += (mouseX - camera.position.x) * 0.05
+				camera.position.y += (-mouseY - camera.position.y) * 0.05
+				camera.lookAt(scene.position)
+
+				object.rotation.y -= 0.005
+
+				renderer.render(scene, camera)
+
 				controls.update()
 				stats.update()
 			}
