@@ -30,10 +30,8 @@ p {
 }
 
 .bckg {
-    /*position: fixed;*/
-    width: 50%;
-    display: inline-block;
     position: absolute;
+    width: 50%;
     height: 100%;
     overflow: hidden;
 }
@@ -47,17 +45,15 @@ p {
 }
 
 .bckg img {
-    height: 50vh;
-    display: inline-block;
+    position: absolute;
+    height: 105vh;
+    width: auto;
+    min-width: 101%;
+    left: 50%;        
+    transform: translate(-50%, 0);
     top: 0px;
-    height: auto;
     z-index: -1;
     margin-bottom: -5px;
-}
-
-.bckg-right img, .bckg-left img {
-    width: 100%;
-    min-height: 100%;
 }
 
 .mini {
