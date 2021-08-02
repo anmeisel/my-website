@@ -112,6 +112,13 @@ a {
     z-index: 3;
 }
 
+.extra {
+    z-index: 3;
+    top: 20px;
+    right: 10px;
+    position: absolute;
+}
+
 #myText,
 #Loader {
     position: absolute;
@@ -156,6 +163,24 @@ button:hover.blue-a {
     border-color: rgba(120, 200, 255, 0.4);
     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5),
         /*0 10px rgba(0, 0, 0, 0.05) inset,*/ 0 0px 5px 2px rgba(120, 200, 255, 0.75), 0 0px 10px 2px rgba(120, 200, 255, 0.75) inset;
+    cursor: pointer;
+}
+
+a:hover.green-a {
+    color: rgba(130, 130, 130, 0.99);
+    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
+    border-color: rgba(44, 129, 56, 0.4);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5),
+        /*0 10px rgba(0, 0, 0, 0.05) inset,*/ 0 0px 5px 2px rgba(44, 129, 56, 0.85), 0 0px 10px 2px rgba(44, 129, 56, 0.85) inset;
+    cursor: pointer;
+}
+
+a:hover.red-a {
+    color: rgba(130, 130, 130, 0.99);
+    text-shadow: 0px 0px 2px rgba(230, 240, 255, 0.99), 0px 0px 4px rgba(200, 230, 255, 0.99);
+    border-color: rgba(190, 70, 70, 0.4);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset, 0 2px 6px rgba(0, 0, 0, 0.5),
+        /*0 10px rgba(0, 0, 0, 0.05) inset,*/ 0 0px 5px 2px rgba(190, 70, 70, 1), 0 0px 10px 2px rgba(190, 70, 70, 1) inset;
     cursor: pointer;
 }
 
@@ -225,6 +250,27 @@ button.blue-a {
                 #E9E9E9 90%,
                 #F2F2F2 100%
     );*/
+    border-radius: 2.5px;
+    border: 1px solid /*#8D8D8D*/ rgba(0, 0, 0, 0.5);
+}
+
+.menu4 {
+    margin: 10px;
+    width: 80px;
+    padding: 5px 10px 5px 10px;
+    /* background-color: rgba(93, 93, 93, 0.25); */
+    background: linear-gradient(to top,
+                #D8D8D8 10%,
+                #D8D8D8 20%,
+                #CECECE 30%,
+                #CBCBCB 40%,
+                #CBCBCB 50%,
+                #D5D5D5 60%,
+                #D4D4D4 70%,
+                #E9E9E9 80%,
+                #E9E9E9 90%,
+                #F2F2F2 100%
+    );
     border-radius: 2.5px;
     border: 1px solid /*#8D8D8D*/ rgba(0, 0, 0, 0.5);
 }
@@ -350,6 +396,13 @@ iframe.gentle {
     right: 0;
 }
 
+iframe.knot {
+    position: absolute;
+    height: 50%;
+    top: 60px;
+    left: 0;
+}
+
 @media (max-width: 1020px) {
     .window {
         left: initial;
@@ -413,10 +466,7 @@ iframe.gentle {
     }
 
     iframe.knot {
-        position: absolute;
-        height: 50%;
-        /*bottom: 0;*/
-        left: 0;
+        top: 0px;
     }
 
     iframe.angel {
@@ -443,4 +493,16 @@ iframe.gentle {
         margin-bottom: 0px;
         padding: 0px;
     }
+
+    .extra a {
+        display: block;
+        width: 110px;
+        margin: 0px 0px 10px 0px;
+        font-size: 0.6rem;
+    }
+
+    .extra {
+        top: 10px;
+    }
+
 }
