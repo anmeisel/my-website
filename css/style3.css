@@ -462,9 +462,9 @@ iframe.knot {
 		height: 100%;
 	}
 
-	iframe.knot {
+	/* iframe.knot {
 		top: 0px;
-	}
+	} */
 
 	iframe.angel {
 		position: absolute;
@@ -493,7 +493,7 @@ iframe.knot {
 
 	.extra a {
 		display: block;
-		width: 110px;
+		width: 88px;
 		margin: 0px 0px 10px 0px;
 		font-size: 0.6rem;
 	}
