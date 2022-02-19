@@ -290,7 +290,7 @@
 				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
 				var intersects = raycaster.intersectObjects(objects)
 				if (intersects.length > 0) {
-					window.open(intersects[0].object.userData.URL, "_self")
+					window.open(intersects[0].object.userData.URL, "_target")
 					intersects[0].object.material.color = new THREE.Color(0x006400)
 					intersects[0].object.material.needsUpdate = true
 				}
