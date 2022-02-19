@@ -26,13 +26,16 @@
 	</head>
 
 	<body>
-		<script src="../build/three.js"></script>
-		<script src="js/OBJLoader.js"></script>
+		<script src="js/three-r117.min.js"></script>
+		<!-- <script src="../build/three.js"></script> -->
 		<script src="js/Detector.js"></script>
+		<script src="js/OBJLoader.js"></script>
 		<script src="js/OrbitControls.js"></script>
 		<script src="js/stats.min.js"></script>
-		<script src="js/THREEx.FullScreen.js"></script>
 		<script src="js/THREEx.WindowResize.js"></script>
+		<!-- <script src="js/THREEx.FullScreen.js"></script> -->
+		<script src="js/WebGL.js"></script>
+		<script src="js/onEvent.js"></script>
 
 		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 
@@ -40,6 +43,8 @@
 			// custom global variables
 
 			var objects = []
+
+			var container, scene, threeCamera, renderer, controls
 
 			init()
 			animate()
@@ -52,6 +57,8 @@
 
 				scene = new THREE.Scene()
 				scene.background = null // transparent
+
+				var threeOnEvent = new THREE.onEvent(scene, threeCamera)
 
 				var ambient = new THREE.AmbientLight(0x101030)
 				scene.add(ambient)
@@ -104,8 +111,8 @@
 
 						if (window.innerWidth <= 1000) {
 							object.scene.rotation.z = 1.6
-							threeCamera.position.z = 750
-							threeCamera.position.x = -20
+							camera.position.z = 750
+							camera.position.x = -20
 						}
 					},
 					onProgress,
@@ -114,26 +121,24 @@
 
 				// render model
 
-				if (Detector.webgl) renderer = new THREE.WebGLRenderer({ antialias: true })
-				else renderer = new THREE.CanvasRenderer()
-				projector = new THREE.Projector()
-				renderer.shadowMap.enabled = true
-				renderer.shadowMap.type = THREE.PCFSoftShadowMap
-
 				renderer = new THREE.WebGLRenderer({ alpha: true })
-				renderer.setClearColor(0x000000, 0)
-				renderer.setPixelRatio(2)
+				if (!Detector.webgl) console.log(`😔 no webgl`)
 
+				renderer.setClearColor(0x000000, 0)
+
+				renderer.setPixelRatio(2)
 				renderer.setSize(innerWidth, innerHeight)
+
 				container = document.getElementById("ThreeJS")
 				container.appendChild(renderer.domElement)
-				document.addEventListener("mousedown", onDocumentMouseDown, false)
 				window.addEventListener("resize", onWindowResize, false)
+
+				THREEx.WindowResize(renderer, threeCamera)
 
 				// events
 
 				THREEx.WindowResize(renderer, camera)
-				THREEx.FullScreen.bindKey({ charCode: "m".charCodeAt(0) })
+				// THREEx.FullScreen.bindKey({ charCode: "m".charCodeAt(0) })
 
 				// controls
 
@@ -163,15 +168,22 @@
 
 			var spriteMap = new THREE.TextureLoader().load("toolkit/names/Jam.png")
 			var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+			var spriteW = new THREE.Sprite(spriteMaterial)
+			spriteW.scale.set(45, 21, 1)
+			spriteW.position.set(162, 180, -180)
+
+			var spriteMap = new THREE.TextureLoader().load("toolkit/names/Jam.png")
+			var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
 			var spriteW1 = new THREE.Sprite(spriteMaterial)
 			spriteW1.scale.set(80, 80, 1)
 			spriteW1.position.set(10, 10, 10)
 			scene.add.spriteW1
 
+			spriteW.userData = dataWimke
 			spriteW1.userData = dataWimke
 
 			var groupHover = new THREE.Group()
-			groupHover.add(spriteW1)
+			groupHover.add(spriteW, spriteW1)
 			scene.add(groupHover)
 
 			groupHover.on(
@@ -189,92 +201,92 @@
 				window.location = obj.userData.url
 			})
 
-			var geometry = new THREE.SphereGeometry(4, 32, 32)
-			for (var i = 0; i < 5; i++) {
-				var object = new THREE.Mesh(
-					geometry,
-					new THREE.MeshBasicMaterial({
-						shading: THREE.FlatShading,
-						color: 0x0000ee
-					})
-				)
+			// var geometry = new THREE.SphereGeometry(4, 32, 32)
+			// for (var i = 0; i < 5; i++) {
+			// 	var object = new THREE.Mesh(
+			// 		geometry,
+			// 		new THREE.MeshBasicMaterial({
+			// 			shading: THREE.FlatShading,
+			// 			color: 0x0000ee
+			// 		})
+			// 	)
 
-				console.log(object)
-				switch (i) {
-					case 0:
-						camera.add(object)
-						object.userData = {
-							URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-						}
-						object.position.set(-195, 220, -10) //x, y, z
-						var spriteFeatures = makeTextSprite("")
-						spriteFeatures.position.set(-195, 220, -10)
-						scene.add(spriteFeatures)
+			// 	console.log(object)
+			// 	switch (i) {
+			// 		case 0:
+			// 			camera.add(object)
+			// 			object.userData = {
+			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
+			// 			}
+			// 			object.position.set(-195, 220, -10) //x, y, z
+			// 			var spriteFeatures = makeTextSprite("")
+			// 			spriteFeatures.position.set(-195, 220, -10)
+			// 			scene.add(spriteFeatures)
 
-						break
-					case 1:
-						object.userData = {
-							URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-						}
-						object.position.set(197, 170, -150)
-						var spriteContact = makeTextSprite("")
-						spriteContact.position.set(197, 170, -150)
-						scene.add(spriteContact)
+			// 			break
+			// 		case 1:
+			// 			object.userData = {
+			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
+			// 			}
+			// 			object.position.set(197, 170, -150)
+			// 			var spriteContact = makeTextSprite("")
+			// 			spriteContact.position.set(197, 170, -150)
+			// 			scene.add(spriteContact)
 
-						break
-					case 2:
-						object.userData = {
-							URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-						}
-						object.position.set(-205, -15, -130)
-						var spritesignup = makeTextSprite("")
-						spritesignup.position.set(-205, -15, -130)
-						scene.add(spritesignup)
+			// 			break
+			// 		case 2:
+			// 			object.userData = {
+			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
+			// 			}
+			// 			object.position.set(-205, -15, -130)
+			// 			var spritesignup = makeTextSprite("")
+			// 			spritesignup.position.set(-205, -15, -130)
+			// 			scene.add(spritesignup)
 
-						break
-					case 3:
-						object.userData = {
-							URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-						}
-						object.position.set(65, 70, 93)
-						var spriteAbout = makeTextSprite("")
-						spriteAbout.position.set(65, 70, 93)
-						scene.add(spriteAbout)
+			// 			break
+			// 		case 3:
+			// 			object.userData = {
+			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
+			// 			}
+			// 			object.position.set(65, 70, 93)
+			// 			var spriteAbout = makeTextSprite("")
+			// 			spriteAbout.position.set(65, 70, 93)
+			// 			scene.add(spriteAbout)
 
-						break
-					case 4:
-						object.userData = {
-							URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
-						}
-						object.position.set(175, -185, -100)
-						var spriteAbout = makeTextSprite("")
-						spriteAbout.position.set(175, -185, -100)
-						scene.add(spriteAbout)
+			// 			break
+			// 		case 4:
+			// 			object.userData = {
+			// 				URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
+			// 			}
+			// 			object.position.set(175, -185, -100)
+			// 			var spriteAbout = makeTextSprite("")
+			// 			spriteAbout.position.set(175, -185, -100)
+			// 			scene.add(spriteAbout)
 
-						break
-					case 5:
-						object.userData = {
-							URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
-						}
-						object.position.set(-65, -50, 100)
-						var spriteAbout = makeTextSprite("")
-						spriteAbout.position.set(-65, -50, 100)
-						scene.add(spriteAbout)
+			// 			break
+			// 		case 5:
+			// 			object.userData = {
+			// 				URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
+			// 			}
+			// 			object.position.set(-65, -50, 100)
+			// 			var spriteAbout = makeTextSprite("")
+			// 			spriteAbout.position.set(-65, -50, 100)
+			// 			scene.add(spriteAbout)
 
-						break
-					case 5:
-						object.userData = {
-							URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
-						}
-						object.position.set(40, 100, -50)
-						var spriteAbout = makeTextSprite("")
-						spriteAbout.position.set(40, 100, -50)
-						scene.add(spriteAbout)
-				}
+			// 			break
+			// 		case 5:
+			// 			object.userData = {
+			// 				URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
+			// 			}
+			// 			object.position.set(40, 100, -50)
+			// 			var spriteAbout = makeTextSprite("")
+			// 			spriteAbout.position.set(40, 100, -50)
+			// 			scene.add(spriteAbout)
+			// 	}
 
-				scene.add(object)
-				objects.push(object)
-			}
+			// 	scene.add(object)
+			// 	objects.push(object)
+			// }
 
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight
@@ -282,17 +294,16 @@
 			}
 
 			function onDocumentMouseDown(event) {
-				event.preventDefault()
-				var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
-				projector.unprojectVector(vector, camera)
-
-				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
-				var intersects = raycaster.intersectObjects(objects)
-				if (intersects.length > 0) {
-					window.open(intersects[0].object.userData.URL, "_target")
-					intersects[0].object.material.color = new THREE.Color(0x551abb)
-					intersects[0].object.material.needsUpdate = true
-				}
+				// event.preventDefault()
+				// var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
+				// projector.unprojectVector(vector, camera)
+				// var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
+				// var intersects = raycaster.intersectObjects(objects)
+				// if (intersects.length > 0) {
+				// 	window.open(intersects[0].object.userData.URL, "_target")
+				// 	intersects[0].object.material.color = new THREE.Color(0x551abb)
+				// 	intersects[0].object.material.needsUpdate = true
+				// }
 			}
 
 			// sprite styling
