@@ -97,9 +97,9 @@
 
 						object.position.y = 0
 						object.position.x = 0
-						object.scale.x = 90
-						object.scale.y = 90
-						object.scale.z = 90
+						object.scale.x = 150
+						object.scale.y = 150
+						object.scale.z = 150
 						scene.add(object)
 
 						if (window.innerWidth <= 1000) {
@@ -138,7 +138,7 @@
 				// controls
 
 				controls = new THREE.OrbitControls(camera, renderer.domElement)
-				controls.enableZoom = false
+				controls.enableZoom = true
 				controls.autoRotate = true
 				controls.autoRotateSpeed = -0.25
 
@@ -148,6 +148,7 @@
 				stats.domElement.style.position = "relative"
 				stats.domElement.style.bottom = "0px"
 				stats.domElement.style.zIndex = 100
+				stats.domElement.style.display = "none"
 				container.appendChild(stats.domElement)
 
 				// light
@@ -160,11 +161,11 @@
 
 			// labels
 
-			var spriteMap = new THREE.TextureLoader().load("toolkit/Vector 3.svg")
+			var spriteMap = new THREE.TextureLoader().load("toolkit/names/Jam.png")
 			var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
 			var spriteW1 = new THREE.Sprite(spriteMaterial)
-			spriteW1.scale.set(8, 8, 1)
-			spriteW1.position.set(140, 170, -180)
+			spriteW1.scale.set(20, 20, 1)
+			spriteW1.position.set(10, 10, 10)
 
 			spriteW1.userData = dataWimke
 
