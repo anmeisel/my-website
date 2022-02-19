@@ -128,8 +128,8 @@
 				renderer.setSize(innerWidth, innerHeight)
 				container = document.getElementById("ThreeJS")
 				container.appendChild(renderer.domElement)
-				document.addEventListener("mousedown", onDocumentMouseDown, false)
 				document.addEventListener("mousemove", onDocumentMouseMove, false)
+				document.addEventListener("mousedown", onDocumentMouseDown, false)
 				window.addEventListener("resize", onWindowResize, false)
 
 				// events
@@ -140,10 +140,8 @@
 				// controls
 
 				controls = new THREE.OrbitControls(camera, renderer.domElement)
-				controls.enableZoom = true
+				controls.enableZoom = false
 				controls.enablePan = true
-				controls.autoRotate = true
-				controls.autoRotateSpeed = -0.25
 
 				// stats
 
@@ -270,19 +268,6 @@
 				camera.updateProjectionMatrix()
 			}
 
-			function onDocumentMouseDown(event) {
-				event.preventDefault()
-				var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
-				projector.unprojectVector(vector, camera)
-				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
-				var intersects = raycaster.intersectObjects(objects)
-				if (intersects.length > 0) {
-					window.open(intersects[0].object.userData.URL, "_target")
-					intersects[0].object.material.color = new THREE.Color(0x006400)
-					intersects[0].object.material.needsUpdate = true
-				}
-			}
-
 			function onDocumentMouseMove(event) {
 				var mouse = new THREE.Vector2()
 				mouse.x = (event.clientX / window.innerWidth) * 2 - 1
@@ -291,9 +276,23 @@
 				raycaster2.setFromCamera(mouse, camera)
 				var intersects2 = raycaster2.intersectObjects(objects)
 				if (intersects2.length > 0) {
-					$("html,body").css("cursor", "w-resize")
+					$("html,body").css("cursor", "alias")
 				} else {
 					$("html,body").css("cursor", "default")
+				}
+			}
+
+			function onDocumentMouseDown(event) {
+				event.preventDefault()
+				var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
+				projector.unprojectVector(vector, camera)
+
+				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
+				var intersects = raycaster.intersectObjects(objects)
+				if (intersects.length > 0) {
+					window.open(intersects[0].object.userData.URL)
+					intersects[0].object.material.color = new THREE.Color(0x006400)
+					intersects[0].object.material.needsUpdate = true
 				}
 			}
 
