@@ -1,166 +1,166 @@
 <html lang="en">
-    <head>
-        <title>ana</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-        <link rel="stylesheet" href="css/style.css" />
+	<head>
+		<title>ana</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
-        <style>
-            p {
-                visibility: visible;
-                position: absolute;
-                color: black;
-                top: 50%;
-                left: 50%;
-                margin-right: -50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
-    </head>
+		<style>
+			p {
+				visibility: visible;
+				position: absolute;
+				color: black;
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+			}
+		</style>
+	</head>
 
-    <body>
-        <script src="build/three.js"></script>
-        <script src="js/OrbitControls.js"></script>
-        <script src="js/OBJLoader.js"></script>
+	<body>
+		<script src="build/three.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/OBJLoader.js"></script>
 
-        <script src="js/Detector.js"></script>
-        <script src="js/stats.js"></script>
-        <script src="js/CanvasRenderer.js"></script>
-        <script src="js/stats.min.js"></script>
-        <script src="js/Projector.js"></script>
-        <script src="js/THREEx.KeyboardState.js"></script>
-        <script src="js/THREEx.FullScreen.js"></script>
-        <script src="js/THREEx.WindowResize.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/stats.js"></script>
+		<script src="js/CanvasRenderer.js"></script>
+		<script src="js/stats.min.js"></script>
+		<script src="js/Projector.js"></script>
+		<script src="js/THREEx.KeyboardState.js"></script>
+		<script src="js/THREEx.FullScreen.js"></script>
+		<script src="js/THREEx.WindowResize.js"></script>
 
-        <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 
-        <script>
-            var container
+		<script>
+			var container
 
-            var camera, scene, renderer
+			var camera, scene, renderer
 
-            init()
-            animate()
+			init()
+			animate()
 
-            function init() {
-                container = document.getElementById("ThreeJS")
-                document.body.appendChild(container)
+			function init() {
+				container = document.getElementById("ThreeJS")
+				document.body.appendChild(container)
 
-                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000)
-                camera.position.z = 800
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000)
+				camera.position.z = 800
 
-                // scene
+				// scene
 
-                scene = new THREE.Scene()
-                scene.background = null // transparent
+				scene = new THREE.Scene()
+				scene.background = null // transparent
 
-                var ambient = new THREE.AmbientLight(0x101030)
-                scene.add(ambient)
+				var ambient = new THREE.AmbientLight(0x101030)
+				scene.add(ambient)
 
-                var directionalLight = new THREE.DirectionalLight(0xffeedd)
-                directionalLight.position.set(0, 0, 1)
-                scene.add(directionalLight)
+				var directionalLight = new THREE.DirectionalLight(0xffeedd)
+				directionalLight.position.set(0, 0, 1)
+				scene.add(directionalLight)
 
-                // texture
+				// texture
 
-                var manager = new THREE.LoadingManager()
-                manager.onProgress = function(item, loaded, total) {
-                    console.log(item, loaded, total)
-                }
+				var manager = new THREE.LoadingManager()
+				manager.onProgress = function(item, loaded, total) {
+					console.log(item, loaded, total)
+				}
 
-                var texture = new THREE.Texture()
+				var texture = new THREE.Texture()
 
-                var onProgress = function(xhr) {
-                    if (xhr.lengthComputable) {
-                        var percentComplete = (xhr.loaded / xhr.total) * 100
-                        if (percentComplete < 100) {
-                            var downloaded = "Loading: " + Math.round(percentComplete, 2) + "%"
-                        } else {
-                            var downloaded = " "
-                        }
-                        document.getElementById("myText").innerHTML = downloaded
-                    }
-                }
+				var onProgress = function(xhr) {
+					if (xhr.lengthComputable) {
+						var percentComplete = (xhr.loaded / xhr.total) * 100
+						if (percentComplete < 100) {
+							var downloaded = "Loading: " + Math.round(percentComplete, 2) + "%"
+						} else {
+							var downloaded = " "
+						}
+						document.getElementById("myText").innerHTML = downloaded
+					}
+				}
 
-                var onError = function(xhr) {}
+				var onError = function(xhr) {}
 
-                var loader = new THREE.ImageLoader(manager)
-                loader.load("images/texture.png", function(image) {
-                    texture.image = image
-                    texture.needsUpdate = true
-                })
+				var loader = new THREE.ImageLoader(manager)
+				loader.load("images/texture.png", function(image) {
+					texture.image = image
+					texture.needsUpdate = true
+				})
 
-                // model
+				// model
 
-                var loader = new THREE.OBJLoader(manager)
-                loader.load(
-                    "images/gentle.obj",
-                    function(object) {
-                        object.traverse(function(child) {
-                            if (child instanceof THREE.Mesh) {
-                                child.material.map = texture
-                                child.material.side = THREE.DoubleSide
-                            }
-                        })
+				var loader = new THREE.OBJLoader(manager)
+				loader.load(
+					"images/gentle.obj",
+					function(object) {
+						object.traverse(function(child) {
+							if (child instanceof THREE.Mesh) {
+								child.material.map = texture
+								child.material.side = THREE.DoubleSide
+							}
+						})
 
-                        object.position.y = 0
-                        object.position.x = 0
-                        object.scale.x = 400
-                        object.scale.y = 400
-                        object.scale.z = 400
-                        scene.add(object)
-                    },
-                    onProgress,
-                    onError
-                )
+						object.position.y = 0
+						object.position.x = 0
+						object.scale.x = 400
+						object.scale.y = 400
+						object.scale.z = 400
+						scene.add(object)
+					},
+					onProgress,
+					onError
+				)
 
-                //
+				//
 
-                controls = new THREE.OrbitControls(camera)
-                // to disable zoom
-                controls.enableZoom = false
+				controls = new THREE.OrbitControls(camera)
+				// to disable zoom
+				controls.enableZoom = false
 
-                // to disable rotation
-                controls.enableRotate = true
+				// to disable rotation
+				controls.enableRotate = true
 
-                // to disable pan
-                controls.enablePan = false
+				// to disable pan
+				controls.enablePan = false
 
-                renderer = new THREE.WebGLRenderer({ alpha: true })
-                renderer.setClearColor(0x000000, 0)
-                renderer.setPixelRatio(2)
-                renderer.setSize(innerWidth, innerHeight)
-                container.appendChild(renderer.domElement)
+				renderer = new THREE.WebGLRenderer({ alpha: true })
+				renderer.setClearColor(0x000000, 0)
+				renderer.setPixelRatio(2)
+				renderer.setSize(innerWidth, innerHeight)
+				container.appendChild(renderer.domElement)
 
-                // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-                //
+				//
 
-                window.addEventListener("resize", onWindowResize, false)
-            }
+				window.addEventListener("resize", onWindowResize, false)
+			}
 
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight
-                camera.updateProjectionMatrix()
-                renderer.setSize(window.innerWidth, window.innerHeight)
-            }
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight
+				camera.updateProjectionMatrix()
+				renderer.setSize(window.innerWidth, window.innerHeight)
+			}
 
-            function animate() {
-                requestAnimationFrame(animate)
-                render()
-            }
+			function animate() {
+				requestAnimationFrame(animate)
+				render()
+			}
 
-            function render() {
-                camera.lookAt(scene.position)
-                renderer.render(scene, camera)
-            }
-        </script>
+			function render() {
+				camera.lookAt(scene.position)
+				renderer.render(scene, camera)
+			}
+		</script>
 
-        <p>
-            <span id="myText"></span>
-        </p>
-    </body>
+		<p>
+			<span id="myText"></span>
+		</p>
+	</body>
 </html>

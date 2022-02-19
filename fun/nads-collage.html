@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>bdayy2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+		<style>
+			body {
+				margin: 0;
+			}
+			img {
+				margin: 0;
+				border: 0px;
+				position: absolute;
+				width: 100vw;
+			}
+			@media only screen and (max-width: 600px) {
+				img {
+					height: 100vh;
+					width: auto;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<img id="switch" src="images/Frame1.png" onclick="chngimg()" />
+		<!-- <img id="bird2" src="images/956d6cd15427b9b65a4571d32368735d.jpg" /> -->
+
+		<script>
+			function chngimg() {
+				var img = document.getElementById("switch").src
+				if (img.indexOf("Frame1.png") != -1) {
+					document.getElementById("switch").src = "images/Frame21.png"
+				} else {
+					document.getElementById("switch").src = "images/Frame1.png"
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,171 @@
+<html lang="en">
+	<head>
+		<title>☁</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<link rel="stylesheet" href="css/style3.css" />
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+	</head>
+
+	<body>
+		<script src="../build/three.js"></script>
+		<script src="../js/OBJLoader.js"></script>
+		<script src="../js/Detector.js"></script>
+		<script src="../js/OrbitControls.js"></script>
+		<script src="../js/stats.min.js"></script>
+		<script src="../js/THREEx.FullScreen.js"></script>
+		<script src="../js/THREEx.WindowResize.js"></script>
+		<script src="../js/SubdivisionModifier.js"></script>
+
+		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+
+		<script>
+			// custom global variables
+
+			var objects = []
+
+			init()
+			animate()
+
+			function init() {
+				// scene
+
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 80000)
+				camera.position.z = 800
+				camera.position.y = 300
+
+				scene = new THREE.Scene()
+				scene.background = null // transparent
+
+				var ambient = new THREE.AmbientLight(0xffffff, 0.8)
+				scene.add(ambient)
+
+				// model
+
+				var manager = new THREE.LoadingManager()
+				manager.onProgress = function(item, loaded, total) {
+					console.log(item, loaded, total)
+				}
+
+				var onProgress = function(xhr) {
+					if (xhr.lengthComputable) {
+						var percentComplete = (xhr.loaded / xhr.total) * 100
+						if (percentComplete < 100) {
+							var downloaded = "Loading: " + Math.round(percentComplete, 2) + "%"
+						} else {
+							var downloaded = " "
+						}
+						document.getElementById("Loader").innerHTML = downloaded
+					}
+				}
+
+				var onError = function(xhr) {}
+
+				var texture = new THREE.Texture()
+				var loader = new THREE.ImageLoader(manager)
+				loader.load("images/cadburry.png", function(image) {
+					texture.image = image
+					texture.needsUpdate = true
+				})
+
+				var loader = new THREE.OBJLoader(manager)
+				loader.load(
+					"images/cadburry.obj",
+					function(object) {
+						object.traverse(function(child) {
+							if (child instanceof THREE.Mesh) {
+								child.material.map = texture
+								child.material.side = THREE.DoubleSide
+							}
+						})
+
+						object.position.y = 0
+						object.position.x = 0
+						object.scale.x = 100
+						object.scale.y = 100
+						object.scale.z = 100
+						scene.add(object)
+					},
+					onProgress,
+					onError
+				)
+
+				// render model
+
+				if (Detector.webgl) renderer = new THREE.WebGLRenderer({ antialias: true })
+				else renderer = new THREE.CanvasRenderer()
+				projector = new THREE.Projector()
+				renderer.shadowMap.enabled = true
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
+				renderer = new THREE.WebGLRenderer({ alpha: true })
+				renderer.setClearColor(0x000000, 0)
+				renderer.setPixelRatio(2)
+
+				renderer.setSize(innerWidth, innerHeight)
+				container = document.getElementById("ThreeJS")
+				container.appendChild(renderer.domElement)
+				document.addEventListener("mousedown", onDocumentMouseDown, false)
+				window.addEventListener("resize", onWindowResize, false)
+
+				// events
+
+				THREEx.WindowResize(renderer, camera)
+				THREEx.FullScreen.bindKey({ charCode: "m".charCodeAt(0) })
+
+				// controls
+
+				controls = new THREE.OrbitControls(camera, renderer.domElement)
+				controls.enableZoom = false
+				controls.autoRotate = true
+				controls.autoRotateSpeed = -2
+
+				// stats
+
+				stats = new Stats()
+				stats.domElement.style.position = "relative"
+				stats.domElement.style.bottom = "0px"
+				stats.domElement.style.zIndex = 100
+				container.appendChild(stats.domElement)
+
+				// light
+
+				var light = new THREE.PointLight(0xffffff, 0.5, 0)
+				light.position.set(0, 0, 900)
+				var ambientLight = new THREE.AmbientLight(0x101030)
+				scene.add(light)
+
+				var light2 = new THREE.PointLight(0xffffff, 0.5, 0)
+				light2.position.set(0, 0, -900)
+				var ambientLight2 = new THREE.AmbientLight(0x101030)
+				scene.add(light2)
+			}
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight
+				camera.updateProjectionMatrix()
+			}
+
+			function onDocumentMouseDown(event) {}
+
+			function animate() {
+				requestAnimationFrame(animate)
+				render()
+				update()
+			}
+
+			function update() {
+				controls.update()
+				stats.update()
+			}
+
+			function render() {
+				renderer.render(scene, camera)
+			}
+		</script>
+
+		<p><span id="Loader"></span></p>
+	</body>
+</html>

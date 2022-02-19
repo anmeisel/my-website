@@ -129,11 +129,12 @@
 
 						object.position.y = 0
 						object.position.x = 0
-						// object.position.z = 200
 
 						object.rotation.x = 150
 
-						object.scale = 300
+						object.scale.x = 300
+						object.scale.y = 300
+						object.scale.z = 300
 						scene.add(object)
 					},
 					onProgress,
@@ -161,8 +162,8 @@
 			}
 
 			function onWindowResize() {
-				// windowHalfX = window.innerWidth / 2
-				// windowHalfY = window.innerHeight / 2
+				windowHalfX = window.innerWidth / 2
+				windowHalfY = window.innerHeight / 2
 
 				camera.aspect = window.innerWidth / window.innerHeight
 				camera.updateProjectionMatrix()
@@ -171,8 +172,8 @@
 			}
 
 			function onDocumentMouseMove(event) {
-				// mouseX = (event.clientX - windowHalfX) / 2
-				// mouseY = (event.clientY - windowHalfY) / 2
+				mouseX = (event.clientX - windowHalfX) / 2
+				mouseY = (event.clientY - windowHalfY) / 2
 			}
 
 			function animate() {

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>bdayy</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+		<style>
+			@font-face {
+				font-family: "pricedown";
+				src: url("fonts/pricedown-bl.otf") format("truetype");
+			}
+			p {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+				font-family: times;
+				font-size: 12px;
+			}
+			img {
+				z-index: -1;
+			}
+			body {
+				margin: 0;
+			}
+			img:nth-child(1) {
+				width: 70%;
+			}
+			img:nth-child(2),
+			img:nth-child(3) {
+				position: absolute;
+				right: 0;
+			}
+			img:nth-child(3) {
+				margin-top: 60vh;
+			}
+			.threejs iframe {
+				border: 0px;
+				position: absolute;
+				width: 30vw;
+				height: 30vh;
+				top: 50%;
+				left: 50%;
+				margin-right: -50%;
+				transform: translate(-50%, -50%);
+				z-index: 1;
+			}
+			.threejs {
+				height: 100%;
+			}
+			iframe.knot {
+				position: absolute;
+			}
+			.a,
+			.b,
+			.c,
+			.d,
+			.e {
+				position: absolute;
+				font-family: "pricedown", Fallback, sans-serif;
+				font-size: 70px;
+				color: #a2a19a;
+				text-shadow: 0 0 20px #d5eaff, 0 0 25px #ffffff, 0 0 30px #0000ff;
+				z-index: 3;
+			}
+			a {
+				color: #a2a19a;
+				text-decoration: none;
+				cursor: pointer;
+				z-index: 3;
+			}
+			.a {
+				top: 41vh;
+				left: 38vw;
+			}
+			.b {
+				top: 30vh;
+				left: 41vw;
+			}
+			.c {
+				width: 100%;
+				text-align: center;
+				top: 24vh;
+			}
+			.d {
+				top: 30vh;
+				right: 41vw;
+			}
+			.e {
+				top: 41vh;
+				right: 38vw;
+			}
+			@media only screen and (max-width: 600px) {
+				.a {
+					left: 20vw;
+				}
+				.b {
+					left: 25vw;
+				}
+				.d {
+					right: 25vw;
+				}
+				.e {
+					right: 20vw;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<img id="bird1" src="images/066a0fb1b0fe3a587d174c69189e7e5a.jpg" />
+		<img id="bird2" src="images/956d6cd15427b9b65a4571d32368735d.jpg" />
+		<img id="bird3" src="images/91V2YaPNOrL._AC_SX355_.jpg" />
+
+		<div class="threejs">
+			<iframe class="knot" scrolling="no" src="https://ana-help-anicka.vercel.app/fun/cadburry.html" frameborder="0"></iframe>
+		</div>
+
+		<div class="a"><a id="a" target="_blank" href="http://www-static.us.worlds.net/cgi-bin/download.cgi?action=full&bundle=WorldsCurrentVer">1</a></div>
+		<div class="b"><a id="b" target="_blank" href="https://www.dosgamesarchive.com/download/zzt/">2</a></div>
+		<div class="c"><a id="c" target="_blank" href="https://mystonline.com/en/play/">3</a></div>
+		<div class="d"><a id="d" target="_blank" href="https://ana-help-anicka.vercel.app/fun/nads-collage.html">4</a></div>
+		<div class="e"><a id="e" target="_blank" href="https://www.are.na/nadim-el-asmar/mac-bday-card">5</a></div>
+
+		<script>
+			var audio1 = new Audio("sounds/1.wav")
+			var audio2 = new Audio("sounds/2.wav")
+			var audio3 = new Audio("sounds/3.wav")
+			var audio4 = new Audio("sounds/4.wav")
+
+			document.getElementById("a").onclick = function() {
+				audio1.play()
+			}
+
+			document.getElementById("b").onclick = function() {
+				audio2.play()
+			}
+
+			document.getElementById("c").onclick = function() {
+				audio3.play()
+			}
+
+			document.getElementById("d").onclick = function() {
+				audio4.play()
+			}
+
+			document.getElementById("e").onclick = function() {
+				audio1.play()
+			}
+		</script>
+	</body>
+</html>
