@@ -291,7 +291,7 @@
 				raycaster2.setFromCamera(mouse, camera)
 				var intersects2 = raycaster2.intersectObjects(objects)
 				if (intersects2.length > 0) {
-					$("html,body").css("cursor", "pointer")
+					$("html,body").css("cursor", "w-resize")
 				} else {
 					$("html,body").css("cursor", "default")
 				}
