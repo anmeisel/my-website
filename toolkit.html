@@ -26,30 +26,21 @@
 	</head>
 
 	<body>
-		<script src="js/three-r97.min.js"></script>
-		<!-- <script src="../build/three.js"></script> -->
-		<script src="js/Detector.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="../build/three.js"></script>
 		<script src="js/OBJLoader.js"></script>
+		<script src="js/Detector.js"></script>
 		<script src="js/OrbitControls.js"></script>
 		<script src="js/stats.min.js"></script>
+		<script src="js/THREEx.FullScreen.js"></script>
 		<script src="js/THREEx.WindowResize.js"></script>
-		<!-- <script src="js/THREEx.FullScreen.js"></script> -->
-		<script src="js/WebGL.js"></script>
-		<script src="js/onEvent.js"></script>
 
-		<!-- <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div> -->
-		<div class="three-d">
-			<div id="ThreeJS"></div>
-			<p><span id="Loader"></span></p>
-			<div class="three-bg"></div>
-		</div>
+		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 
 		<script>
 			// custom global variables
 
 			var objects = []
-
-			var container, scene, threeCamera, renderer, controls
 
 			init()
 			animate()
@@ -62,8 +53,6 @@
 
 				scene = new THREE.Scene()
 				scene.background = null // transparent
-
-				var threeOnEvent = new THREE.onEvent(scene, camera)
 
 				var ambient = new THREE.AmbientLight(0x101030)
 				scene.add(ambient)
@@ -116,8 +105,8 @@
 
 						if (window.innerWidth <= 1000) {
 							object.scene.rotation.z = 1.6
-							camera.position.z = 750
-							camera.position.x = -20
+							threeCamera.position.z = 750
+							threeCamera.position.x = -20
 						}
 					},
 					onProgress,
@@ -126,29 +115,33 @@
 
 				// render model
 
+				if (Detector.webgl) renderer = new THREE.WebGLRenderer({ antialias: true })
+				else renderer = new THREE.CanvasRenderer()
+				projector = new THREE.Projector()
+				renderer.shadowMap.enabled = true
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
 				renderer = new THREE.WebGLRenderer({ alpha: true })
-				if (!Detector.webgl) console.log(`😔 no webgl`)
-
 				renderer.setClearColor(0x000000, 0)
-
 				renderer.setPixelRatio(2)
-				renderer.setSize(innerWidth, innerHeight)
 
+				renderer.setSize(innerWidth, innerHeight)
 				container = document.getElementById("ThreeJS")
 				container.appendChild(renderer.domElement)
+				document.addEventListener("mousedown", onDocumentMouseDown, false)
+				document.addEventListener("mousemove", onDocumentMouseMove, false)
 				window.addEventListener("resize", onWindowResize, false)
-
-				THREEx.WindowResize(renderer, threeCamera)
 
 				// events
 
 				THREEx.WindowResize(renderer, camera)
-				// THREEx.FullScreen.bindKey({ charCode: "m".charCodeAt(0) })
+				THREEx.FullScreen.bindKey({ charCode: "m".charCodeAt(0) })
 
 				// controls
 
 				controls = new THREE.OrbitControls(camera, renderer.domElement)
 				controls.enableZoom = true
+				controls.enablePan = true
 				controls.autoRotate = true
 				controls.autoRotateSpeed = -0.25
 
@@ -157,8 +150,8 @@
 				stats = new Stats()
 				stats.domElement.style.position = "relative"
 				stats.domElement.style.bottom = "0px"
-				stats.domElement.style.zIndex = 100
 				stats.domElement.style.display = "none"
+				stats.domElement.style.zIndex = 100
 				container.appendChild(stats.domElement)
 
 				// light
@@ -171,127 +164,106 @@
 
 			// labels
 
-			var spriteMap = new THREE.TextureLoader().load("toolkit/names/Jam.png")
-			var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
-			var spriteW = new THREE.Sprite(spriteMaterial)
-			spriteW.scale.set(45, 21, 1)
-			spriteW.position.set(162, 180, -180)
+			var geometry = new THREE.SphereGeometry(4, 32, 32)
+			for (var i = 0; i < 6; i++) {
+				var object = new THREE.Mesh(
+					geometry,
+					new THREE.MeshBasicMaterial({
+						shading: THREE.FlatShading,
+						color: 0x0000ee
+					})
+				)
 
-			var spriteMap = new THREE.TextureLoader().load("toolkit/names/Jam.png")
-			var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
-			var spriteW1 = new THREE.Sprite(spriteMaterial)
-			spriteW1.scale.set(80, 80, 1)
-			spriteW1.position.set(10, 10, 10)
-			scene.add.spriteW1
+				console.log(object)
+				switch (i) {
+					case 0:
+						camera.add(object)
+						object.userData = {
+							URL: "https://toolkits-for-counterparts.vercel.app/artists/cj"
+						}
+						object.position.set(154, 200, 20) //x, y, z
 
-			spriteW.userData = dataWimke
-			spriteW1.userData = dataWimke
+						var spriteMap = new THREE.TextureLoader().load("toolkit/names/CJ.png")
+						var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+						var spriteCJ = new THREE.Sprite(spriteMaterial)
+						spriteCJ.scale.set(72, 34, 1)
+						spriteCJ.position.set(195, 200, 20)
+						scene.add(spriteCJ)
 
-			var groupHover = new THREE.Group()
-			groupHover.add(spriteW, spriteW1)
-			scene.add(groupHover)
+						break
+					case 1:
+						object.userData = {
+							URL: "https://toolkits-for-counterparts.vercel.app/artists/yifan"
+						}
+						object.position.set(-241, 220, -10)
 
-			groupHover.on(
-				"hover",
-				function(obj) {
-					spriteHoverIn()
-					$(`#hover-${obj.userData.id}`).show()
-				},
-				function(obj) {
-					spriteHoverOut()
-					$(`#hover-${obj.userData.id}`).hide()
+						var spriteMap = new THREE.TextureLoader().load("toolkit/names/Yifan.png")
+						var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+						var spriteYifan = new THREE.Sprite(spriteMaterial)
+						spriteYifan.scale.set(79, 34, 1)
+						spriteYifan.position.set(-195, 220, -10)
+						scene.add(spriteYifan)
+
+						break
+					case 2:
+						object.userData = {
+							URL: "https://toolkits-for-counterparts.vercel.app/artists/jam"
+						}
+						object.position.set(-240, 15, -130)
+
+						var spriteMap = new THREE.TextureLoader().load("toolkit/names/Jam.png")
+						var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+						var spriteJam = new THREE.Sprite(spriteMaterial)
+						spriteJam.scale.set(61, 34, 1)
+						spriteJam.position.set(-205, 15, -130)
+						scene.add(spriteJam)
+
+						break
+					case 3:
+						object.userData = {
+							URL: "https://toolkits-for-counterparts.vercel.app/artists/paolo"
+						}
+						object.position.set(-153, -70, 93)
+
+						var spriteMap = new THREE.TextureLoader().load("toolkit/names/Paolo.png")
+						var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+						var spritePaolo = new THREE.Sprite(spriteMaterial)
+						spritePaolo.scale.set(67, 34, 1)
+						spritePaolo.position.set(-115, -70, 93)
+						scene.add(spritePaolo)
+
+						break
+					case 4:
+						object.userData = {
+							URL: "https://toolkits-for-counterparts.vercel.app/artists/frances"
+						}
+						object.position.set(232, 30, 10)
+
+						var spriteMap = new THREE.TextureLoader().load("toolkit/names/Frances.png")
+						var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+						var spriteFrances = new THREE.Sprite(spriteMaterial)
+						spriteFrances.scale.set(95, 34, 1)
+						spriteFrances.position.set(285, 30, 10)
+						scene.add(spriteFrances)
+
+						break
+					case 5:
+						object.userData = {
+							URL: "https://toolkits-for-counterparts.vercel.app/artists/niloo"
+						}
+						object.position.set(137, -185, -100)
+
+						var spriteMap = new THREE.TextureLoader().load("toolkit/names/Niloo.png")
+						var spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap })
+						var spriteNiloo = new THREE.Sprite(spriteMaterial)
+						spriteNiloo.scale.set(67, 34, 1)
+						spriteNiloo.position.set(175, -185, -100)
+						scene.add(spriteNiloo)
 				}
-			)
-			groupHover.on("click", function(obj) {
-				window.location = obj.userData.url
-			})
 
-			// var geometry = new THREE.SphereGeometry(4, 32, 32)
-			// for (var i = 0; i < 5; i++) {
-			// 	var object = new THREE.Mesh(
-			// 		geometry,
-			// 		new THREE.MeshBasicMaterial({
-			// 			shading: THREE.FlatShading,
-			// 			color: 0x0000ee
-			// 		})
-			// 	)
-
-			// 	console.log(object)
-			// 	switch (i) {
-			// 		case 0:
-			// 			camera.add(object)
-			// 			object.userData = {
-			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-			// 			}
-			// 			object.position.set(-195, 220, -10) //x, y, z
-			// 			var spriteFeatures = makeTextSprite("")
-			// 			spriteFeatures.position.set(-195, 220, -10)
-			// 			scene.add(spriteFeatures)
-
-			// 			break
-			// 		case 1:
-			// 			object.userData = {
-			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-			// 			}
-			// 			object.position.set(197, 170, -150)
-			// 			var spriteContact = makeTextSprite("")
-			// 			spriteContact.position.set(197, 170, -150)
-			// 			scene.add(spriteContact)
-
-			// 			break
-			// 		case 2:
-			// 			object.userData = {
-			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-			// 			}
-			// 			object.position.set(-205, -15, -130)
-			// 			var spritesignup = makeTextSprite("")
-			// 			spritesignup.position.set(-205, -15, -130)
-			// 			scene.add(spritesignup)
-
-			// 			break
-			// 		case 3:
-			// 			object.userData = {
-			// 				URL: "https://www.are.na/external-pages/texts-fb-7tkfmn2k"
-			// 			}
-			// 			object.position.set(65, 70, 93)
-			// 			var spriteAbout = makeTextSprite("")
-			// 			spriteAbout.position.set(65, 70, 93)
-			// 			scene.add(spriteAbout)
-
-			// 			break
-			// 		case 4:
-			// 			object.userData = {
-			// 				URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
-			// 			}
-			// 			object.position.set(175, -185, -100)
-			// 			var spriteAbout = makeTextSprite("")
-			// 			spriteAbout.position.set(175, -185, -100)
-			// 			scene.add(spriteAbout)
-
-			// 			break
-			// 		case 5:
-			// 			object.userData = {
-			// 				URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
-			// 			}
-			// 			object.position.set(-65, -50, 100)
-			// 			var spriteAbout = makeTextSprite("")
-			// 			spriteAbout.position.set(-65, -50, 100)
-			// 			scene.add(spriteAbout)
-
-			// 			break
-			// 		case 5:
-			// 			object.userData = {
-			// 				URL: "http://www.ursulakleguinarchive.com/Note-Technology.html"
-			// 			}
-			// 			object.position.set(40, 100, -50)
-			// 			var spriteAbout = makeTextSprite("")
-			// 			spriteAbout.position.set(40, 100, -50)
-			// 			scene.add(spriteAbout)
-			// 	}
-
-			// 	scene.add(object)
-			// 	objects.push(object)
-			// }
+				scene.add(object)
+				objects.push(object)
+			}
 
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight
@@ -299,52 +271,31 @@
 			}
 
 			function onDocumentMouseDown(event) {
-				// event.preventDefault()
-				// var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
-				// projector.unprojectVector(vector, camera)
-				// var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
-				// var intersects = raycaster.intersectObjects(objects)
-				// if (intersects.length > 0) {
-				// 	window.open(intersects[0].object.userData.URL, "_target")
-				// 	intersects[0].object.material.color = new THREE.Color(0x551abb)
-				// 	intersects[0].object.material.needsUpdate = true
-				// }
+				event.preventDefault()
+				var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
+				projector.unprojectVector(vector, camera)
+				var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize())
+				var intersects = raycaster.intersectObjects(objects)
+				if (intersects.length > 0) {
+					window.open(intersects[0].object.userData.URL, "_target")
+					intersects[0].object.material.color = new THREE.Color(0x006400)
+					intersects[0].object.material.needsUpdate = true
+				}
 			}
 
-			// sprite styling
-
-			// function makeTextSprite(message, parameters) {
-			// 	if (parameters === undefined) parameters = {}
-			// 	var fontface = parameters.hasOwnProperty("fontface") ? parameters["fontface"] : "Arial"
-			// 	var fontsize = parameters.hasOwnProperty("fontsize") ? parameters["fontsize"] : 32
-			// 	var borderThickness = parameters.hasOwnProperty("borderThickness") ? parameters["borderThickness"] : 1
-			// 	var borderColor = parameters.hasOwnProperty("borderColor") ? parameters["borderColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
-			// 	var backgroundColor = parameters.hasOwnProperty("backgroundColor") ? parameters["backgroundColor"] : { r: 255, g: 255, b: 255, a: 1.0 }
-			// 	var textColor = parameters.hasOwnProperty("textColor") ? parameters["textColor"] : { r: 0, g: 0, b: 0, a: 1.0 }
-
-			// 	var canvas = document.createElement("canvas")
-			// 	var context = canvas.getContext("2d")
-			// 	context.font = fontsize + "px " + fontface
-			// 	var metrics = context.measureText(message)
-			// 	var textWidth = metrics.width
-
-			// 	context.fillStyle = "rgba(" + backgroundColor.r + "," + backgroundColor.g + "," + backgroundColor.b + "," + backgroundColor.a + ")"
-			// 	context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + "," + borderColor.b + "," + borderColor.a + ")"
-			// 	context.lineWidth = borderThickness
-			// 	context.fillStyle = "rgba(" + textColor.r + ", " + textColor.g + ", " + textColor.b + ", 1.0)"
-			// 	context.fillText(message, borderThickness, fontsize + borderThickness)
-
-			// 	var texture = new THREE.Texture(canvas)
-			// 	texture.needsUpdate = true
-
-			// 	var spriteMaterial = new THREE.SpriteMaterial({
-			// 		map: texture,
-			// 		useScreenCoordinates: false
-			// 	})
-			// 	var sprite = new THREE.Sprite(spriteMaterial)
-			// 	sprite.scale.set(4 * fontsize, 2 * fontsize, 5 * fontsize)
-			// 	return sprite
-			// }
+			function onDocumentMouseMove(event) {
+				var mouse = new THREE.Vector2()
+				mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+				mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+				var raycaster2 = new THREE.Raycaster()
+				raycaster2.setFromCamera(mouse, camera)
+				var intersects2 = raycaster2.intersectObjects(objects)
+				if (intersects2.length > 0) {
+					$("html,body").css("cursor", "pointer")
+				} else {
+					$("html,body").css("cursor", "default")
+				}
+			}
 
 			function animate() {
 				requestAnimationFrame(animate)
