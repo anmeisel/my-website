@@ -26,7 +26,7 @@
 	</head>
 
 	<body>
-		<script src="js/three-r117.min.js"></script>
+		<script src="js/three-r97.min.js"></script>
 		<!-- <script src="../build/three.js"></script> -->
 		<script src="js/Detector.js"></script>
 		<script src="js/OBJLoader.js"></script>
@@ -37,7 +37,12 @@
 		<script src="js/WebGL.js"></script>
 		<script src="js/onEvent.js"></script>
 
-		<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+		<!-- <div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div> -->
+		<div class="three-d">
+			<div id="ThreeJS"></div>
+			<p><span id="Loader"></span></p>
+			<div class="three-bg"></div>
+		</div>
 
 		<script>
 			// custom global variables
@@ -58,7 +63,7 @@
 				scene = new THREE.Scene()
 				scene.background = null // transparent
 
-				var threeOnEvent = new THREE.onEvent(scene, threeCamera)
+				var threeOnEvent = new THREE.onEvent(scene, camera)
 
 				var ambient = new THREE.AmbientLight(0x101030)
 				scene.add(ambient)
