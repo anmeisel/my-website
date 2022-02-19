@@ -80,14 +80,14 @@
 
 				var texture = new THREE.Texture()
 				var loader = new THREE.ImageLoader(manager)
-				loader.load("images/texture.png", function(image) {
+				loader.load("images/texture2.png", function(image) {
 					texture.image = image
 					texture.needsUpdate = true
 				})
 
 				var loader = new THREE.OBJLoader(manager)
 				loader.load(
-					"toolkit/toolkit3.obj",
+					"toolkit/toolkit1.obj",
 					function(object) {
 						object.traverse(function(child) {
 							if (child instanceof THREE.Mesh) {
