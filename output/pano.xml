@@ -102,30 +102,32 @@
     <hotspots wordwrap="1" width="180" height="20">
       <label textalpha="1" backgroundalpha="1" border="1" borderalpha="1" backgroundcolor="0xffffff" wordwrap="1" enabled="1" width="180" background="1" bordercolor="0x000000" borderradius="1" textcolor="0x000000" height="20"/>
       <polystyle backgroundalpha="0.25098" borderalpha="1" backgroundcolor="0x0000ff" mode="0" bordercolor="0x0000ff" handcursor="1"/>
-      <polyhotspot target="_blank" url="www.artpost21.org/about" id="Poly01" description="" title="">
+
+      <polyhotspot url="about" id="Poly01" description="" title="">
         <polystring>-346.49/16.04|-346.49/11.49|-11.96/11.88|-12.22/16.41</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/books" id="Poly02" description="" title="">
+      <polyhotspot target="_blank" url="books" id="Poly02" description="" title="">
         <polystring>-294.68/13.7|-294.78/-26.21|-325.45/-18.52|-325.11/9.47|-325.03/9.56</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/merch" id="Poly03" description="" title="">
+      <polyhotspot target="_blank" url="merch" id="Poly03" description="" title="">
         <polystring>-65.53/3.56|-65.69/-24.07|-34.49/-15.53|-34.84/1.79|-34.84/1.79|-34.84/1.79</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/video" id="Poly04" description="" title="">
+      <polyhotspot target="_blank" url="videos" id="Poly04" description="" title="">
         <polystring>-16.48/3.1|-16.48/-6.38|-31.36/-5.73|-31.42/2.78</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/news" id="Poly05" description="" title="">
+      <polyhotspot target="_blank" url="whiteboard" id="Poly05" description="" title="">
         <polystring>-330.82/5.09|-330.69/-11|-340.32/-11.99|-340.32/5.52</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/podcast" id="Poly06" description="" title="">
+      <polyhotspot target="_blank" url="podcast" id="Poly06" description="" title="">
         <polystring>-343.92/-0.21|-344/-14.24|-13.4/-14.59|-13.57/-0.13</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/culturalconfusion" id="Poly07" description="" title="">
+      <polyhotspot target="_blank" url="leftDoor" id="Poly07" description="" title="">
         <polystring>-91.55/10.65|-91.59/-16.39|-74.43/-16.29|-74.37/11.44</polystring>
       </polyhotspot>
-      <polyhotspot target="_blank" url="www.artpost21.org/anxiety" id="Poly08" description="" title="">
+      <polyhotspot target="_blank" url="rightDoor" id="Poly08" description="" title="">
         <polystring>-269.11/11.29|-269.07/-16.41|-285.57/-16.82|-285.63/10.95</polystring>
       </polyhotspot>
+      
     </hotspots>
     <media/>
     <transition zoomoutpause="1" type="crossdissolve" blendcolor="0x000000" softedge="0" zoomfov="20" zoomspeed="2" zoomin="0" zoomafteroutfov="20" zoomout="0" enabled="1" blendtime="1" zoomafterinfov="90"/>
